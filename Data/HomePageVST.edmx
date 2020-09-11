@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HomePageVSTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Benefit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BenefitName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="RecruitmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" />
+          <Property Name="DateApplied" Type="date" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="DateConfirmed" Type="date" />
+          <Property Name="CVName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CVPath" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RecruitmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="UploadedDate" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="HeaderCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HeaderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="100" />
+          <Property Name="HeaderCategoryId" Type="int" />
+          <Property Name="ParentId" Type="int" />
+        </EntityType>
+        <EntityType Name="JobSkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SkillName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="RecruitmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recruitment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="JobDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="JobRequirement" Type="nvarchar(max)" />
+          <Property Name="Salary" Type="varchar" MaxLength="50" />
+          <Property Name="DatePosted" Type="date" Nullable="false" />
+          <Property Name="DateExpired" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="50" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="Fk_Benefit_Recruitment">
+          <End Role="Recruitment" Type="Self.Recruitment" Multiplicity="1" />
+          <End Role="Benefit" Type="Self.Benefit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Benefit">
+              <PropertyRef Name="RecruitmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Candidate_Recruitment">
+          <End Role="Recruitment" Type="Self.Recruitment" Multiplicity="1" />
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="RecruitmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Document_HeaderDetail">
+          <End Role="HeaderDetail" Type="Self.HeaderDetail" Multiplicity="0..1" />
+          <End Role="Document" Type="Self.Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_HeaderDetail_HeaderCategory">
+          <End Role="HeaderCategory" Type="Self.HeaderCategory" Multiplicity="0..1" />
+          <End Role="HeaderDetail" Type="Self.HeaderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HeaderDetail">
+              <PropertyRef Name="HeaderCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_JobSkill_Recruitment">
+          <End Role="Recruitment" Type="Self.Recruitment" Multiplicity="1" />
+          <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobSkill">
+              <PropertyRef Name="RecruitmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_UserLogin_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HomePageVSTModelStoreContainer">
+          <EntitySet Name="Benefit" EntityType="Self.Benefit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HeaderCategory" EntityType="Self.HeaderCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HeaderDetail" EntityType="Self.HeaderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobSkill" EntityType="Self.JobSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recruitment" EntityType="Self.Recruitment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Fk_Benefit_Recruitment" Association="Self.Fk_Benefit_Recruitment">
+            <End Role="Recruitment" EntitySet="Recruitment" />
+            <End Role="Benefit" EntitySet="Benefit" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Candidate_Recruitment" Association="Self.Fk_Candidate_Recruitment">
+            <End Role="Recruitment" EntitySet="Recruitment" />
+            <End Role="Candidate" EntitySet="Candidate" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Document_HeaderDetail" Association="Self.Fk_Document_HeaderDetail">
+            <End Role="HeaderDetail" EntitySet="HeaderDetail" />
+            <End Role="Document" EntitySet="Document" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_HeaderDetail_HeaderCategory" Association="Self.Fk_HeaderDetail_HeaderCategory">
+            <End Role="HeaderCategory" EntitySet="HeaderCategory" />
+            <End Role="HeaderDetail" EntitySet="HeaderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_JobSkill_Recruitment" Association="Self.Fk_JobSkill_Recruitment">
+            <End Role="Recruitment" EntitySet="Recruitment" />
+            <End Role="JobSkill" EntitySet="JobSkill" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_UserLogin_Role" Association="Self.Fk_UserLogin_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserLogin" EntitySet="UserLogin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HomePageVSTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HeaderCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="HeaderDetails" Relationship="Self.Fk_HeaderDetail_HeaderCategory" FromRole="HeaderCategory" ToRole="HeaderDetail" />
+        </EntityType>
+        <EntityType Name="HeaderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderCategoryId" Type="Int32" />
+          <Property Name="ParentId" Type="Int32" />
+          <NavigationProperty Name="HeaderCategory" Relationship="Self.Fk_HeaderDetail_HeaderCategory" FromRole="HeaderDetail" ToRole="HeaderCategory" />
+          <NavigationProperty Name="Documents" Relationship="HomePageVSTModel.Fk_Document_HeaderDetail" FromRole="HeaderDetail" ToRole="Document" />
+        </EntityType>
+        <Association Name="Fk_HeaderDetail_HeaderCategory">
+          <End Role="HeaderCategory" Type="Self.HeaderCategory" Multiplicity="0..1" />
+          <End Role="HeaderDetail" Type="Self.HeaderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HeaderDetail">
+              <PropertyRef Name="HeaderCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HomePageVSTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HeaderCategories" EntityType="Self.HeaderCategory" />
+          <EntitySet Name="HeaderDetails" EntityType="Self.HeaderDetail" />
+          <AssociationSet Name="Fk_HeaderDetail_HeaderCategory" Association="Self.Fk_HeaderDetail_HeaderCategory">
+            <End Role="HeaderCategory" EntitySet="HeaderCategories" />
+            <End Role="HeaderDetail" EntitySet="HeaderDetails" />
+          </AssociationSet>
+          <EntitySet Name="Benefits" EntityType="HomePageVSTModel.Benefit" />
+          <EntitySet Name="Candidates" EntityType="HomePageVSTModel.Candidate" />
+          <EntitySet Name="JobSkills" EntityType="HomePageVSTModel.JobSkill" />
+          <EntitySet Name="Recruitments" EntityType="HomePageVSTModel.Recruitment" />
+          <AssociationSet Name="Fk_Benefit_Recruitment" Association="HomePageVSTModel.Fk_Benefit_Recruitment">
+            <End Role="Recruitment" EntitySet="Recruitments" />
+            <End Role="Benefit" EntitySet="Benefits" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Candidate_Recruitment" Association="HomePageVSTModel.Fk_Candidate_Recruitment">
+            <End Role="Recruitment" EntitySet="Recruitments" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_JobSkill_Recruitment" Association="HomePageVSTModel.Fk_JobSkill_Recruitment">
+            <End Role="Recruitment" EntitySet="Recruitments" />
+            <End Role="JobSkill" EntitySet="JobSkills" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="HomePageVSTModel.Role" />
+          <EntitySet Name="Documents" EntityType="HomePageVSTModel.Document" />
+          <AssociationSet Name="Fk_Document_HeaderDetail" Association="HomePageVSTModel.Fk_Document_HeaderDetail">
+            <End Role="HeaderDetail" EntitySet="HeaderDetails" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
+          <EntitySet Name="UserLogins" EntityType="HomePageVSTModel.UserLogin" />
+          <AssociationSet Name="Fk_UserLogin_Role" Association="HomePageVSTModel.Fk_UserLogin_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserLogin" EntitySet="UserLogins" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Benefit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BenefitName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RecruitmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recruitment" Relationship="HomePageVSTModel.Fk_Benefit_Recruitment" FromRole="Benefit" ToRole="Recruitment" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DateApplied" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="DateConfirmed" Type="DateTime" Precision="0" />
+          <Property Name="CVName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CVPath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RecruitmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recruitment" Relationship="HomePageVSTModel.Fk_Candidate_Recruitment" FromRole="Candidate" ToRole="Recruitment" />
+        </EntityType>
+        <EntityType Name="JobSkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RecruitmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recruitment" Relationship="HomePageVSTModel.Fk_JobSkill_Recruitment" FromRole="JobSkill" ToRole="Recruitment" />
+        </EntityType>
+        <EntityType Name="Recruitment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobTitle" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="JobDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobRequirement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DatePosted" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateExpired" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Benefits" Relationship="HomePageVSTModel.Fk_Benefit_Recruitment" FromRole="Recruitment" ToRole="Benefit" />
+          <NavigationProperty Name="Candidates" Relationship="HomePageVSTModel.Fk_Candidate_Recruitment" FromRole="Recruitment" ToRole="Candidate" />
+          <NavigationProperty Name="JobSkills" Relationship="HomePageVSTModel.Fk_JobSkill_Recruitment" FromRole="Recruitment" ToRole="JobSkill" />
+        </EntityType>
+        <Association Name="Fk_Benefit_Recruitment">
+          <End Type="HomePageVSTModel.Recruitment" Role="Recruitment" Multiplicity="1" />
+          <End Type="HomePageVSTModel.Benefit" Role="Benefit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Benefit">
+              <PropertyRef Name="RecruitmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Candidate_Recruitment">
+          <End Type="HomePageVSTModel.Recruitment" Role="Recruitment" Multiplicity="1" />
+          <End Type="HomePageVSTModel.Candidate" Role="Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="RecruitmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_JobSkill_Recruitment">
+          <End Type="HomePageVSTModel.Recruitment" Role="Recruitment" Multiplicity="1" />
+          <End Type="HomePageVSTModel.JobSkill" Role="JobSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruitment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobSkill">
+              <PropertyRef Name="RecruitmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserLogins" Relationship="HomePageVSTModel.Fk_UserLogin_Role" FromRole="Role" ToRole="UserLogin" />
+          </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UploadedDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HeaderDetail" Relationship="HomePageVSTModel.Fk_Document_HeaderDetail" FromRole="Document" ToRole="HeaderDetail" />
+        </EntityType>
+        <Association Name="Fk_Document_HeaderDetail">
+          <End Type="HomePageVSTModel.HeaderDetail" Role="HeaderDetail" Multiplicity="0..1" />
+          <End Type="HomePageVSTModel.Document" Role="Document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Document">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="HomePageVSTModel.Fk_UserLogin_Role" FromRole="UserLogin" ToRole="Role" />
+        </EntityType>
+        <Association Name="Fk_UserLogin_Role">
+          <End Type="HomePageVSTModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="HomePageVSTModel.UserLogin" Role="UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HomePageVSTModelStoreContainer" CdmEntityContainer="HomePageVSTEntities">
+          <EntitySetMapping Name="HeaderCategories">
+            <EntityTypeMapping TypeName="HomePageVSTModel.HeaderCategory">
+              <MappingFragment StoreEntitySet="HeaderCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HeaderDetails">
+            <EntityTypeMapping TypeName="HomePageVSTModel.HeaderDetail">
+              <MappingFragment StoreEntitySet="HeaderDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="HeaderCategoryId" ColumnName="HeaderCategoryId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Benefits">
+            <EntityTypeMapping TypeName="HomePageVSTModel.Benefit">
+              <MappingFragment StoreEntitySet="Benefit">
+                <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+                <ScalarProperty Name="BenefitName" ColumnName="BenefitName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="HomePageVSTModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidate">
+                <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+                <ScalarProperty Name="CVPath" ColumnName="CVPath" />
+                <ScalarProperty Name="CVName" ColumnName="CVName" />
+                <ScalarProperty Name="DateConfirmed" ColumnName="DateConfirmed" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="DateApplied" ColumnName="DateApplied" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobSkills">
+            <EntityTypeMapping TypeName="HomePageVSTModel.JobSkill">
+              <MappingFragment StoreEntitySet="JobSkill">
+                <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+                <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recruitments">
+            <EntityTypeMapping TypeName="HomePageVSTModel.Recruitment">
+              <MappingFragment StoreEntitySet="Recruitment">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateExpired" ColumnName="DateExpired" />
+                <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="JobRequirement" ColumnName="JobRequirement" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="HomePageVSTModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="HomePageVSTModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UploadedDate" ColumnName="UploadedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="HomePageVSTModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

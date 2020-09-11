@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Posco VST Corp</title>
+    <link rel="icon" type="image/png" href="~/images/icon/P.png" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Tooplate" />
+    <meta name="viewport" content="width=device-width,  initial-scale=1,  maximum-scale=1" />
+    @Styles.Render("~/css/base")
+    @Styles.Render("~/css/customs")
+
+    @RenderSection("headerCss", required: false)
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+    @{Html.RenderAction("Header", "Home");}
+    <div style="width:1350px;margin:auto;">
+        <div style="float:left;" id="left-menu">
+            @RenderSection("LeftMenu", required: true)
+        </div>
+        @RenderBody()
+    </div>
+    @{Html.RenderAction("Footer", "Home");}
+
+    @Scripts.Render("~/js/plugins")
+    @Scripts.Render("~/js/customs")
+
+    @RenderSection("footerJs", required: false)
+</body>
+</html>

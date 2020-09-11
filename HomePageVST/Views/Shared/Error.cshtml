@@ -1,0 +1,18 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Error</title>
+</head>
+<body>
+    <h2>Error Occur While Processing Your Request Please Check After Some Time</h2>
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <h4 style="color:red">@ViewData["ErrorMessage"].ToString()</h4>
+    }
+    <a href="/index.html">Back to home</a>
+</body>
+</html>

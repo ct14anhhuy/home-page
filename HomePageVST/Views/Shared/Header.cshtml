@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HomePageVST.Models.HeaderCategoryViewModel>
+<section class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container" style="margin-left: auto; margin-right: auto">
+        <div class="row">
+            <div style="width:960px;margin:auto;">
+                <div style="float:left;">
+                    <a href="Index.html"><img src="~/images/poscovstlogo.png" style="width:135px; margin:auto;" /></a>
+                    <br />
+                </div>
+                <div style="float:right;height:40px;margin-top:10px">
+                    <center><img src="~/images/icon/SLOGANVST.png" style="width:250px; height:20px" /></center>
+                    <a href="index.html" style="color: #A9A8A8; font-size:14px"><b> Home | </b></a>
+                    <a href="contact-vst.html" style="color: #A9A8A8; font-size:14px"><b> Contact Us | </b></a>
+                    <a href="site-map.html" class="smoothScroll" style="color: #A9A8A8; font-size:14px"><b> Site Map |</b></a>
+                    <a href="login.html" class="smoothScroll" style="color: #A9A8A8; font-size:14px"><b> Admin </b></a>
+                </div>
+                <div style="width:860px;margin:auto; height:auto;">
+                    <div id="navbar_menu" class="menu_side">
+                        <ul class="first-ul; nav navbar-nav navbar-right;">
+                            @foreach (var headerCategory in Model.Where(x => x.ParentId == null).GroupBy(x => new { x.HeaderCategoryId, x.HeaderCategoryName }).Select(x => x.Key))
+                            {
+                                var listHeaderDetailByCategoryId = Model.Where(x => x.HeaderCategoryId == headerCategory.HeaderCategoryId && x.ParentId == null);
+                                <li>
+                                    <a href="#">@headerCategory.HeaderCategoryName</a>
+                                    @if (listHeaderDetailByCategoryId.Any())
+                                    {
+                                        <ul>
+                                            @foreach (var headerDetail in listHeaderDetailByCategoryId)
+                                            {
+                                                var listHeaderDetailByCategoryIdSub = Model.Where(x => x.HeaderCategoryId == headerDetail.HeaderCategoryId && x.ParentId == headerDetail.HeaderDetailId);
+                                                string url = headerDetail.HeaderDetailAlias == null ? "#" : headerDetail.HeaderDetailAlias + ".html";
+                                                <li class="li-category">
+                                                    <a href="@url">@headerDetail.HeaderDetailName</a>
+                                                    @if (listHeaderDetailByCategoryIdSub.Any())
+                                                    {
+                                                        <ul>
+                                                            @foreach (var headerDetailSub in listHeaderDetailByCategoryIdSub)
+                                                            {
+                                                                var listHeaderDetailByCategoryIdSub2 = Model.Where(x => x.HeaderCategoryId == headerDetailSub.HeaderCategoryId && x.ParentId == headerDetailSub.HeaderDetailId);
+                                                                string urlSub = headerDetailSub.HeaderDetailAlias == null ? "#" : headerDetailSub.HeaderDetailAlias + ".html";
+                                                                <li class="li-category">
+                                                                    <a href="@urlSub">@headerDetailSub.HeaderDetailName</a>
+                                                                    @if (listHeaderDetailByCategoryIdSub2.Any())
+                                                                    {
+                                                                        <ul>
+                                                                            @foreach (var headerDetailSub2 in listHeaderDetailByCategoryIdSub2)
+                                                                            {
+                                                                                string urlSub2 = headerDetailSub2.HeaderDetailAlias == null ? "#" : headerDetailSub2.HeaderDetailAlias + ".html";
+                                                                                <li class="li-category">
+                                                                                    <a href="@urlSub2">@headerDetailSub2.HeaderDetailName</a>
+                                                                                </li>
+                                                                            }
+                                                                        </ul>
+                                                                    }
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

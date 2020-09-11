@@ -1,0 +1,120 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Posco VST Corp";
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Posco VST Corp</title>
+    <link rel="icon" type="image/png" href="~/images/icon/P.png" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Tooplate">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    @Styles.Render("~/css/base")
+    @Styles.Render("~/css/customs")
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+    @{Html.RenderAction("Header", "Home");}
+    <!-- HOME -->
+    <section id="home" class="slider" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+
+                <div class="owl-carousel owl-theme">
+                    <div class="item item-first">
+                        <div class="caption">
+                            <div class="col-md-offset-1 col-md-10">
+                                <h3>Sturdy And Durable Over Time</h3>
+                                <h1>Stainless Steel POSCO VST Vietnam</h1>
+                                <a href="application-of-sts.html" class="section-btn btn btn-default btn-gray smoothScroll">Company Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item item-second">
+                        <div class="caption">
+                            <div class="col-md-offset-1 col-md-10">
+                                <h3>Meeting Your Life's Needs</h3>
+                                <h1>Meet The Needs Of Your Life</h1>
+                                <a href="application-of-sts.html" class="section-btn btn btn-default smoothScroll">Production Process</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item item-third">
+                        <div class="caption">
+                            <div class="col-md-offset-1 col-md-10">
+                                <h3>Looking After Your Family</h3>
+                                <h1>Wide Application In Life</h1>
+                                <a href="application-of-sts.html" class="section-btn btn btn-default btn-blue smoothScroll">Participate In Bidding</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer data-stellar-background-ratio="5">
+        <div style="width:960px;margin:auto;">
+            <div class="row">
+
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="footer-thumb">
+                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Product of Posco VST</h4>
+                        <p style="font-size:15px">Product Series 300</p>
+                        <p style="font-size:15px">Product Series 400</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="footer-thumb">
+                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">About Stainless Steel</h4>
+                        <div style="font-size:15px">
+                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> Report on enviroment monitoring</p>
+                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> Survey on corrosion of domestic water</p>
+                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> STS Lining Introducing the sample work</p>
+                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> A long term solution for water leakage</p>
+                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> Water and stainless steel</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="footer-thumb">
+                        <div class="opening-hours">
+                            <h4 class="wow fadeInUp" data-wow-delay="0.4s">Working Time</h4>
+                            <p style="font-size:15px">Mon - Fri :<span> 07:30 AM - 17:00 PM </span></p>
+                            <p style="font-size:15px">Sat : <span>08:00 AM - 12:00 PM</span></p>
+                            <p style="font-size:15px">Sunday & Holiday :<span> Off </span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 border-top">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="footer-link" align="left" style="float:left">
+                            <p>Total Visitors: @ApplicationInstance.Application["TotalUser"] | Online Visitors: @ApplicationInstance.Application["OnlineUser"]</p>
+                        </div>
+                        <div class="footer-link" align="right">
+                            <p>Copyright &copy; 2020 POSCO ICT VN</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 text-align-center" align="center">
+                        <div class="angle-up-btn">
+                            <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="0.3s"><i class="fa fa-angle-up"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+@Scripts.Render("~/js/plugins")
+@Scripts.Render("~/js/customs")
+</html>
