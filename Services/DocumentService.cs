@@ -1,46 +1,49 @@
 ﻿using AutoMapper;
 using Data;
 using DTO;
-using Repositories;
+using Repositories.Interfaces;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using Utilities;
 
 namespace Services
 {
-    public class DocumentService
+    public class DocumentService : IDocumentService
     {
-        private UnitOfWork _unitOfWork;
-        private GenericRepository<Document> _documentRepository;
+        private IUnitOfWork _unitOfWork;
+        private IGenericRepository<Document> _documentRepository;
+        private IMapper _mapper;
 
-        public DocumentService()
+        public DocumentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
             _documentRepository = _unitOfWork.DocumentRepository;
+            _mapper = mapper;
         }
 
         public IEnumerable<DocumentDTO> GetListDocumentByCategoryId(int categoryId)
         {
             var docs = _documentRepository.GetMultiByPredicate(x => x.CategoryId == categoryId);
-            return Mapper.Map<IEnumerable<DocumentDTO>>(docs);
+            return _mapper.Map<IEnumerable<DocumentDTO>>(docs);
         }
 
         public IEnumerable<DocumentDTO> GetListActivedDocumentByCategoryId(int categoryId)
         {
             var docs = _documentRepository.GetMultiByPredicate(x => x.CategoryId == categoryId && x.IsActive);
-            return Mapper.Map<IEnumerable<DocumentDTO>>(docs);
+            return _mapper.Map<IEnumerable<DocumentDTO>>(docs);
         }
 
         public DocumentDTO GetDocumentById(int id)
         {
             var doc = _documentRepository.GetSingleByPredicate(x => x.Id == id);
-            return Mapper.Map<DocumentDTO>(doc);
+            return _mapper.Map<DocumentDTO>(doc);
         }
 
         public DocumentDTO GetActivedDocumentById(int id)
         {
             var doc = _documentRepository.GetSingleByPredicate(x => x.Id == id && x.IsActive);
-            return Mapper.Map<DocumentDTO>(doc);
+            return _mapper.Map<DocumentDTO>(doc);
         }
 
         public DocumentDTO Add(DocumentDTO documentDTO)
@@ -56,14 +59,14 @@ namespace Services
                 throw ex;
             }
             documentDTO.Description = documentDTO.Description.Trim();
-            var document = _documentRepository.Add(Mapper.Map<Document>(documentDTO));
+            var document = _documentRepository.Add(_mapper.Map<Document>(documentDTO));
             _unitOfWork.Commit();
-            return Mapper.Map<DocumentDTO>(document);
+            return _mapper.Map<DocumentDTO>(document);
         }
 
         public void Edit(DocumentDTO documentDTO)
         {
-            _documentRepository.Update(Mapper.Map<Document>(documentDTO));
+            _documentRepository.Update(_mapper.Map<Document>(documentDTO));
             _unitOfWork.Commit();
         }
 
@@ -71,7 +74,7 @@ namespace Services
         {
             var document = _documentRepository.DeleteById(id);
             _unitOfWork.Commit();
-            return Mapper.Map<DocumentDTO>(document);
+            return _mapper.Map<DocumentDTO>(document);
         }
     }
 }

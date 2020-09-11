@@ -1,5 +1,5 @@
 ﻿using HomePageVST.Controllers.Core;
-using Services;
+using Services.Interfaces;
 using System.Web.Mvc;
 using Utilities;
 
@@ -7,11 +7,11 @@ namespace HomePageVST.Controllers
 {
     public class FormingController : ControllerCore
     {
-        private DocumentService _documentService;
+        private IDocumentService _documentService;
 
-        public FormingController()
+        public FormingController(IDocumentService documentService)
         {
-            _documentService = new DocumentService();
+            _documentService = documentService;
         }
 
         // GET: Forming

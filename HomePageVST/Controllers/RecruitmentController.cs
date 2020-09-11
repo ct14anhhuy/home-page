@@ -1,16 +1,16 @@
 ﻿using HomePageVST.Controllers.Core;
-using Services;
+using Services.Interfaces;
 using System.Web.Mvc;
 
 namespace HomePageVST.Controllers
 {
     public class RecruitmentController : ControllerCore
     {
-        private RecruitmentService _recruitmentService;
+        private IRecruitmentService _recruitmentService;
 
-        public RecruitmentController()
+        public RecruitmentController(IRecruitmentService recruitmentService)
         {
-            _recruitmentService = new RecruitmentService();
+            _recruitmentService = recruitmentService;
         }
 
         // GET: Recruitment

@@ -2,7 +2,7 @@
 using HomePageVST.Authentication;
 using HomePageVST.Controllers.Core;
 using HomePageVST.Filters.AntiModelInjection;
-using Services;
+using Services.Interfaces;
 using System;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -13,13 +13,13 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class UserLoginController : ControllerCore
     {
-        private UserLoginService _userLoginService;
+        private IUserLoginService _userLoginService;
         private UserRoleProvider _userRoleProvider;
 
-        public UserLoginController()
+        public UserLoginController(IUserLoginService userLoginService, UserRoleProvider userRoleProvider)
         {
-            _userLoginService = new UserLoginService();
-            _userRoleProvider = new UserRoleProvider();
+            _userLoginService = userLoginService;
+            _userRoleProvider = userRoleProvider;
         }
 
         [AllowAnonymous]

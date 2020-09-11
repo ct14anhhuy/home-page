@@ -1,16 +1,17 @@
-﻿using Services;
+﻿using Services.Interfaces;
 using System;
+using System.Web.Mvc;
 using System.Web.Security;
 
 namespace HomePageVST.Authentication
 {
     public class UserRoleProvider : RoleProvider
     {
-        private UserLoginService _userLoginService;
+        private IUserLoginService _userLoginService;
 
         public UserRoleProvider()
         {
-            _userLoginService = new UserLoginService();
+            _userLoginService = DependencyResolver.Current.GetService<IUserLoginService>();
         }
 
         public override string ApplicationName

@@ -1,6 +1,6 @@
 ﻿using HomePageVST.Controllers.Core;
 using HomePageVST.Models;
-using Services;
+using Services.Interfaces;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.UI;
@@ -9,13 +9,13 @@ namespace HomePageVST.Controllers
 {
     public class HomeController : ControllerCore
     {
-        private HeaderCategoryService _headerCategoryService;
-        private HeaderDetailService _headerDetailService;
+        private IHeaderCategoryService _headerCategoryService;
+        private IHeaderDetailService _headerDetailService;
 
-        public HomeController()
+        public HomeController(IHeaderCategoryService headerCategoryService, IHeaderDetailService headerDetailService)
         {
-            _headerCategoryService = new HeaderCategoryService();
-            _headerDetailService = new HeaderDetailService();
+            _headerCategoryService = headerCategoryService;
+            _headerDetailService = headerDetailService;
         }
 
         public ActionResult Index()

@@ -1,7 +1,7 @@
 ﻿using DTO;
 using HomePageVST.Controllers.Core;
 using HomePageVST.Filters.AntiModelInjection;
-using Services;
+using Services.Interfaces;
 using System;
 using System.Net;
 using System.Web.Mvc;
@@ -11,11 +11,11 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class RecruitmentController : ControllerCore
     {
-        private RecruitmentService _recruitmentService;
+        private IRecruitmentService _recruitmentService;
 
-        public RecruitmentController()
+        public RecruitmentController(IRecruitmentService recruitmentService)
         {
-            _recruitmentService = new RecruitmentService();
+            _recruitmentService = recruitmentService;
             ViewBag.Active = "recruitment";
         }
 

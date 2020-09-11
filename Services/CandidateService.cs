@@ -1,17 +1,21 @@
-﻿using Data;
-using Repositories;
+﻿using AutoMapper;
+using Data;
+using Repositories.Interfaces;
+using Services.Interfaces;
 
 namespace Services
 {
-    public class CandidateService
+    public class CandidateService : ICandidateService
     {
-        private UnitOfWork _unitOfWork;
-        private GenericRepository<Candidate> _candidateRepository;
+        private IUnitOfWork _unitOfWork;
+        private IGenericRepository<Candidate> _candidateRepository;
+        private IMapper _mapper;
 
-        public CandidateService()
+        public CandidateService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
             _candidateRepository = _unitOfWork.CandidateRepository;
+            _mapper = mapper;
         }
     }
 }

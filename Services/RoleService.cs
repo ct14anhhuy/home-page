@@ -1,17 +1,21 @@
-﻿using Data;
-using Repositories;
+﻿using AutoMapper;
+using Data;
+using Repositories.Interfaces;
+using Services.Interfaces;
 
 namespace Services
 {
-    public class RoleService
+    public class RoleService : IRoleService
     {
-        private UnitOfWork _unitOfWork;
-        private GenericRepository<Role> _roleRepository;
+        private IUnitOfWork _unitOfWork;
+        private IGenericRepository<Role> _roleRepository;
+        private IMapper _mapper;
 
-        public RoleService()
+        public RoleService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
             _roleRepository = _unitOfWork.RoleRepository;
+            _mapper = mapper;
         }
     }
 }

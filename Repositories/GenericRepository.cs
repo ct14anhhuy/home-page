@@ -1,4 +1,5 @@
 ﻿using Data;
+using Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace Repositories
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         private HomePageVSTEntities _dbContext;
         private DbSet<TEntity> _dbSet;

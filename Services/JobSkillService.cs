@@ -1,17 +1,21 @@
-﻿using Data;
-using Repositories;
+﻿using AutoMapper;
+using Data;
+using Repositories.Interfaces;
+using Services.Interfaces;
 
 namespace Services
 {
-    public class JobSkillService
+    public class JobSkillService : IJobSkillService
     {
-        private UnitOfWork _unitOfWork;
-        private GenericRepository<JobSkill> _jobSkillRepository;
+        private IUnitOfWork _unitOfWork;
+        private IGenericRepository<JobSkill> _jobSkillRepository;
+        private IMapper _mapper;
 
-        public JobSkillService()
+        public JobSkillService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
             _jobSkillRepository = _unitOfWork.JobSkillRepository;
+            _mapper = mapper;
         }
     }
 }

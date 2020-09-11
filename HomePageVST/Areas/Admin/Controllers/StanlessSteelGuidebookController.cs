@@ -2,7 +2,7 @@
 using HomePageVST.Controllers.Core;
 using HomePageVST.Filters.AntiModelInjection;
 using HomePageVST.Models;
-using Services;
+using Services.Interfaces;
 using System;
 using System.Net;
 using System.Web.Mvc;
@@ -13,11 +13,11 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class StanlessSteelGuidebookController : ControllerCore
     {
-        private DocumentService _documentService;
+        private IDocumentService _documentService;
 
-        public StanlessSteelGuidebookController()
+        public StanlessSteelGuidebookController(IDocumentService documentService)
         {
-            _documentService = new DocumentService();
+            _documentService = documentService;
             ViewBag.Active = "ssg";
         }
 

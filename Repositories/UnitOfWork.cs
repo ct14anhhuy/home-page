@@ -1,26 +1,27 @@
 ﻿using Data;
+using Repositories.Interfaces;
 using System;
 
 namespace Repositories
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
-        public GenericRepository<HeaderCategory> HeaderCategoryRepository { get; private set; }
-        public GenericRepository<HeaderDetail> HeaderDetailRepository { get; private set; }
-        public GenericRepository<UserLogin> UserLoginRepository { get; private set; }
-        public GenericRepository<Role> RoleRepository { get; private set; }
-        public GenericRepository<Document> DocumentRepository { get; private set; }
-        public GenericRepository<Benefit> BenefitRepository { get; private set; }
-        public GenericRepository<Candidate> CandidateRepository { get; private set; }
-        public GenericRepository<JobSkill> JobSkillRepository { get; private set; }
-        public GenericRepository<Recruitment> RecruitmentRepository { get; private set; }
+        public IGenericRepository<HeaderCategory> HeaderCategoryRepository { get; private set; }
+        public IGenericRepository<HeaderDetail> HeaderDetailRepository { get; private set; }
+        public IGenericRepository<UserLogin> UserLoginRepository { get; private set; }
+        public IGenericRepository<Role> RoleRepository { get; private set; }
+        public IGenericRepository<Document> DocumentRepository { get; private set; }
+        public IGenericRepository<Benefit> BenefitRepository { get; private set; }
+        public IGenericRepository<Candidate> CandidateRepository { get; private set; }
+        public IGenericRepository<JobSkill> JobSkillRepository { get; private set; }
+        public IGenericRepository<Recruitment> RecruitmentRepository { get; private set; }
 
         private HomePageVSTEntities _dbContext;
         private bool disposed;
 
-        public UnitOfWork()
+        public UnitOfWork(HomePageVSTEntities dbContext)
         {
-            _dbContext = new HomePageVSTEntities();
+            _dbContext = dbContext;
 
             HeaderCategoryRepository = new GenericRepository<HeaderCategory>(_dbContext);
             HeaderDetailRepository = new GenericRepository<HeaderDetail>(_dbContext);

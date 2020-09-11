@@ -1,4 +1,5 @@
-﻿using HomePageVST.Filters;
+﻿using HomePageVST.App_Start;
+using HomePageVST.Filters;
 using Services.AutoMapperConfig;
 using System;
 using System.Web;
@@ -17,6 +18,7 @@ namespace HomePageVST
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ContainerConfig.Configure();
             AutoMapperConfiguration.Config();
             GetTotalUsersFromFileConfig();
             GlobalFilters.Filters.Add(new CompressFilterAttribute());

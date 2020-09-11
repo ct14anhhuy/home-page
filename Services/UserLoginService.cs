@@ -1,34 +1,37 @@
 ﻿using AutoMapper;
 using Data;
 using DTO;
-using Repositories;
+using Repositories.Interfaces;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using Utilities;
 
 namespace Services
 {
-    public class UserLoginService
+    public class UserLoginService : IUserLoginService
     {
-        private UnitOfWork _unitOfWork;
-        private GenericRepository<UserLogin> _userLoginRepository;
+        private IUnitOfWork _unitOfWork;
+        private IGenericRepository<UserLogin> _userLoginRepository;
+        private IMapper _mapper;
 
-        public UserLoginService()
+        public UserLoginService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
             _userLoginRepository = _unitOfWork.UserLoginRepository;
+            _mapper = mapper;
         }
 
         public IEnumerable<UserLoginDTO> GetAll()
         {
             var userLogins = _userLoginRepository.GetAll();
-            return Mapper.Map<IEnumerable<UserLoginDTO>>(userLogins);
+            return _mapper.Map<IEnumerable<UserLoginDTO>>(userLogins);
         }
 
         public UserLoginDTO GetUserInfoByUserName(string userName)
         {
             var user = _userLoginRepository.GetSingleByPredicate(x => x.UserName == userName, x => x.Role);
-            return Mapper.Map<UserLoginDTO>(user);
+            return _mapper.Map<UserLoginDTO>(user);
         }
 
         public bool CheckLogin(string userName, string password)
@@ -56,7 +59,7 @@ namespace Services
                     byte[] salt = CryptoService.GenerateSalt();
                     userLogin.PasswordSalt = Convert.ToBase64String(salt);
                     userLogin.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(userLogin.NewPassword, salt));
-                    _userLoginRepository.Update(Mapper.Map<UserLogin>(userLogin));
+                    _userLoginRepository.Update(_mapper.Map<UserLogin>(userLogin));
                     _unitOfWork.Commit();
                     checkError = true;
                 }
@@ -69,9 +72,9 @@ namespace Services
             byte[] salt = CryptoService.GenerateSalt();
             userLogin.PasswordSalt = Convert.ToBase64String(salt);
             userLogin.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(userLogin.Password, salt));
-            var user = _userLoginRepository.Add(Mapper.Map<UserLogin>(userLogin));
+            var user = _userLoginRepository.Add(_mapper.Map<UserLogin>(userLogin));
             _unitOfWork.Commit();
-            return Mapper.Map<UserLoginDTO>(user);
+            return _mapper.Map<UserLoginDTO>(user);
         }
     }
 }

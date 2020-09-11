@@ -1,26 +1,29 @@
 ﻿using AutoMapper;
 using Data;
 using DTO;
-using Repositories;
+using Repositories.Interfaces;
+using Services.Interfaces;
 using System.Collections.Generic;
 
 namespace Services
 {
-    public class HeaderCategoryService
+    public class HeaderCategoryService : IHeaderCategoryService
     {
-        private GenericRepository<HeaderCategory> _headerCategoryRepository;
-        private UnitOfWork _unitOfWork;
+        private IGenericRepository<HeaderCategory> _headerCategoryRepository;
+        private IUnitOfWork _unitOfWork;
+        private IMapper _mapper;
 
-        public HeaderCategoryService()
+        public HeaderCategoryService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
             _headerCategoryRepository = _unitOfWork.HeaderCategoryRepository;
+            _mapper = mapper;
         }
 
         public IEnumerable<HeaderCategoryDTO> GetAll()
         {
             IEnumerable<HeaderCategory> listHeaderCategory = _headerCategoryRepository.GetAll();
-            return Mapper.Map<IEnumerable<HeaderCategoryDTO>>(listHeaderCategory);
+            return _mapper.Map<IEnumerable<HeaderCategoryDTO>>(listHeaderCategory);
         }
     }
 }

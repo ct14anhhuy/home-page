@@ -1,6 +1,5 @@
 ﻿using Microsoft.Owin;
 using Owin;
-using Utilities;
 
 [assembly: OwinStartupAttribute(typeof(HomePageVST.Startup))]
 

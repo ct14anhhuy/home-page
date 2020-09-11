@@ -1,17 +1,21 @@
-﻿using Data;
-using Repositories;
+﻿using AutoMapper;
+using Data;
+using Repositories.Interfaces;
+using Services.Interfaces;
 
 namespace Services
 {
-    public class BenefitService
+    public class BenefitService : IBenefitService
     {
-        private UnitOfWork _unitOfWork;
-        private GenericRepository<Benefit> _benefitRepository;
+        private IUnitOfWork _unitOfWork;
+        private IGenericRepository<Benefit> _benefitRepository;
+        private IMapper _mapper;
 
-        public BenefitService()
+        public BenefitService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
             _benefitRepository = _unitOfWork.BenefitRepository;
+            _mapper = mapper;
         }
     }
 }
