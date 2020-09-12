@@ -7,13 +7,6 @@ namespace HomePageVST.Authentication
 {
     public class UserRoleProvider : RoleProvider
     {
-        private IUserLoginService _userLoginService;
-
-        public UserRoleProvider()
-        {
-            _userLoginService = DependencyResolver.Current.GetService<IUserLoginService>();
-        }
-
         public override string ApplicationName
         {
             get
@@ -54,7 +47,8 @@ namespace HomePageVST.Authentication
 
         public override string[] GetRolesForUser(string userName)
         {
-            var user = _userLoginService.GetUserInfoByUserName(userName);
+            var userLoginService = DependencyResolver.Current.GetService<IUserLoginService>();
+            var user = userLoginService.GetUserInfoByUserName(userName);
             return new string[] { user.Role.RoleName };
         }
 

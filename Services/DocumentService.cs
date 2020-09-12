@@ -72,7 +72,7 @@ namespace Services
 
         public DocumentDTO Delete(int id)
         {
-            var document = _documentRepository.DeleteById(id);
+            var document = _documentRepository.Delete(id);
             _unitOfWork.Commit();
             return _mapper.Map<DocumentDTO>(document);
         }

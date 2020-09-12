@@ -16,14 +16,14 @@ namespace HomePageVST.App_Start
 {
     public class ContainerConfig
     {
-        public static void Configure()
+        public static IContainer Configure()
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.RegisterType<HomePageVSTEntities>().InstancePerRequest();
-            builder.RegisterType<UserRoleProvider>().InstancePerRequest();
+            builder.RegisterType<HomePageVSTEntities>().AsSelf().InstancePerRequest();
+            builder.RegisterType<UserRoleProvider>().AsSelf().InstancePerRequest();
 
             RegisterAutoMapper(builder);
 
@@ -35,6 +35,7 @@ namespace HomePageVST.App_Start
             builder.RegisterFilterProvider();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            return container;
         }
 
         private static void RegisterAutoMapper(ContainerBuilder builder)

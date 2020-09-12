@@ -24,7 +24,7 @@ namespace Repositories
             return _dbSet.Add(entity);
         }
 
-        public TEntity DeleteById(object id)
+        public TEntity Delete(object id)
         {
             TEntity entity = _dbSet.Find(id);
             return _dbSet.Remove(entity);
@@ -32,6 +32,10 @@ namespace Repositories
 
         public TEntity Delete(TEntity entity)
         {
+            if (_dbContext.Entry(entity).State == EntityState.Detached)
+            {
+                _dbSet.Attach(entity);
+            }
             return _dbSet.Remove(entity);
         }
 

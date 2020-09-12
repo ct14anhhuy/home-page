@@ -4,7 +4,7 @@ using System;
 
 namespace Repositories
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         public IGenericRepository<HeaderCategory> HeaderCategoryRepository { get; private set; }
         public IGenericRepository<HeaderDetail> HeaderDetailRepository { get; private set; }
@@ -16,7 +16,7 @@ namespace Repositories
         public IGenericRepository<JobSkill> JobSkillRepository { get; private set; }
         public IGenericRepository<Recruitment> RecruitmentRepository { get; private set; }
 
-        private HomePageVSTEntities _dbContext;
+        private readonly HomePageVSTEntities _dbContext;
         private bool disposed;
 
         public UnitOfWork(HomePageVSTEntities dbContext)
@@ -45,7 +45,7 @@ namespace Repositories
             GC.SuppressFinalize(this);
         }
 
-        public void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {

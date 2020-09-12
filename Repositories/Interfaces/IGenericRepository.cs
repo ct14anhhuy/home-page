@@ -8,7 +8,7 @@ namespace Repositories.Interfaces
     {
         TEntity Add(TEntity entity);
 
-        TEntity DeleteById(object id);
+        TEntity Delete(object id);
 
         TEntity Delete(TEntity entity);
 

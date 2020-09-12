@@ -1,9 +1,8 @@
 ﻿using Data;
-using System;
 
 namespace Repositories.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         IGenericRepository<HeaderCategory> HeaderCategoryRepository { get; }
         IGenericRepository<HeaderDetail> HeaderDetailRepository { get; }
@@ -16,6 +15,5 @@ namespace Repositories.Interfaces
         IGenericRepository<Recruitment> RecruitmentRepository { get; }
 
         void Commit();
-        void Dispose(bool disposing);
     }
 }

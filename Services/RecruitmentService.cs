@@ -62,7 +62,7 @@ namespace Services
 
         public RecruitmentDTO Delete(int id)
         {
-            var recruitment = _recruitmentRepository.DeleteById(id);
+            var recruitment = _recruitmentRepository.Delete(id);
             _unitOfWork.Commit();
             return _mapper.Map<RecruitmentDTO>(recruitment);
         }
