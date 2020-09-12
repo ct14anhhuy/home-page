@@ -7,6 +7,7 @@ namespace HomePageVST
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            #region ScriptBundle
             bundles.Add(new ScriptBundle("~/js/plugins").Include(
                 "~/Scripts/jquery.js",
                 "~/Scripts/bootstrap.min.js",
@@ -25,7 +26,9 @@ namespace HomePageVST
                 "~/Scripts/custom.js",
                 "~/Scripts/dialog.js"
                ));
+            #endregion
 
+            #region StyleBundle
             bundles.Add(new StyleBundle("~/css/base")
              .Include("~/css/bootstrap.min.css", new CssRewriteUrlTransform())
              .Include("~/css/font-awesome.min.css", new CssRewriteUrlTransform())
@@ -43,6 +46,7 @@ namespace HomePageVST
                .Include("~/css/left-menu.css", new CssRewriteUrlTransform())
                .Include("~/css/dialog.css", new CssRewriteUrlTransform())
                );
+            #endregion
 
             BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
         }

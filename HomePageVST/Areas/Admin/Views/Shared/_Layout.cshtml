@@ -2,9 +2,7 @@
 <head>
     <title>Admin</title>
     <link rel="icon" type="image/png" href="~/images/icon/P.png" />
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/themes/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/css/admin")
     <style>
         .navbar {
             margin-bottom: 50px;
@@ -74,10 +72,7 @@
     <footer class="container-fluid text-center">
         Copyright &copy; 2020 POSCO ICT VN
     </footer>
-    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script src="~/Content/themes/DataTables/js/jquery.dataTables.min.js"></script>
-    <script src="~/Content/themes/ckeditor/ckeditor.js"></script>
+    @Scripts.Render("~/js/admin")
     <script>
         $(".table").addClass("table-hover table-bordered");
         $(".table").DataTable();
