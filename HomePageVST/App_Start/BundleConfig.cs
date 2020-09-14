@@ -17,15 +17,16 @@ namespace HomePageVST
                 "~/Scripts/jquery.stellar.min.js",
                 "~/Scripts/wow.min.js",
                 "~/Scripts/smoothscroll.js",
-                "~/Scripts/lightbox.min.js"
-               ));
+                "~/Scripts/lightbox.min.js"));
 
             bundles.Add(new ScriptBundle("~/js/customs").Include(
                 "~/Scripts/scripts.js",
                 "~/Scripts/left-menu.js",
                 "~/Scripts/custom.js",
-                "~/Scripts/dialog.js"
-               ));
+                "~/Scripts/dialog.js"));
+
+            bundles.Add(new ScriptBundle("~/js/jquery.lazy").Include(
+                "~/Content/themes/jquery.lazy/jquery.lazy.min.js"));
             #endregion
 
             #region StyleBundle
@@ -38,14 +39,12 @@ namespace HomePageVST
              .Include("~/css/style.css", new CssRewriteUrlTransform())
              .Include("~/css/colors1.css", new CssRewriteUrlTransform())
              .Include("~/css/tooplate-style.css", new CssRewriteUrlTransform())
-             .Include("~/css/lightbox.css", new CssRewriteUrlTransform())
-             );
+             .Include("~/css/lightbox.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/css/customs")
                .Include("~/css/customs.css", new CssRewriteUrlTransform())
                .Include("~/css/left-menu.css", new CssRewriteUrlTransform())
-               .Include("~/css/dialog.css", new CssRewriteUrlTransform())
-               );
+               .Include("~/css/dialog.css", new CssRewriteUrlTransform()));
             #endregion
 
             BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));

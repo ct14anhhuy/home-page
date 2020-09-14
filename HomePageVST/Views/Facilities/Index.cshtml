@@ -9,7 +9,7 @@
 
         <table width="720" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
             <tr>
-                <td width="300"><a href="~/images/Facilities/Facilities01.png" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp" data-wow-delay="0.7s" src="~/images/Facilities/Facilities01.png" width="100%" height="230" /></a></td>
+                <td width="300"><a href="~/images/Facilities/Facilities01.png" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp lazy" data-wow-delay="0.7s" data-src="/images/Facilities/Facilities01.png" width="100%" height="230" /></a></td>
                 <td width="10"></td>
                 <td width="300" valign="top" bgcolor="#E8E8E8" style="font-family :Tahoma; font-size:15px; color:#797977">
                     <p style="margin-left:25px; margin-right:25px">
@@ -32,7 +32,7 @@
                     </p>
                 </td>
                 <td width="10"></td>
-                <td width="300" valign="top"><a href="~/images/Facilities/Facilities02.jpg" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp" data-wow-delay="0.8s" src="~/images/Facilities/Facilities02.jpg" width="100%" height="230" /></a></td>
+                <td width="300" valign="top"><a href="~/images/Facilities/Facilities02.jpg" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp lazy" data-wow-delay="0.8s" data-src="/images/Facilities/Facilities02.jpg" width="100%" height="230" /></a></td>
             </tr>
             <tr>
                 <td width="300" valign="top" bgcolor="#D6E9F8">&nbsp;</td>
@@ -40,7 +40,7 @@
                 <td width="300" align="center" valign="top" style="font-family:Tahoma; font-size:15px; color:#797977"><b>Library</b></td>
             </tr>
             <tr>
-                <td width="300" valign="top"><a href="~/images/Facilities/Facilities03.jpg" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp" data-wow-delay="0.9s" src="~/images/Facilities/Facilities03.jpg" width="100%" height="230" /></a></td>
+                <td width="300" valign="top"><a href="~/images/Facilities/Facilities03.jpg" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp lazy" data-wow-delay="0.9s" data-src="/images/Facilities/Facilities03.jpg" width="100%" height="230" /></a></td>
                 <td width="10"></td>
                 <td width="300" valign="top" bgcolor="#F7EECE" style="font-family:Tahoma; font-size:15px; color:#797977">
                     <p style="margin-left:25px; margin-right:25px">
@@ -60,7 +60,7 @@
                     </p>
                 </td>
                 <td width="10"></td>
-                <td width="300" valign="top"><a href="~/images/Facilities/Facilities04.jpg" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp" data-wow-delay="1.0s" src="~/images/Facilities/Facilities04.jpg" width="100%" height="230" /></a></td>
+                <td width="300" valign="top"><a href="~/images/Facilities/Facilities04.jpg" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp lazy" data-wow-delay="1.0s" data-src="/images/Facilities/Facilities04.jpg" width="100%" height="230" /></a></td>
             </tr>
             <tr>
                 <td width="300" valign="top" bgcolor="#E8E2FE">&nbsp;</td>
@@ -68,7 +68,7 @@
                 <td width="300" align="center" valign="top" style="font-family:Tahoma; font-size:15px; color:#797977"><b>Restaurant</b></td>
             </tr>
             <tr>
-                <td width="300" valign="top"><a href="~/images/Facilities/Facilities05.jpg" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp" data-wow-delay="1.1s" src="~/images/Facilities/Facilities05.jpg" width="100%" height="230" /></a></td>
+                <td width="300" valign="top"><a href="~/images/Facilities/Facilities05.jpg" data-lightbox="image-1" data-title="Posco"><img class="wow fadeInUp lazy" data-wow-delay="1.1s" data-src="/images/Facilities/Facilities05.jpg" width="100%" height="230" /></a></td>
                 <td width="10"></td>
                 <td width="300" valign="top" bgcolor="#E8E8E8" style="font-family:Tahoma; font-size:15px; color:#797977">
                     <p style="margin-left:25px; margin-right:25px">
@@ -90,7 +90,7 @@
                 <td width="10"></td>
                 <td width="300" valign="top" style="float:left">
                     <a href="~/images/Facilities/Facilities06.jpg" data-lightbox="image-1" data-title="Posco">
-                        <img class="wow fadeInUp" data-wow-delay="1.2s" src="~/images/Facilities/Facilities06.jpg" width="355px" height="230" />
+                        <img class="wow fadeInUp lazy" data-wow-delay="1.2s" data-src="/images/Facilities/Facilities06.jpg" width="355px" height="230" />
                     </a>
                 </td>
             </tr>
@@ -108,4 +108,13 @@
         <li class="mv-item border-menu" style="background-color:white;border-top:1px solid gray"><a href="news-information.html" style="font-size: 11pt; font-weight:bold; font-family:Tahoma">▶&nbsp;&nbsp;<b>News & Information</b></a></li>
         <li class="mv-item border-menu" style="background-color:white;border-bottom:1px solid gray;border-top:1px solid gray"><a href="facilities.html" style="font-size: 11pt; font-weight:bold; font-family:Tahoma; background-color:#a2c9f0">▶&nbsp;&nbsp;<b>Facilities</b></a></li>
     </ul>
+}
+
+@section footerJs{
+    @Scripts.Render("~/js/jquery.lazy")
+    <script>
+        $(function () {
+            $('.lazy').lazy();
+        });
+    </script>
 }

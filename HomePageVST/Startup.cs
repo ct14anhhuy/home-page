@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(HomePageVST.Startup))]
+[assembly: OwinStartup(typeof(HomePageVST.Startup))]
 
 namespace HomePageVST
 {

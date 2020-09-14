@@ -1,7 +1,10 @@
 ﻿using HomePageVST.Controllers.Core;
+using HomePageVST.Filters;
 using HomePageVST.Models;
 using Services.Interfaces;
+using System.IO;
 using System.Linq;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.UI;
 
@@ -54,6 +57,7 @@ namespace HomePageVST.Controllers
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "none")]
         public ActionResult Footer()
         {
             return PartialView();

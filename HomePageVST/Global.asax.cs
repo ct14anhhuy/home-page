@@ -45,7 +45,6 @@ namespace HomePageVST
             Application["OnlineUser"] = (int)Application["OnlineUser"] + 1;
             JsonHelper.Write(ConfigHelper.ReadSetting("VisitorsCounterFilePath"), "onlineVisitors", (int)Application["TotalUser"]);
             Application.UnLock();
-            LogHelper.Info("Connected");
         }
 
         protected void Session_End()
