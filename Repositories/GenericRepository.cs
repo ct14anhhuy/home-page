@@ -16,6 +16,8 @@ namespace Repositories
         public GenericRepository(HomePageVSTEntities dbContext)
         {
             _dbContext = dbContext;
+            _dbContext.Configuration.LazyLoadingEnabled = false;
+            _dbContext.Configuration.AutoDetectChangesEnabled = false;
             _dbSet = _dbContext.Set<TEntity>();
         }
 

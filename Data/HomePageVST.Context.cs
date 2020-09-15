@@ -18,8 +18,6 @@ namespace Data
         public HomePageVSTEntities()
             : base("name=HomePageVSTEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
-            this.Configuration.AutoDetectChangesEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,5 +34,6 @@ namespace Data
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
     }
 }

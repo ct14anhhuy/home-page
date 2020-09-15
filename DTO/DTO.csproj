@@ -57,6 +57,7 @@
     <Compile Include="DocumentDTO.cs" />
     <Compile Include="HeaderCategoryDTO.cs" />
     <Compile Include="HeaderDetailDTO.cs" />
+    <Compile Include="ImageDTO.cs" />
     <Compile Include="JobSkillDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecruitmentDTO.cs" />

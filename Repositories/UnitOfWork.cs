@@ -15,8 +15,9 @@ namespace Repositories
         public IGenericRepository<Candidate> CandidateRepository { get; private set; }
         public IGenericRepository<JobSkill> JobSkillRepository { get; private set; }
         public IGenericRepository<Recruitment> RecruitmentRepository { get; private set; }
+        public IGenericRepository<Image> ImageRepository { get; private set; }
 
-        private readonly HomePageVSTEntities _dbContext;
+        private HomePageVSTEntities _dbContext;
         private bool disposed;
 
         public UnitOfWork(HomePageVSTEntities dbContext)
@@ -32,6 +33,7 @@ namespace Repositories
             CandidateRepository = new GenericRepository<Candidate>(_dbContext);
             JobSkillRepository = new GenericRepository<JobSkill>(_dbContext);
             RecruitmentRepository = new GenericRepository<Recruitment>(_dbContext);
+            ImageRepository = new GenericRepository<Image>(_dbContext);
         }
 
         public void Commit()

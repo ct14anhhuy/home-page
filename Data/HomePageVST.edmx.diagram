@@ -20,6 +20,8 @@
         <AssociationConnector Association="HomePageVSTModel.Fk_Document_HeaderDetail" />
         <EntityTypeShape EntityType="HomePageVSTModel.UserLogin" Width="1.5" PointX="3" PointY="4.625" />
         <AssociationConnector Association="HomePageVSTModel.Fk_UserLogin_Role" />
+        <EntityTypeShape EntityType="HomePageVSTModel.Image" Width="1.5" PointX="5.25" PointY="14.875" />
+        <AssociationConnector Association="HomePageVSTModel.Fk_Images_HeaderDetail" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

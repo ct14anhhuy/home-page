@@ -59,6 +59,18 @@
           <Property Name="HeaderCategoryId" Type="int" />
           <Property Name="ParentId" Type="int" />
         </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageDescription" Type="varchar" MaxLength="100" />
+          <Property Name="FilePath" Type="varchar" MaxLength="200" />
+          <Property Name="MinimalFilePath" Type="varchar" MaxLength="200" />
+          <Property Name="DatePosted" Type="date" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="HeaderDetailId" Type="int" />
+        </EntityType>
         <EntityType Name="JobSkill">
           <Key>
             <PropertyRef Name="Id" />
@@ -147,6 +159,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Fk_Images_HeaderDetail">
+          <End Role="HeaderDetail" Type="Self.HeaderDetail" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="HeaderDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Fk_JobSkill_Recruitment">
           <End Role="Recruitment" Type="Self.Recruitment" Multiplicity="1" />
           <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
@@ -177,6 +201,7 @@
           <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HeaderCategory" EntityType="Self.HeaderCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HeaderDetail" EntityType="Self.HeaderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobSkill" EntityType="Self.JobSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recruitment" EntityType="Self.Recruitment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
@@ -196,6 +221,10 @@
           <AssociationSet Name="Fk_HeaderDetail_HeaderCategory" Association="Self.Fk_HeaderDetail_HeaderCategory">
             <End Role="HeaderCategory" EntitySet="HeaderCategory" />
             <End Role="HeaderDetail" EntitySet="HeaderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Images_HeaderDetail" Association="Self.Fk_Images_HeaderDetail">
+            <End Role="HeaderDetail" EntitySet="HeaderDetail" />
+            <End Role="Images" EntitySet="Images" />
           </AssociationSet>
           <AssociationSet Name="Fk_JobSkill_Recruitment" Association="Self.Fk_JobSkill_Recruitment">
             <End Role="Recruitment" EntitySet="Recruitment" />
@@ -230,6 +259,7 @@
           <Property Name="ParentId" Type="Int32" />
           <NavigationProperty Name="HeaderCategory" Relationship="Self.Fk_HeaderDetail_HeaderCategory" FromRole="HeaderDetail" ToRole="HeaderCategory" />
           <NavigationProperty Name="Documents" Relationship="HomePageVSTModel.Fk_Document_HeaderDetail" FromRole="HeaderDetail" ToRole="Document" />
+          <NavigationProperty Name="Images" Relationship="HomePageVSTModel.Fk_Images_HeaderDetail" FromRole="HeaderDetail" ToRole="Image" />
         </EntityType>
         <Association Name="Fk_HeaderDetail_HeaderCategory">
           <End Role="HeaderCategory" Type="Self.HeaderCategory" Multiplicity="0..1" />
@@ -276,6 +306,11 @@
           <AssociationSet Name="Fk_UserLogin_Role" Association="HomePageVSTModel.Fk_UserLogin_Role">
             <End Role="Role" EntitySet="Roles" />
             <End Role="UserLogin" EntitySet="UserLogins" />
+          </AssociationSet>
+          <EntitySet Name="Images" EntityType="HomePageVSTModel.Image" />
+          <AssociationSet Name="Fk_Images_HeaderDetail" Association="HomePageVSTModel.Fk_Images_HeaderDetail">
+            <End Role="HeaderDetail" EntitySet="HeaderDetails" />
+            <End Role="Image" EntitySet="Images" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Benefit">
@@ -423,6 +458,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MinimalFilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DatePosted" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="HeaderDetailId" Type="Int32" />
+          <NavigationProperty Name="HeaderDetail" Relationship="HomePageVSTModel.Fk_Images_HeaderDetail" FromRole="Image" ToRole="HeaderDetail" />
+        </EntityType>
+        <Association Name="Fk_Images_HeaderDetail">
+          <End Type="HomePageVSTModel.HeaderDetail" Role="HeaderDetail" Multiplicity="0..1" />
+          <End Type="HomePageVSTModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="HeaderDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -528,6 +588,19 @@
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="HomePageVSTModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="HeaderDetailId" ColumnName="HeaderDetailId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+                <ScalarProperty Name="MinimalFilePath" ColumnName="MinimalFilePath" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

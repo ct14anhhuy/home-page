@@ -13,6 +13,7 @@ namespace Repositories.Interfaces
         IGenericRepository<Candidate> CandidateRepository { get; }
         IGenericRepository<JobSkill> JobSkillRepository { get; }
         IGenericRepository<Recruitment> RecruitmentRepository { get; }
+        IGenericRepository<Image> ImageRepository { get; }
 
         void Commit();
     }

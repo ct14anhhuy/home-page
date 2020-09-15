@@ -84,6 +84,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HomePageVST.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>HomePageVST.tt</DependentUpon>
+    </Compile>
     <Compile Include="JobSkill.cs">
       <DependentUpon>HomePageVST.tt</DependentUpon>
     </Compile>

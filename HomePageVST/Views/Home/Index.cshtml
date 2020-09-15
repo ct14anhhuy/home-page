@@ -8,15 +8,29 @@
 <head>
     <title>Posco VST Corp</title>
     <link rel="icon" type="image/png" href="~/images/icon/P.png" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="Tooplate">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Tooplate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     @Styles.Render("~/css/base")
     @Styles.Render("~/css/customs")
+    <style>
+        .footer-thumb p {
+            margin: 0 0 5px;
+        }
+
+        .footer-thumb > h4 {
+            color: #828282;
+            font-size: 20px;
+        }
+
+        .title-footer {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
     @{Html.RenderAction("Header", "Home");}
@@ -66,31 +80,35 @@
                 <div class="col-md-4 col-sm-4 col-xs-4">
                     <div class="footer-thumb">
                         <h4 class="wow fadeInUp" data-wow-delay="0.4s">Product of Posco VST</h4>
-                        <p style="font-size:15px">Product Series 300</p>
-                        <p style="font-size:15px">Product Series 400</p>
+                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> A Kind of Surface</p>
+                        <p style="font-size:15px">&nbsp&nbsp- BA</p>
+                        <p style="font-size:15px">&nbsp&nbsp- 2B</p>
+                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> A Kind of Series</p>
+                        <p style="font-size:15px">&nbsp&nbsp- 304, 301, 316L</p>
+                        <p style="font-size:15px">&nbsp&nbsp- 201</p>
+                        <p style="font-size:15px">&nbsp&nbsp- 430, 409L, 439...</p>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-sm-4 col-xs-4">
                     <div class="footer-thumb">
-                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">About Stainless Steel</h4>
+                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Stainless Guide</h4>
                         <div style="font-size:15px">
-                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> Report on enviroment monitoring</p>
-                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> Survey on corrosion of domestic water</p>
-                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> STS Lining Introducing the sample work</p>
-                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> A long term solution for water leakage</p>
-                            <p style="font-size:15px"><img src="~/images/icon/icon_steel-.png" width="20px" height="20px" style="font-size:15px" /> Water and stainless steel</p>
+                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Stainless Guide Book</p>
+                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Corrosion</p>
+                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Welding</p>
+                            <p style="font-size:15px">&nbsp&nbsp- 201</p>
+                            <p style="font-size:15px">&nbsp&nbsp- 430, 409, 439L...</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-sm-4 col-xs-4">
                     <div class="footer-thumb">
+                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact</h4>
                         <div class="opening-hours">
-                            <h4 class="wow fadeInUp" data-wow-delay="0.4s">Working Time</h4>
-                            <p style="font-size:15px">Mon - Fri :<span> 07:30 AM - 17:00 PM </span></p>
-                            <p style="font-size:15px">Sat : <span>08:00 AM - 12:00 PM</span></p>
-                            <p style="font-size:15px">Sunday & Holiday :<span> Off </span></p>
+                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Phone :<span> 0251-3560-360 </span></p>
+                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> E-mail:<span>  </span></p>
                         </div>
                     </div>
                 </div>

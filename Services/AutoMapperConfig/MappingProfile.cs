@@ -18,6 +18,7 @@ namespace Services.AutoMapperConfig
             CreateMap<Recruitment, RecruitmentDTO>().ReverseMap();
             CreateMap<Role, RoleDTO>().ReverseMap();
             CreateMap<UserLogin, UserLoginDTO>().ReverseMap();
+            CreateMap<Image, ImageDTO>().ReverseMap();
         }
     }
 }
