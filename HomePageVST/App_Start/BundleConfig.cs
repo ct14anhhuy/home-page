@@ -10,7 +10,7 @@ namespace HomePageVST
             #region ScriptBundle
             bundles.Add(new ScriptBundle("~/js/plugins").Include(
                 "~/Scripts/jquery.js",
-                "~/Scripts/bootstrap.min.js",
+                "~/Content/themes/bootstrap-3.2.0/js/bootstrap.min.js",
                 "~/Scripts/owl.carousel.min.js",
                 "~/Scripts/jquery.stellar.min.js",
                 "~/Scripts/jquery.sticky.js",
@@ -31,7 +31,7 @@ namespace HomePageVST
 
             #region StyleBundle
             bundles.Add(new StyleBundle("~/css/base")
-             .Include("~/css/bootstrap.min.css", new CssRewriteUrlTransform())
+             .Include("~/Content/themes/bootstrap-3.2.0/css/bootstrap.min.css", new CssRewriteUrlTransform())
              .Include("~/css/font-awesome.min.css", new CssRewriteUrlTransform())
              .Include("~/css/animate.css", new CssRewriteUrlTransform())
              .Include("~/css/owl.carousel.css", new CssRewriteUrlTransform())
@@ -45,9 +45,12 @@ namespace HomePageVST
                .Include("~/css/customs.css", new CssRewriteUrlTransform())
                .Include("~/css/left-menu.css", new CssRewriteUrlTransform())
                .Include("~/css/dialog.css", new CssRewriteUrlTransform()));
+
+            bundles.Add(new StyleBundle("~/css/home")
+               .Include("~/css/home.css", new CssRewriteUrlTransform()));
             #endregion
 
-            //BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
+            BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
         }
     }
 }

@@ -340,6 +340,13 @@ namespace HomePageVST
         private static void RegisterStaticRoutes_PR(RouteCollection routes)
         {
             routes.MapRoute(
+               name: "CoporateCitizen",
+               url: "coporate-citizen.html",
+               defaults: new { controller = "CoporateCitizen", action = "Index" },
+               namespaces: new string[] { "HomePageVST.Controllers" }
+            );
+
+            routes.MapRoute(
                name: "NewsInformation",
                url: "news-information.html",
                defaults: new { controller = "NewsInformation", action = "Index" },

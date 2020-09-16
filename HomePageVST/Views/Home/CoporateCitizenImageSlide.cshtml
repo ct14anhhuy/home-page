@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DTO.ImageDTO>
+
+<div id="cpSlide" class="container">
+    <div class="row">
+        <div class="col-xs-11 col-md-10 col-centered">
+
+            <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+                <div class="carousel-inner">
+                    @{
+                        int i = 0;
+                        string active = "";
+                        foreach (var image in Model)
+                        {
+                            i++;
+                            active = i == 1 ? "active" : "";
+                            <div class="item @active">
+                                <div class="carousel-col">
+                                    <a href="@image.FilePath" data-lightbox="image-1" data-title="@image.ImageDescription">
+                                        <img class="img-responsive" style="height:150px; width:250px" src="@image.MinimalFilePath" />
+                                        <span class="galery-link">@image.ImageDescription</span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+                <div class="left carousel-control">
+                    <a href="#carousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </div>
+                <div class="right carousel-control">
+                    <a href="#carousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

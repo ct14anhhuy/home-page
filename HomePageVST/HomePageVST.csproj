@@ -246,6 +246,7 @@
     <Compile Include="Areas\Admin\Controllers\UserLoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\WaterTankIndustryController.cs" />
     <Compile Include="Areas\Admin\Controllers\WeldingController.cs" />
+    <Compile Include="Controllers\CoporateCitizenController.cs" />
     <Compile Include="Controllers\Core\ControllerCore.cs" />
     <Compile Include="Filters\AllowFileExtensionAttribute.cs" />
     <Compile Include="Filters\AllowFileSizeAttribute.cs" />
@@ -352,6 +353,13 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\themes\bootstrap-3.2.0\css\bootstrap-theme.css" />
+    <Content Include="Content\themes\bootstrap-3.2.0\css\bootstrap-theme.min.css" />
+    <Content Include="Content\themes\bootstrap-3.2.0\css\bootstrap.css" />
+    <Content Include="Content\themes\bootstrap-3.2.0\css\bootstrap.min.css" />
+    <Content Include="Content\themes\bootstrap-3.2.0\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\themes\bootstrap-3.2.0\js\bootstrap.js" />
+    <Content Include="Content\themes\bootstrap-3.2.0\js\bootstrap.min.js" />
     <Content Include="Content\themes\ckeditor\adapters\jquery.js" />
     <Content Include="Content\themes\ckeditor\build-config.js" />
     <Content Include="Content\themes\ckeditor\ckeditor.js" />
@@ -644,6 +652,24 @@
     <Content Include="Content\themes\DataTables\js\jquery.dataTables.js" />
     <Content Include="Content\themes\DataTables\js\jquery.dataTables.min.js" />
     <Content Include="Content\themes\DataTables\js\jquery.js" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\AUTHORS.txt" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\external\jquery\jquery.js" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\index.html" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\jquery-ui.css" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\jquery-ui.js" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\jquery-ui.min.css" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\jquery-ui.min.js" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\jquery-ui.structure.css" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\jquery-ui.structure.min.css" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\jquery-ui.theme.css" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\jquery-ui.theme.min.css" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\LICENSE.txt" />
     <Content Include="Content\themes\jquery.lazy\gulpfile.js" />
     <Content Include="Content\themes\jquery.lazy\jquery.lazy.js" />
     <Content Include="Content\themes\jquery.lazy\jquery.lazy.min.js" />
@@ -670,6 +696,7 @@
     <Content Include="css\colors1.css" />
     <Content Include="css\customs.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\home.css" />
     <Content Include="css\left-menu.css" />
     <Content Include="css\lightbox.css" />
     <Content Include="css\owl.carousel.css" />
@@ -1217,6 +1244,12 @@
     <Content Include="Content\themes\jquery.lazy\package.json" />
     <Content Include="Content\themes\jquery.lazy\plugins\README.md" />
     <Content Include="Content\themes\jquery.lazy\README.md" />
+    <Content Include="Content\themes\bootstrap-3.2.0\css\bootstrap-theme.css.map" />
+    <Content Include="Content\themes\bootstrap-3.2.0\css\bootstrap.css.map" />
+    <Content Include="Content\themes\bootstrap-3.2.0\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\themes\bootstrap-3.2.0\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\themes\bootstrap-3.2.0\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\themes\jquery-ui-1.12.1\package.json" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -1226,8 +1259,6 @@
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.stellar.min.js" />
     <Content Include="Scripts\jquery.sticky.js" />
@@ -1312,6 +1343,8 @@
     <Content Include="Views\Home\ApplicationOfSTS.cshtml" />
     <Content Include="visitors-counter.json" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
+    <Content Include="Views\CoporateCitizen\Index.cshtml" />
+    <Content Include="Views\Home\CoporateCitizenImageSlide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

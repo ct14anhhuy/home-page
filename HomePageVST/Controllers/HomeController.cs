@@ -1,12 +1,10 @@
 ﻿using HomePageVST.Controllers.Core;
-using HomePageVST.Filters;
 using HomePageVST.Models;
 using Services.Interfaces;
-using System.IO;
 using System.Linq;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.UI;
+using Utilities;
 
 namespace HomePageVST.Controllers
 {
@@ -14,11 +12,13 @@ namespace HomePageVST.Controllers
     {
         private IHeaderCategoryService _headerCategoryService;
         private IHeaderDetailService _headerDetailService;
+        private IImageService _imageService;
 
-        public HomeController(IHeaderCategoryService headerCategoryService, IHeaderDetailService headerDetailService)
+        public HomeController(IHeaderCategoryService headerCategoryService, IHeaderDetailService headerDetailService, IImageService imageService)
         {
             _headerCategoryService = headerCategoryService;
             _headerDetailService = headerDetailService;
+            _imageService = imageService;
         }
 
         public ActionResult Index()
@@ -34,6 +34,14 @@ namespace HomePageVST.Controllers
         public ActionResult ApplicationOfSTS()
         {
             return View();
+        }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "none")]
+        public ActionResult CoporateCitizenImageSlide()
+        {
+            var images = _imageService.GetImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN);
+            return PartialView(images);
         }
 
         [ChildActionOnly]

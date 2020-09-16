@@ -17,20 +17,7 @@
 
     @Styles.Render("~/css/base")
     @Styles.Render("~/css/customs")
-    <style>
-        .footer-thumb p {
-            margin: 0 0 5px;
-        }
-
-        .footer-thumb > h4 {
-            color: #828282;
-            font-size: 20px;
-        }
-
-        .title-footer {
-            font-weight: bold;
-        }
-    </style>
+    @Styles.Render("~/css/home")
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
     @{Html.RenderAction("Header", "Home");}
@@ -75,64 +62,81 @@
     </section>
     <footer data-stellar-background-ratio="5">
         <div style="width:960px;margin:auto;">
-            <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="footer-thumb">
+                    <h4 class="wow fadeInUp" data-wow-delay="0.4s">Product of Posco VST</h4>
+                    <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> A Kind of Surface</p>
+                    <p style="font-size:15px">&nbsp&nbsp- BA</p>
+                    <p style="font-size:15px">&nbsp&nbsp- 2B</p>
+                    <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> A Kind of Series</p>
+                    <p style="font-size:15px">&nbsp&nbsp- 304, 301, 316L</p>
+                    <p style="font-size:15px">&nbsp&nbsp- 201</p>
+                    <p style="font-size:15px">&nbsp&nbsp- 430, 409L, 439...</p>
+                </div>
+            </div>
 
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="footer-thumb">
-                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Product of Posco VST</h4>
-                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> A Kind of Surface</p>
-                        <p style="font-size:15px">&nbsp&nbsp- BA</p>
-                        <p style="font-size:15px">&nbsp&nbsp- 2B</p>
-                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> A Kind of Series</p>
-                        <p style="font-size:15px">&nbsp&nbsp- 304, 301, 316L</p>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="footer-thumb">
+                    <h4 class="wow fadeInUp" data-wow-delay="0.4s">Stainless Guide</h4>
+                    <div style="font-size:15px">
+                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Stainless Guide Book</p>
+                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Corrosion</p>
+                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Welding</p>
                         <p style="font-size:15px">&nbsp&nbsp- 201</p>
-                        <p style="font-size:15px">&nbsp&nbsp- 430, 409L, 439...</p>
+                        <p style="font-size:15px">&nbsp&nbsp- 430, 409, 439L...</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="footer-thumb">
-                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Stainless Guide</h4>
-                        <div style="font-size:15px">
-                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Stainless Guide Book</p>
-                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Corrosion</p>
-                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Welding</p>
-                            <p style="font-size:15px">&nbsp&nbsp- 201</p>
-                            <p style="font-size:15px">&nbsp&nbsp- 430, 409, 439L...</p>
-                        </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="footer-thumb">
+                    <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact</h4>
+                    <div class="opening-hours">
+                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Phone:<span> 0251-3560-360 </span></p>
+                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> E-mail:<span>  </span></p>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="footer-thumb">
-                        <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact</h4>
-                        <div class="opening-hours">
-                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Phone :<span> 0251-3560-360 </span></p>
-                            <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> E-mail:<span>  </span></p>
-                        </div>
+            <div class="col-md-12 col-sm-12 border-top">
+                <div class="col-md-12 col-sm-12">
+                    <div class="footer-link" align="left" style="float:left">
+                        <p>Total Visitors: @ApplicationInstance.Application["TotalUser"] | Online Visitors: @ApplicationInstance.Application["OnlineUser"]</p>
+                    </div>
+                    <div class="footer-link" align="right">
+                        <p>Copyright &copy; 2020 POSCO ICT VN</p>
                     </div>
                 </div>
-
-                <div class="col-md-12 col-sm-12 border-top">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="footer-link" align="left" style="float:left">
-                            <p>Total Visitors: @ApplicationInstance.Application["TotalUser"] | Online Visitors: @ApplicationInstance.Application["OnlineUser"]</p>
-                        </div>
-                        <div class="footer-link" align="right">
-                            <p>Copyright &copy; 2020 POSCO ICT VN</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12 text-align-center" align="center">
-                        <div class="angle-up-btn">
-                            <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="0.3s"><i class="fa fa-angle-up"></i></a>
-                        </div>
+                <div class="col-md-12 col-sm-12 text-align-center" align="center">
+                    <div class="angle-up-btn">
+                        <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="0.3s"><i class="fa fa-angle-up"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-</body>
 
-@Scripts.Render("~/js/plugins")
-@Scripts.Render("~/js/customs")
+    <div class="clearfix"></div>
+    @{Html.RenderAction("CoporateCitizenImageSlide", "Home");}
+
+    @Scripts.Render("~/js/plugins")
+    @Scripts.Render("~/js/customs")
+    <script>
+        $('.carousel[data-type="multi"] .item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < 2; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+    </script>
+</body>
 </html>

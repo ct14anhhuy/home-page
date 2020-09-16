@@ -33,13 +33,13 @@ namespace HomePageVST.Areas.Admin
         private void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/css/admin")
-                .Include("~/css/bootstrap.min.css", new CssRewriteUrlTransform())
+                .Include("~/Content/themes/bootstrap-3.2.0/css/bootstrap.min.css", new CssRewriteUrlTransform())
                 .Include("~/Content/themes/DataTables/css/jquery.dataTables.min.css", new CssRewriteUrlTransform())
                 .Include("~/Content/themes/base/jquery-ui.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new Bundle("~/js/admin").Include(
                 "~/Scripts/jquery-1.12.4.min.js",
-                "~/Scripts/jquery-ui-1.12.1.min.js",
+                "~/Content/themes/jquery-ui-1.12.1/jquery-ui.min.js",
                 "~/Content/themes/DataTables/js/jquery.dataTables.min.js",
                 "~/Content/themes/ckeditor/ckeditor.js"
                ));
