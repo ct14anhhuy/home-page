@@ -12,9 +12,9 @@
         #endregion
 
         #region For Images
-        public const int NEWS_INFOMATION = 12;
-        public const int FACILITIES = 13;
-        public const int COPORATE_CITIZEN = 51;
+        public const int NEWS_INFOMATION_ID = 12;
+        public const int FACILITIES_ID = 13;
+        public const int COPORATE_CITIZEN_ID = 51;
         #endregion
 
         public const int ADMIN_ROLE = 1;

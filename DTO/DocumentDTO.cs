@@ -30,7 +30,7 @@ namespace DTO
         #region IgnoreMap
 
         [IgnoreMap]
-        [Display(Name = "Pdf Name")]
+        [Display(Name = "Pdf File")]
         public virtual HttpPostedFileBase PdfFile { get; set; }
 
         #endregion IgnoreMap

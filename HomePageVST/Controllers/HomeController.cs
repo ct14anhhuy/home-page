@@ -40,7 +40,7 @@ namespace HomePageVST.Controllers
         [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "none")]
         public ActionResult CoporateCitizenImageSlide()
         {
-            var images = _imageService.GetImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN);
+            var images = _imageService.GetActiveImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN_ID);
             return PartialView(images);
         }
 

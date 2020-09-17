@@ -44,7 +44,7 @@ namespace HomePageVST.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                _documentService.Add(document as DocumentDTO);
+                _documentService.Add(document);
                 return RedirectToAction("Index");
             }
             else

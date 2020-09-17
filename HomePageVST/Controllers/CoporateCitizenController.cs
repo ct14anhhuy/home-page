@@ -15,7 +15,7 @@ namespace HomePageVST.Controllers
 
         public ActionResult Index()
         {
-            var images = _imageService.GetImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN);
+            var images = _imageService.GetActiveImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN_ID);
             return View(images);
         }
     }

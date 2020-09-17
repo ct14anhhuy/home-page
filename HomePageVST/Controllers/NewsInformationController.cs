@@ -16,7 +16,7 @@ namespace HomePageVST.Controllers
         // GET: NewsInformation
         public ActionResult Index()
         {
-            var images = _imageService.GetImagesByHeaderDetailId(CommonConstants.NEWS_INFOMATION);
+            var images = _imageService.GetActiveImagesByHeaderDetailId(CommonConstants.NEWS_INFOMATION_ID);
             return View(images);
         }
     }

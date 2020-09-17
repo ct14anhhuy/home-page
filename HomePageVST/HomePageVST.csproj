@@ -241,6 +241,7 @@
     <Compile Include="Areas\Admin\Controllers\About445NFController.cs" />
     <Compile Include="Areas\Admin\Controllers\CorrosionController.cs" />
     <Compile Include="Areas\Admin\Controllers\FormingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsInfomationController.cs" />
     <Compile Include="Areas\Admin\Controllers\RecruitmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\StanlessSteelGuidebookController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserLoginController.cs" />
@@ -307,6 +308,7 @@
     <Compile Include="Models\DocumentViewModel.cs" />
     <Compile Include="Models\HeaderCategoryViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -692,7 +694,6 @@
     <Content Include="Content\themes\jquery.lazy\plugins\jquery.lazy.youtube.js" />
     <Content Include="Content\themes\jquery.lazy\plugins\jquery.lazy.youtube.min.js" />
     <Content Include="css\animate.css" />
-    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\colors1.css" />
     <Content Include="css\customs.css" />
     <Content Include="css\font-awesome.min.css" />
@@ -1209,7 +1210,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\Admin\Views\UserLogin\CreateUser.cshtml" />
     <Content Include="Content\themes\DataTables\images\Sorting icons.psd" />
-    <Content Include="css\bootstrap.min.css.map" />
     <Content Include="Areas\Admin\Views\UserLogin\Login.cshtml" />
     <Content Include="docs\1-bao-cao-quan-trac-moi-truong-bk-hcm-2018.pdf" />
     <Content Include="docs\2-khao-sat-an-mon-bon-chua-nuoc-sinh-hoat-bang-thep-khong-gi-bk-hcm-2018.pdf" />
@@ -1250,6 +1250,8 @@
     <Content Include="Content\themes\bootstrap-3.2.0\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\themes\bootstrap-3.2.0\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\themes\jquery-ui-1.12.1\package.json" />
+    <Content Include="Areas\Admin\Views\NewsInfomation\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsInfomation\Create.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
