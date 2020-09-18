@@ -52,7 +52,7 @@ namespace Services
             {
                 documentDTO.FileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{documentDTO.PdfFile.FileName}";
                 documentDTO.FileName = documentDTO.FileName.ConvertToUnsignAndRemoveEmpty();
-                documentDTO.PdfFile.SaveAs(ConfigHelper.ReadSetting("PdfFullPath") + documentDTO.FileName);
+                documentDTO.PdfFile.SaveAs(ConfigHelper.ReadSetting("Pdf.FullPath") + documentDTO.FileName);
             }
             catch (Exception ex)
             {

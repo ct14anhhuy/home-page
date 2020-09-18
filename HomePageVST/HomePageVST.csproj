@@ -239,6 +239,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\About445NFController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CoporateCitizenController.cs" />
     <Compile Include="Areas\Admin\Controllers\CorrosionController.cs" />
     <Compile Include="Areas\Admin\Controllers\FormingController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsInfomationController.cs" />
@@ -1252,6 +1253,12 @@
     <Content Include="Content\themes\jquery-ui-1.12.1\package.json" />
     <Content Include="Areas\Admin\Views\NewsInfomation\Index.cshtml" />
     <Content Include="Areas\Admin\Views\NewsInfomation\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsInfomation\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NewsInfomation\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CoporateCitizen\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CoporateCitizen\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CoporateCitizen\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CoporateCitizen\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />

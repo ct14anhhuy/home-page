@@ -10,18 +10,18 @@ using Utilities;
 namespace HomePageVST.Areas.Admin.Controllers
 {
     [Authorize]
-    public class NewsInfomationController : Controller
+    public class CoporateCitizenController : Controller
     {
         private IImageService _imageService;
-        public NewsInfomationController(IImageService imageService)
+
+        public CoporateCitizenController(IImageService imageService)
         {
             _imageService = imageService;
-            ViewBag.Active = "news";
         }
 
         public ActionResult Index()
         {
-            var images = _imageService.GetImagesByHeaderDetailId(CommonConstants.NEWS_INFOMATION_ID);
+            var images = _imageService.GetImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN_ID);
             return View(images);
         }
 
@@ -36,7 +36,7 @@ namespace HomePageVST.Areas.Admin.Controllers
         {
             imageViewModel.DatePosted = DateTime.Today;
             imageViewModel.IsActive = true;
-            imageViewModel.HeaderDetailId = CommonConstants.NEWS_INFOMATION_ID;
+            imageViewModel.HeaderDetailId = CommonConstants.COPORATE_CITIZEN_ID;
             ModelState["DatePosted"].Errors.Clear();
 
             if (ModelState.IsValid)
@@ -83,6 +83,7 @@ namespace HomePageVST.Areas.Admin.Controllers
                 return View(imageDTO);
             }
         }
+
         public ActionResult Delete(int? id)
         {
             if (id == null)

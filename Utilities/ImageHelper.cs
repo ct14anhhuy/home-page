@@ -50,15 +50,12 @@ namespace Utilities
             return PutOnCanvas(image, width, height, Color.White);
         }
 
-        public static Image Resize(Image image, int newWidth, int maxHeight, bool onlyResizeIfWider)
+        public static Image Resize(Image image, int newWidth, int newHeight)
         {
-            if (onlyResizeIfWider && image.Width <= newWidth) newWidth = image.Width;
-
-            var newHeight = image.Height * newWidth / image.Width;
-            if (newHeight > maxHeight)
+            if (newHeight == 0)
             {
-                newWidth = image.Width * maxHeight / image.Height;
-                newHeight = maxHeight;
+                var widthRatio = (float)newWidth / image.Width;
+                newHeight = (int)(widthRatio * image.Height);
             }
 
             var res = new Bitmap(newWidth, newHeight);
@@ -100,12 +97,11 @@ namespace Utilities
             return "data:image/jpg;base64," + Convert.ToBase64String((byte[])img);
         }
 
-        public static void PerformImageResizeAndPutOnCanvas(string originFilePath, int pWidth, int pHeight, string miniFilePath)
+        public static void PerformImageResize(string originFilePath, int pWidth, int pHeight, string miniFilePath)
         {
             Image imgBef = Image.FromFile(originFilePath);
-            Image _imgR = Resize(imgBef, pWidth, pHeight, true);
-            Image _img2 = PutOnCanvas(_imgR, pWidth, pHeight, Color.White);
-            SaveJpeg(miniFilePath, _img2);
+            Image _imgR = Resize(imgBef, pWidth, pHeight);
+            SaveJpeg(miniFilePath, _imgR);
         }
     }
 }

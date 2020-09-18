@@ -10,16 +10,17 @@
 namespace Data
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class Image
     {
         public int Id { get; set; }
         public string ImageDescription { get; set; }
         public string FilePath { get; set; }
         public string MinimalFilePath { get; set; }
-        public DateTime? DatePosted { get; set; }
-        public bool? IsActive { get; set; }
-        public int? HeaderDetailId { get; set; }
+        public Nullable<System.DateTime> DatePosted { get; set; }
+        public bool IsActive { get; set; }
+        public Nullable<int> HeaderDetailId { get; set; }
     
         public virtual HeaderDetail HeaderDetail { get; set; }
     }

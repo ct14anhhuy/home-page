@@ -68,7 +68,7 @@
           <Property Name="FilePath" Type="varchar" MaxLength="200" />
           <Property Name="MinimalFilePath" Type="varchar" MaxLength="200" />
           <Property Name="DatePosted" Type="date" />
-          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="HeaderDetailId" Type="int" />
         </EntityType>
         <EntityType Name="JobSkill">
@@ -467,7 +467,7 @@
           <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="MinimalFilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="DatePosted" Type="DateTime" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="HeaderDetailId" Type="Int32" />
           <NavigationProperty Name="HeaderDetail" Relationship="HomePageVSTModel.Fk_Images_HeaderDetail" FromRole="Image" ToRole="HeaderDetail" />
         </EntityType>

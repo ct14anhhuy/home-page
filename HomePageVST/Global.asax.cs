@@ -31,6 +31,15 @@ namespace HomePageVST
             LogHelper.Error(exception.Message);
         }
 
+        protected void Application_BeginRequest(object source, EventArgs e)
+        {
+            bool monitor = bool.Parse(ConfigHelper.ReadSetting("EnableMonitorPerRequest"));
+            if (monitor)
+            {
+                LogHelper.Info($"Request to {HttpContext.Current.Request.Url}");
+            }
+        }
+
         private void GetTotalUsersFromFileConfig()
         {
             var jObject = JsonHelper.Read(ConfigHelper.ReadSetting("VisitorsCounterFilePath"));
@@ -45,6 +54,7 @@ namespace HomePageVST
             Application["OnlineUser"] = (int)Application["OnlineUser"] + 1;
             JsonHelper.Write(ConfigHelper.ReadSetting("VisitorsCounterFilePath"), "onlineVisitors", (int)Application["TotalUser"]);
             Application.UnLock();
+            LogHelper.Info("Connected");
         }
 
         protected void Session_End()

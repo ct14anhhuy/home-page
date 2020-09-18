@@ -24,7 +24,7 @@ namespace Services
 
         public IEnumerable<ImageDTO> GetActiveImagesByHeaderDetailId(int headerDetailId)
         {
-            var images = _imageRepository.GetMultiByPredicate(i => i.HeaderDetailId == headerDetailId);
+            var images = _imageRepository.GetMultiByPredicate(i => i.HeaderDetailId == headerDetailId && i.IsActive);
             return _mapper.Map<IEnumerable<ImageDTO>>(images);
         }
 
@@ -36,19 +36,20 @@ namespace Services
 
         public ImageDTO Add(ImageDTO imageDTO)
         {
+            string fileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{imageDTO.ImageFile.FileName.ConvertToUnsignAndRemoveEmpty()}";
             try
             {
-                string fileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{imageDTO.ImageFile.FileName.ConvertToUnsignAndRemoveEmpty()}";
-                string originFilePath = ConfigHelper.ReadSetting("NewsImagePath") + fileName;
+                string originFilePath = ConfigHelper.ReadSetting("image.News.FullPath") + fileName;
                 imageDTO.ImageFile.SaveAs(originFilePath);
-                string miniFilePath = ConfigHelper.ReadSetting("NewsMiniImagePath") + fileName;
-                ImageHelper.PerformImageResizeAndPutOnCanvas(originFilePath, 300, 0, miniFilePath);
+                string miniFilePath = ConfigHelper.ReadSetting("image.News.Mini.FullPath") + fileName;
+                ImageHelper.PerformImageResize(originFilePath, 300, 0, miniFilePath);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
+            imageDTO.FilePath = ConfigHelper.ReadSetting("image.News.ShortPath") + fileName;
+            imageDTO.MinimalFilePath = ConfigHelper.ReadSetting("image.News.Mini.ShortPath") + fileName;
             var image = _imageRepository.Add(_mapper.Map<Image>(imageDTO));
             _unitOfWork.Commit();
             return _mapper.Map<ImageDTO>(image);
@@ -65,6 +66,18 @@ namespace Services
             var image = _imageRepository.Delete(imageId);
             _unitOfWork.Commit();
             return _mapper.Map<ImageDTO>(image);
+        }
+
+        public ImageDTO GetImageByHeaderDetailId(int headerDetailId)
+        {
+            var image = _imageRepository.GetSingleById(headerDetailId);
+            return _mapper.Map<ImageDTO>(image);
+        }
+
+        public IEnumerable<ImageDTO> GetImagesByHeaderDetailId(int headerDetailId)
+        {
+            var images = _imageRepository.GetMultiByPredicate(i => i.HeaderDetailId == headerDetailId);
+            return _mapper.Map<IEnumerable<ImageDTO>>(images);
         }
     }
 }

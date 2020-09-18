@@ -6,9 +6,10 @@
     padding-bottom: 40px;
 }
 
-.footer-thumb > h4 {
+.footer-thumb > h4,
+#cpSlide > .row > div > h4 {
     color: #828282;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .title-footer {
@@ -133,9 +134,9 @@
         display: block;
     }
 
-    .active > div:first-child + div + div {
-        display: block;
-    }
+        .active > div:first-child + div + div {
+            display: block;
+        }
 }
 
 /*lg*/
@@ -164,13 +165,13 @@
         display: block;
     }
 
-    .active > div:first-child + div + div {
-        display: block;
-    }
+        .active > div:first-child + div + div {
+            display: block;
+        }
 
-    .active > div:first-child + div + div + div {
-        display: block;
-    }
+            .active > div:first-child + div + div + div {
+                display: block;
+            }
 }
 
 .block {

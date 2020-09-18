@@ -23,7 +23,7 @@ namespace DTO
 
         [Required(ErrorMessage = "Enter actived")]
         [Display(Name = "Actived")]
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         #region IgnoreMap
 

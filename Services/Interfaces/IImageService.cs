@@ -7,7 +7,11 @@ namespace Services.Interfaces
     {
         IEnumerable<ImageDTO> GetAll();
 
+        IEnumerable<ImageDTO> GetImagesByHeaderDetailId(int headerDetailId);
+
         IEnumerable<ImageDTO> GetActiveImagesByHeaderDetailId(int headerDetailId);
+
+        ImageDTO GetImageByHeaderDetailId(int headerDetailId);
 
         ImageDTO Add(ImageDTO imageDTO);
 
