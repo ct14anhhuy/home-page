@@ -18,6 +18,8 @@
     @Styles.Render("~/css/base")
     @Styles.Render("~/css/customs")
     @Styles.Render("~/css/home")
+    <link rel="stylesheet" href="~/Content/themes/video-js-7.9.5/video-js.min.css" />
+    <script src="~/Content/themes/video-js-7.9.5/ie8-1.1.2/dist/videojs-ie8.min.js"></script>
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
     @{Html.RenderAction("Header", "Home");}
@@ -66,12 +68,12 @@
                 <div class="footer-thumb">
                     <h4 class="wow fadeInUp" data-wow-delay="0.4s">Product of Posco VST</h4>
                     <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> A Kind of Surface</p>
-                    <p style="font-size:15px">&nbsp&nbsp- BA</p>
-                    <p style="font-size:15px">&nbsp&nbsp- 2B</p>
+                    <p><a style="font-size:15px" href="production-process-ba.html">&nbsp&nbsp- BA</a></p>
+                    <p><a style="font-size:15px" href="production-process-2b.html">&nbsp&nbsp- 2B</a></p>
                     <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> A Kind of Series</p>
-                    <p style="font-size:15px">&nbsp&nbsp- 304, 301, 316L</p>
-                    <p style="font-size:15px">&nbsp&nbsp- 201</p>
-                    <p style="font-size:15px">&nbsp&nbsp- 430, 409L, 439...</p>
+                    <p><a style="font-size:15px" href="304cu.html">&nbsp&nbsp- 304</a>, <a style="font-size:15px" href="301cu.html">301</a>, <a style="font-size:15px" href="316316l.html">316L</a></p>
+                    <p><a style="font-size:15px" href="#">&nbsp&nbsp- 201</a></p>
+                    <p><a style="font-size:15px" href="430.html">&nbsp&nbsp- 430</a>, <a style="font-size:15px" href="409l/html">409L</a>, <a style="font-size:15px" href="439430lx">439</a>...</p>
                 </div>
             </div>
 
@@ -79,11 +81,11 @@
                 <div class="footer-thumb">
                     <h4 class="wow fadeInUp" data-wow-delay="0.4s">Stainless Guide</h4>
                     <div style="font-size:15px">
-                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Stainless Guide Book</p>
-                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Corrosion</p>
-                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Welding</p>
-                        <p style="font-size:15px">&nbsp&nbsp- 201</p>
-                        <p style="font-size:15px">&nbsp&nbsp- 430, 409, 439L...</p>
+                        <p class="title-footer"><i class="fa fa-circle-thin" aria-hidden="true"></i> <a style="font-size:15px" href="stainless-steel-guidebook.html">Stainless Guide Book</a></p>
+                        <p class="title-footer"><i class="fa fa-circle-thin" aria-hidden="true"></i> <a style="font-size:15px" href="corrosion.html">Corrosion</a></p>
+                        <p class="title-footer"><i class="fa fa-circle-thin" aria-hidden="true"></i> <a style="font-size:15px" href="welding.html">Welding</a></p>
+                        <p><a style="font-size:15px" href="#">&nbsp&nbsp- 201</a></p>
+                        <p><a style="font-size:15px" href="about-445nf.html">&nbsp&nbsp- 430, 409, 439L...</a></p>
                     </div>
                 </div>
             </div>
@@ -93,7 +95,7 @@
                     <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact</h4>
                     <div class="opening-hours">
                         <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> Phone:<span> 0251-3560-360 </span></p>
-                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> E-mail:<span>  </span></p>
+                        <p class="title-footer" style="font-size:15px"><i class="fa fa-circle-thin" aria-hidden="true"></i> E-mail:<span> tran.trinh@posco.net </span></p>
                     </div>
                 </div>
             </div>
@@ -116,11 +118,30 @@
         </div>
     </footer>
 
+    <!--#region Facebook chat-->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                facebook: "1629986620602076",
+                call_to_action: "",
+                position: "right",
+            };
+            var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!--#endregion-->
+
     <div class="clearfix"></div>
     @{Html.RenderAction("CoporateCitizenImageSlide", "Home");}
 
     @Scripts.Render("~/js/plugins")
     @Scripts.Render("~/js/customs")
+
+    <script src="~/Content/themes/video-js-7.9.5/video.min.js"></script>
     <script>
         $('.carousel[data-type="multi"] .item').each(function () {
             var next = $(this).next();
@@ -137,6 +158,21 @@
                 next.children(':first-child').clone().appendTo($(this));
             }
         });
+
+        var videos = document.querySelectorAll('video');
+        for (var i = 0; i < videos.length; i++) {
+            videos[i].addEventListener('play', function () { pauseAll(this) }, true);
+        }
+
+
+        function pauseAll(elem) {
+            for (var i = 0; i < videos.length; i++) {
+                if (videos[i] == elem) continue;
+                if (videos[i].played.length > 0 && !videos[i].paused) {
+                    videos[i].pause();
+                }
+            }
+        }
     </script>
 </body>
 </html>

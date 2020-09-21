@@ -13,14 +13,14 @@
                         {
                             i++;
                             active = i == 1 ? "active" : "";
-                    <div class="item @active">
-                        <div class="carousel-col">
-                            <a href="@image.FilePath" data-lightbox="image-1" data-title="@image.ImageDescription">
-                                <img class="img-responsive" style="height:150px; width:250px" src="@image.MinimalFilePath" />
-                                <span class="galery-link">@image.ImageDescription</span>
-                            </a>
-                        </div>
-                    </div>
+                            <div class="item @active">
+                                <div class="carousel-col">
+                                    <a href="@image.FilePath" data-lightbox="image-1" data-title="@image.ImageDescription">
+                                        <img class="img-responsive" style="height:150px; width:250px" src="@image.MinimalFilePath" />
+                                        <span class="galery-link">@image.ImageDescription</span>
+                                    </a>
+                                </div>
+                            </div>
                         }
                     }
                 </div>
@@ -38,11 +38,50 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-11 col-md-10 col-centered" style="padding-bottom:20px">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-centered" style="padding-bottom:20px">
             <h4 class="wow fadeInUp" data-wow-delay="0.4s">Introduction Posco VST</h4>
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe width="1280" height="720" src="https://www.youtube.com/embed/bAX0gMrPsqE?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <table id="tblVideo" style="width:100%; table-layout:fixed">
+                <tr>
+                    <td align="center" width="33%">
+                        <video id="vid1"
+                               class="video-js"
+                               controls
+                               preload="none"
+                               width="310"
+                               height="174"
+                               poster="~/images/poscovstlogo.png"
+                               data-setup="{}">
+                            <source src="@Url.Content("~/video/POSCO VST - 180418.webm")" type="video/webm" />
+                        </video>
+                    </td>
+                    <td align="center" width="33%">
+                        <video id="vid2"
+                               class="video-js"
+                               controls
+                               preload="none"
+                               width="310"
+                               height="174"
+                               poster="~/images/poscovstlogo.png"
+                               data-setup="{}">
+                            <source src="@Url.Content("video/posco vst 15.12.2015.webm")" type="video/webm" />
+                        </video>
+                    </td>
+                    <td align="center" width="33%">
+                        <video id="vid3"
+                               class="video-js"
+                               controls
+                               preload="none"
+                               width="310"
+                               height="174"
+                               poster="~/images/poscovstlogo.png"
+                               data-setup="{}">
+                            <source src="@Url.Content("video/POSCO VST final 6.12.2017.webm")" type="video/webm" />
+                        </video>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

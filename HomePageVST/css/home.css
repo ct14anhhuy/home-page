@@ -6,11 +6,11 @@
     padding-bottom: 40px;
 }
 
-.footer-thumb > h4,
-#cpSlide > .row > div > h4 {
-    color: #828282;
-    font-size: 18px;
-}
+    .footer-thumb > h4,
+    #cpSlide > .row > div > h4 {
+        color: #828282;
+        font-size: 18px;
+    }
 
 .title-footer {
     font-weight: bold;
@@ -26,18 +26,18 @@
     width: 0px;
 }
 
-.carousel-control.left,
-.carousel-control.right {
-    margin-right: 40px;
-    margin-left: 32px;
-    background-image: none;
-    opacity: 1;
-}
+    .carousel-control.left,
+    .carousel-control.right {
+        margin-right: 40px;
+        margin-left: 32px;
+        background-image: none;
+        opacity: 1;
+    }
 
-.carousel-control > a > span {
-    color: white;
-    font-size: 29px !important;
-}
+    .carousel-control > a > span {
+        color: white;
+        font-size: 29px !important;
+    }
 
 .carousel-col {
     position: relative;
@@ -50,9 +50,9 @@
     display: none;
 }
 
-.active > div:first-child {
-    display: block;
-}
+    .active > div:first-child {
+        display: block;
+    }
 
 /*xs*/
 @media (max-width: 767px) {

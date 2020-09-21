@@ -27,6 +27,7 @@ namespace HomePageVST
 
             bundles.Add(new ScriptBundle("~/js/jquery.lazy").Include(
                 "~/Content/themes/jquery.lazy/jquery.lazy.min.js"));
+
             #endregion
 
             #region StyleBundle
@@ -50,7 +51,7 @@ namespace HomePageVST
                .Include("~/css/home.css", new CssRewriteUrlTransform()));
             #endregion
 
-            BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
+            //BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
         }
     }
 }
