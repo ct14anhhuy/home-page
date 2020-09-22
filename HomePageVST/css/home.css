@@ -54,6 +54,15 @@
         display: block;
     }
 
+/*Make border for internet explorer*/
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    video.video-js {
+        border: 1px solid;
+        border-color: #8a8a8a;
+        border-radius: 3px;
+    }
+}
+
 /*xs*/
 @media (max-width: 767px) {
     .carousel-inner .active.left {

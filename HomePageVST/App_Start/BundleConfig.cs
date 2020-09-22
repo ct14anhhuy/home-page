@@ -51,7 +51,7 @@ namespace HomePageVST
                .Include("~/css/home.css", new CssRewriteUrlTransform()));
             #endregion
 
-            //BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
+            BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
         }
     }
 }
