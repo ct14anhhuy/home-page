@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.IO;
 
 namespace Utilities
@@ -8,6 +9,7 @@ namespace Utilities
     {
         public static JObject Read(string filePath)
         {
+            filePath = AppDomain.CurrentDomain.BaseDirectory + filePath;
             using (StreamReader file = File.OpenText(filePath))
             {
                 using (JsonTextReader reader = new JsonTextReader(file))
@@ -20,6 +22,7 @@ namespace Utilities
 
         public static void Write(string filePath, string key, object value)
         {
+            filePath = AppDomain.CurrentDomain.BaseDirectory + filePath;
             JObject jOject = new JObject(new JProperty(key, value));
             File.WriteAllText(filePath, jOject.ToString());
             using (StreamWriter file = File.CreateText(filePath))

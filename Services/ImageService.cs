@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using DTO;
-using Services.Interfaces;
-using Repositories.Interfaces;
-using AutoMapper;
+﻿using AutoMapper;
 using Data;
+using DTO;
+using Repositories.Interfaces;
+using Services.Interfaces;
 using System;
+using System.Collections.Generic;
 using Utilities;
 
 namespace Services
@@ -37,19 +37,12 @@ namespace Services
         public ImageDTO Add(ImageDTO imageDTO)
         {
             string fileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{imageDTO.ImageFile.FileName.ConvertToUnsignAndRemoveEmpty()}";
-            try
-            {
-                string originFilePath = ConfigHelper.ReadSetting("image.News.FullPath") + fileName;
-                imageDTO.ImageFile.SaveAs(originFilePath);
-                string miniFilePath = ConfigHelper.ReadSetting("image.News.Mini.FullPath") + fileName;
-                ImageHelper.PerformImageResize(originFilePath, 300, 0, miniFilePath);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            imageDTO.FilePath = ConfigHelper.ReadSetting("image.News.ShortPath") + fileName;
-            imageDTO.MinimalFilePath = ConfigHelper.ReadSetting("image.News.Mini.ShortPath") + fileName;
+            string originFilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("image.News.Path") + fileName;
+            string miniFilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("image.News.Mini.Path") + fileName;
+            FileService.SaveFile(imageDTO.ImageFile, originFilePath);
+            ImageHelper.PerformImageResize(originFilePath, 300, 0, miniFilePath);
+            imageDTO.FilePath = ConfigHelper.ReadSetting("image.News.Path") + fileName;
+            imageDTO.MinimalFilePath = ConfigHelper.ReadSetting("image.News.Mini.Path") + fileName;
             var image = _imageRepository.Add(_mapper.Map<Image>(imageDTO));
             _unitOfWork.Commit();
             return _mapper.Map<ImageDTO>(image);
@@ -65,6 +58,15 @@ namespace Services
         {
             var image = _imageRepository.Delete(imageId);
             _unitOfWork.Commit();
+
+            if (image != null)
+            {
+                string filePath = AppDomain.CurrentDomain.BaseDirectory + image.FilePath;
+                string minimalFilePath = AppDomain.CurrentDomain.BaseDirectory + image.MinimalFilePath;
+                FileService.RemoveFile(filePath);
+                FileService.RemoveFile(minimalFilePath);
+            }
+
             return _mapper.Map<ImageDTO>(image);
         }
 

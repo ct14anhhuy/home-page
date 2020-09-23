@@ -9,21 +9,21 @@ namespace HomePageVST
         {
             #region ScriptBundle
             bundles.Add(new ScriptBundle("~/js/plugins").Include(
-                "~/Scripts/jquery.js",
+                "~/assets/Scripts/jquery.js",
                 "~/Content/themes/bootstrap-3.2.0/js/bootstrap.min.js",
-                "~/Scripts/owl.carousel.min.js",
-                "~/Scripts/jquery.stellar.min.js",
-                "~/Scripts/jquery.sticky.js",
-                "~/Scripts/jquery.stellar.min.js",
-                "~/Scripts/wow.min.js",
-                "~/Scripts/smoothscroll.js",
-                "~/Scripts/lightbox.min.js"));
+                "~/assets/Scripts/owl.carousel.min.js",
+                "~/assets/Scripts/jquery.stellar.min.js",
+                "~/assets/Scripts/jquery.sticky.js",
+                "~/assets/Scripts/jquery.stellar.min.js",
+                "~/assets/Scripts/wow.min.js",
+                "~/assets/Scripts/smoothscroll.js",
+                "~/assets/Scripts/lightbox.min.js"));
 
             bundles.Add(new ScriptBundle("~/js/customs").Include(
-                "~/Scripts/scripts.js",
-                "~/Scripts/left-menu.js",
-                "~/Scripts/custom.js",
-                "~/Scripts/dialog.js"));
+                "~/assets/Scripts/scripts.js",
+                "~/assets/Scripts/left-menu.js",
+                "~/assets/Scripts/custom.js",
+                "~/assets/Scripts/dialog.js"));
 
             bundles.Add(new ScriptBundle("~/js/jquery.lazy").Include(
                 "~/Content/themes/jquery.lazy/jquery.lazy.min.js"));
@@ -33,22 +33,22 @@ namespace HomePageVST
             #region StyleBundle
             bundles.Add(new StyleBundle("~/css/base")
              .Include("~/Content/themes/bootstrap-3.2.0/css/bootstrap.min.css", new CssRewriteUrlTransform())
-             .Include("~/css/font-awesome.min.css", new CssRewriteUrlTransform())
-             .Include("~/css/animate.css", new CssRewriteUrlTransform())
-             .Include("~/css/owl.carousel.css", new CssRewriteUrlTransform())
-             .Include("~/css/owl.theme.default.min.css", new CssRewriteUrlTransform())
-             .Include("~/css/style.css", new CssRewriteUrlTransform())
-             .Include("~/css/colors1.css", new CssRewriteUrlTransform())
-             .Include("~/css/tooplate-style.css", new CssRewriteUrlTransform())
-             .Include("~/css/lightbox.css", new CssRewriteUrlTransform()));
+             .Include("~/assets/css/font-awesome.min.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/animate.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/owl.carousel.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/owl.theme.default.min.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/style.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/colors1.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/tooplate-style.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/lightbox.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/css/customs")
-               .Include("~/css/customs.css", new CssRewriteUrlTransform())
-               .Include("~/css/left-menu.css", new CssRewriteUrlTransform())
-               .Include("~/css/dialog.css", new CssRewriteUrlTransform()));
+               .Include("~/assets/css/customs.css", new CssRewriteUrlTransform())
+               .Include("~/assets/css/left-menu.css", new CssRewriteUrlTransform())
+               .Include("~/assets/css/dialog.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/css/home")
-               .Include("~/css/home.css", new CssRewriteUrlTransform()));
+               .Include("~/assets/css/home.css", new CssRewriteUrlTransform()));
             #endregion
 
             BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));

@@ -17,7 +17,7 @@ namespace HomePageVST.Controllers
         // GET: Document
         public ActionResult GetReport(string fileName)
         {
-            ViewBag.PdfFileName = ConfigHelper.ReadSetting("Pdf.ShortPath") + fileName;
+            ViewBag.PdfFileName = ConfigHelper.ReadSetting("Pdf.Path") + fileName;
             return View();
         }
     }

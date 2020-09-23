@@ -48,16 +48,10 @@ namespace Services
 
         public DocumentDTO Add(DocumentDTO documentDTO)
         {
-            try
-            {
-                documentDTO.FileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{documentDTO.PdfFile.FileName}";
-                documentDTO.FileName = documentDTO.FileName.ConvertToUnsignAndRemoveEmpty();
-                documentDTO.PdfFile.SaveAs(ConfigHelper.ReadSetting("Pdf.FullPath") + documentDTO.FileName);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            documentDTO.FileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{documentDTO.PdfFile.FileName}";
+            documentDTO.FileName = documentDTO.FileName.ConvertToUnsignAndRemoveEmpty();
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Pdf.Path") + documentDTO.FileName;
+            FileService.SaveFile(documentDTO.PdfFile, filePath);
             documentDTO.Description = documentDTO.Description.Trim();
             var document = _documentRepository.Add(_mapper.Map<Document>(documentDTO));
             _unitOfWork.Commit();
@@ -74,6 +68,11 @@ namespace Services
         {
             var document = _documentRepository.Delete(id);
             _unitOfWork.Commit();
+            if (document != null)
+            {
+                string filePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Pdf.Path") + document.FileName;
+                FileService.RemoveFile(filePath);
+            }
             return _mapper.Map<DocumentDTO>(document);
         }
     }
