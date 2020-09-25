@@ -17,6 +17,7 @@ namespace Utilities
                 throw ex;
             }
         }
+
         public static void RemoveFile(string filePath)
         {
             try

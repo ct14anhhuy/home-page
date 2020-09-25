@@ -1,10 +1,11 @@
-﻿using Services.Interfaces;
+﻿using HomePageVST.Controllers.Core;
+using Services.Interfaces;
 using System.Web.Mvc;
 using Utilities;
 
 namespace HomePageVST.Controllers
 {
-    public class CoporateCitizenController : Controller
+    public class CoporateCitizenController : ControllerCore
     {
         private IImageService _imageService;
 

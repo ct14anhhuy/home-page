@@ -7,6 +7,7 @@ namespace HomePageVST.Filters
     public class AllowFileExtensionAttribute : ValidationAttribute
     {
         public string FileExtension { get; set; }
+
         public override bool IsValid(object value)
         {
             HttpPostedFileBase file = value as HttpPostedFileBase;

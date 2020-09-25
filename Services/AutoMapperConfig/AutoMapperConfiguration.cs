@@ -1,6 +1,6 @@
 ﻿namespace Services.AutoMapperConfig
 {
-    using global::AutoMapper;
+    using AutoMapper;
 
     public class AutoMapperConfiguration
     {

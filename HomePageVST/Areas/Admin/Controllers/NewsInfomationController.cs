@@ -1,4 +1,5 @@
 ﻿using DTO;
+using HomePageVST.Controllers.Core;
 using HomePageVST.Filters.AntiModelInjection;
 using HomePageVST.Models;
 using Services.Interfaces;
@@ -10,7 +11,7 @@ using Utilities;
 namespace HomePageVST.Areas.Admin.Controllers
 {
     [Authorize]
-    public class NewsInfomationController : Controller
+    public class NewsInfomationController : ControllerCore
     {
         private IImageService _imageService;
         public NewsInfomationController(IImageService imageService)

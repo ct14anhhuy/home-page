@@ -2,15 +2,11 @@
     margin: 0 0 5px;
 }
 
-#cpSlide {
-    padding-bottom: 40px;
+.footer-thumb > h4,
+#cpSlide > .row > div > h4 {
+    color: #828282;
+    font-size: 18px;
 }
-
-    .footer-thumb > h4,
-    #cpSlide > .row > div > h4 {
-        color: #828282;
-        font-size: 18px;
-    }
 
 .title-footer {
     font-weight: bold;
@@ -54,13 +50,10 @@
         display: block;
     }
 
-/*Make border for internet explorer*/
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    video.video-js {
-        border: 1px solid;
-        border-color: #8a8a8a;
-        border-radius: 3px;
-    }
+video.video-js {
+    border: 0.5px solid;
+    border-color: #8a8a8a;
+    border-radius: 3px;
 }
 
 /*xs*/

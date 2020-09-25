@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -99,10 +97,6 @@
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -315,6 +309,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\Scripts\home.js" />
     <Content Include="media\images\Posco family in vietnam.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -866,6 +861,7 @@
     <Content Include="media\images\PoscoFamily01.jpg" />
     <Content Include="media\images\PoscoFamily02.jpg" />
     <Content Include="media\images\poscovstlogo.png" />
+    <Content Include="media\images\poster ok.jpg" />
     <Content Include="media\images\Precision.png" />
     <Content Include="media\images\Precision_1.png" />
     <Content Include="media\images\Precision_2.png" />
@@ -1010,148 +1006,148 @@
     <Content Include="media\minimages\News\News18.JPG" />
     <Content Include="media\minimages\News\News19.JPG" />
     <Content Include="media\minimages\News\News20.png" />
-    <Content Include="PdfPlugin\css\images\findbarButton-next%402x.png" />
-    <Content Include="PdfPlugin\css\images\findbarButton-next-rtl%402x.png" />
-    <Content Include="PdfPlugin\css\images\findbarButton-next-rtl.png" />
-    <Content Include="PdfPlugin\css\images\findbarButton-next.png" />
-    <Content Include="PdfPlugin\css\images\findbarButton-previous%402x.png" />
-    <Content Include="PdfPlugin\css\images\findbarButton-previous-rtl%402x.png" />
-    <Content Include="PdfPlugin\css\images\findbarButton-previous-rtl.png" />
-    <Content Include="PdfPlugin\css\images\findbarButton-previous.png" />
-    <Content Include="PdfPlugin\css\images\grab.cur" />
-    <Content Include="PdfPlugin\css\images\loading-icon.gif" />
-    <Content Include="PdfPlugin\css\images\loading-small.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-documentProperties%402x.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-documentProperties.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-firstPage%402x.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-firstPage.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-handTool%402x.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-handTool.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-lastPage%402x.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-lastPage.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-rotateCcw%402x.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-rotateCcw.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-rotateCw%402x.png" />
-    <Content Include="PdfPlugin\css\images\secondaryToolbarButton-rotateCw.png" />
-    <Content Include="PdfPlugin\css\images\shadow.png" />
-    <Content Include="PdfPlugin\css\images\texture.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-bookmark%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-bookmark.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-download%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-download.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-menuArrows%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-menuArrows.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-openFile%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-openFile.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-pageDown%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-pageDown-rtl%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-pageDown-rtl.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-pageDown.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-pageUp%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-pageUp-rtl%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-pageUp-rtl.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-pageUp.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-presentationMode%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-presentationMode.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-print%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-print.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-search%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-search.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-secondaryToolbarToggle%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-secondaryToolbarToggle-rtl%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-secondaryToolbarToggle-rtl.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-secondaryToolbarToggle.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-sidebarToggle%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-sidebarToggle-rtl%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-sidebarToggle-rtl.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-sidebarToggle.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-viewAttachments%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-viewAttachments.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-viewOutline%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-viewOutline-rtl%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-viewOutline-rtl.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-viewOutline.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-viewThumbnail%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-viewThumbnail.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-zoomIn%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-zoomIn.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-zoomOut%402x.png" />
-    <Content Include="PdfPlugin\css\images\toolbarButton-zoomOut.png" />
-    <Content Include="PdfPlugin\css\viewer.css" />
-    <Content Include="PdfPlugin\images\findbarButton-next%402x.png" />
-    <Content Include="PdfPlugin\images\findbarButton-next-rtl%402x.png" />
-    <Content Include="PdfPlugin\images\findbarButton-next-rtl.png" />
-    <Content Include="PdfPlugin\images\findbarButton-next.png" />
-    <Content Include="PdfPlugin\images\findbarButton-previous%402x.png" />
-    <Content Include="PdfPlugin\images\findbarButton-previous-rtl%402x.png" />
-    <Content Include="PdfPlugin\images\findbarButton-previous-rtl.png" />
-    <Content Include="PdfPlugin\images\findbarButton-previous.png" />
-    <Content Include="PdfPlugin\images\grab.cur" />
-    <Content Include="PdfPlugin\images\loading-icon.gif" />
-    <Content Include="PdfPlugin\images\loading-small.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-documentProperties%402x.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-documentProperties.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-firstPage%402x.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-firstPage.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-handTool%402x.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-handTool.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-lastPage%402x.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-lastPage.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-rotateCcw%402x.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-rotateCcw.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-rotateCw%402x.png" />
-    <Content Include="PdfPlugin\images\secondaryToolbarButton-rotateCw.png" />
-    <Content Include="PdfPlugin\images\shadow.png" />
-    <Content Include="PdfPlugin\images\texture.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-bookmark%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-bookmark.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-download%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-download.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-menuArrows%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-menuArrows.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-openFile%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-openFile.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-pageDown%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-pageDown-rtl%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-pageDown-rtl.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-pageDown.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-pageUp%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-pageUp-rtl%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-pageUp-rtl.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-pageUp.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-presentationMode%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-presentationMode.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-print%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-print.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-search%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-search.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-secondaryToolbarToggle%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-secondaryToolbarToggle-rtl%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-secondaryToolbarToggle-rtl.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-secondaryToolbarToggle.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-sidebarToggle%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-sidebarToggle-rtl%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-sidebarToggle-rtl.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-sidebarToggle.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-viewAttachments%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-viewAttachments.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-viewOutline%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-viewOutline-rtl%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-viewOutline-rtl.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-viewOutline.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-viewThumbnail%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-viewThumbnail.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-zoomIn%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-zoomIn.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-zoomOut%402x.png" />
-    <Content Include="PdfPlugin\images\toolbarButton-zoomOut.png" />
-    <Content Include="PdfPlugin\js\compatibility.js" />
-    <Content Include="PdfPlugin\js\debugger.js" />
-    <Content Include="PdfPlugin\js\l10n.js" />
-    <Content Include="PdfPlugin\js\pdf.js" />
-    <Content Include="PdfPlugin\js\pdf.worker.js" />
-    <Content Include="PdfPlugin\js\viewer.js" />
-    <Content Include="PdfPlugin\pdf.worker.js" />
+    <Content Include="Content\themes\PdfPlugin\css\images\findbarButton-next%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\findbarButton-next-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\findbarButton-next-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\findbarButton-next.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\findbarButton-previous%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\findbarButton-previous-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\findbarButton-previous-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\findbarButton-previous.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\grab.cur" />
+    <Content Include="Content\themes\PdfPlugin\css\images\loading-icon.gif" />
+    <Content Include="Content\themes\PdfPlugin\css\images\loading-small.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-documentProperties%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-documentProperties.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-firstPage%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-firstPage.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-handTool%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-handTool.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-lastPage%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-lastPage.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-rotateCcw%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-rotateCcw.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-rotateCw%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\secondaryToolbarButton-rotateCw.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\shadow.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\texture.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-bookmark%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-bookmark.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-download%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-download.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-menuArrows%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-menuArrows.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-openFile%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-openFile.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-pageDown%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-pageDown-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-pageDown-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-pageDown.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-pageUp%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-pageUp-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-pageUp-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-pageUp.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-presentationMode%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-presentationMode.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-print%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-print.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-search%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-search.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-secondaryToolbarToggle%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-secondaryToolbarToggle-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-secondaryToolbarToggle-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-secondaryToolbarToggle.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-sidebarToggle%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-sidebarToggle-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-sidebarToggle-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-sidebarToggle.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-viewAttachments%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-viewAttachments.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-viewOutline%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-viewOutline-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-viewOutline-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-viewOutline.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-viewThumbnail%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-viewThumbnail.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-zoomIn%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-zoomIn.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-zoomOut%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\css\images\toolbarButton-zoomOut.png" />
+    <Content Include="Content\themes\PdfPlugin\css\viewer.css" />
+    <Content Include="Content\themes\PdfPlugin\images\findbarButton-next%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\findbarButton-next-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\findbarButton-next-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\images\findbarButton-next.png" />
+    <Content Include="Content\themes\PdfPlugin\images\findbarButton-previous%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\findbarButton-previous-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\findbarButton-previous-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\images\findbarButton-previous.png" />
+    <Content Include="Content\themes\PdfPlugin\images\grab.cur" />
+    <Content Include="Content\themes\PdfPlugin\images\loading-icon.gif" />
+    <Content Include="Content\themes\PdfPlugin\images\loading-small.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-documentProperties%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-documentProperties.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-firstPage%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-firstPage.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-handTool%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-handTool.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-lastPage%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-lastPage.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-rotateCcw%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-rotateCcw.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-rotateCw%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\secondaryToolbarButton-rotateCw.png" />
+    <Content Include="Content\themes\PdfPlugin\images\shadow.png" />
+    <Content Include="Content\themes\PdfPlugin\images\texture.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-bookmark%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-bookmark.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-download%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-download.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-menuArrows%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-menuArrows.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-openFile%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-openFile.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-pageDown%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-pageDown-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-pageDown-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-pageDown.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-pageUp%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-pageUp-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-pageUp-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-pageUp.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-presentationMode%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-presentationMode.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-print%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-print.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-search%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-search.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-secondaryToolbarToggle%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-secondaryToolbarToggle-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-secondaryToolbarToggle-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-secondaryToolbarToggle.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-sidebarToggle%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-sidebarToggle-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-sidebarToggle-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-sidebarToggle.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-viewAttachments%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-viewAttachments.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-viewOutline%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-viewOutline-rtl%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-viewOutline-rtl.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-viewOutline.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-viewThumbnail%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-viewThumbnail.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-zoomIn%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-zoomIn.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-zoomOut%402x.png" />
+    <Content Include="Content\themes\PdfPlugin\images\toolbarButton-zoomOut.png" />
+    <Content Include="Content\themes\PdfPlugin\js\compatibility.js" />
+    <Content Include="Content\themes\PdfPlugin\js\debugger.js" />
+    <Content Include="Content\themes\PdfPlugin\js\l10n.js" />
+    <Content Include="Content\themes\PdfPlugin\js\pdf.js" />
+    <Content Include="Content\themes\PdfPlugin\js\pdf.worker.js" />
+    <Content Include="Content\themes\PdfPlugin\js\viewer.js" />
+    <Content Include="Content\themes\PdfPlugin\pdf.worker.js" />
     <Content Include="favicon.ico" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1261,7 +1257,6 @@
     <Content Include="Areas\Admin\Views\CoporateCitizen\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CoporateCitizen\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CoporateCitizen\Delete.cshtml" />
-    <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="assets\Scripts\ai.0.22.9-build00167.js" />
     <Content Include="assets\Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="assets\Scripts\bootstrap.js" />
@@ -1359,6 +1354,7 @@
     <Content Include="assets\Scripts\jquery-1.12.4.min.map" />
     <Content Include="Views\CoporateCitizen\Index.cshtml" />
     <Content Include="Views\Home\CoporateCitizenImageSlide.cshtml" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1425,8 +1421,6 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>

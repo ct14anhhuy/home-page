@@ -3,7 +3,7 @@ using DTO;
 
 namespace Services.AutoMapperConfig
 {
-    using global::AutoMapper;
+    using AutoMapper;
 
     public class MappingProfile : Profile
     {
@@ -14,11 +14,11 @@ namespace Services.AutoMapperConfig
             CreateMap<Document, DocumentDTO>().ReverseMap();
             CreateMap<HeaderCategory, HeaderCategoryDTO>().ReverseMap();
             CreateMap<HeaderDetail, HeaderDetailDTO>().ReverseMap();
+            CreateMap<Image, ImageDTO>().ReverseMap();
             CreateMap<JobSkill, JobSkillDTO>().ReverseMap();
             CreateMap<Recruitment, RecruitmentDTO>().ReverseMap();
             CreateMap<Role, RoleDTO>().ReverseMap();
             CreateMap<UserLogin, UserLoginDTO>().ReverseMap();
-            CreateMap<Image, ImageDTO>().ReverseMap();
         }
     }
 }

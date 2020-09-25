@@ -58,15 +58,6 @@ namespace Services
         {
             var image = _imageRepository.Delete(imageId);
             _unitOfWork.Commit();
-
-            if (image != null)
-            {
-                string filePath = AppDomain.CurrentDomain.BaseDirectory + image.FilePath;
-                string minimalFilePath = AppDomain.CurrentDomain.BaseDirectory + image.MinimalFilePath;
-                FileService.RemoveFile(filePath);
-                FileService.RemoveFile(minimalFilePath);
-            }
-
             return _mapper.Map<ImageDTO>(image);
         }
 

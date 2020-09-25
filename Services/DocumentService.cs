@@ -68,11 +68,6 @@ namespace Services
         {
             var document = _documentRepository.Delete(id);
             _unitOfWork.Commit();
-            if (document != null)
-            {
-                string filePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Pdf.Path") + document.FileName;
-                FileService.RemoveFile(filePath);
-            }
             return _mapper.Map<DocumentDTO>(document);
         }
     }

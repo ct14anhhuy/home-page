@@ -9,24 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google" content="notranslate">
     <title>PDF viewer</title>
-
-    <link href="../../PdfPlugin/css/viewer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/themes/PdfPlugin/css/viewer.css" />
     <style>
     </style>
 
     <script language="javascript">
         var config = {
-            imageResourcesPath: '/PdfPlugin/images/', // duong dan toi folder image
-            workerSrc: '/PdfPlugin/pdf.worker.js', // duong dan toi toi file pdf.worker.js
+            imageResourcesPath: '/Content/themes/PdfPlugin/images/', // duong dan toi folder image
+            workerSrc: '/Content/themes/PdfPlugin/pdf.worker.js', // duong dan toi toi file pdf.worker.js
             pdfFile: '@ViewBag.PdfFileName'
         };
     </script>
 
-    <script src="../../PdfPlugin/js/compatibility.js"></script>
-    <script src="../../PdfPlugin/js/l10n.js"></script>
-    <script src="../../PdfPlugin/js/pdf.js"></script>
-    <script src="../../PdfPlugin/js/viewer.js"></script>
-    <script src="../../PdfPlugin/js/debugger.js"></script>
+    <script src="~/Content/themes/PdfPlugin/js/compatibility.js"></script>
+    <script src="~/Content/themes/PdfPlugin/js/l10n.js"></script>
+    <script src="~/Content/themes/PdfPlugin/js/pdf.js"></script>
+    <script src="~/Content/themes/PdfPlugin/js/viewer.js"></script>
+    <script src="~/Content/themes/PdfPlugin/js/debugger.js"></script>
 </head>
 <body tabindex="1" oncontextmenu="return false;" ondragstart="return false;">
     <div id="outerContainer" class="loadingInProgress">

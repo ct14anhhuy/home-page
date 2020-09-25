@@ -3,7 +3,6 @@ using HomePageVST.Models;
 using Services.Interfaces;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI;
 using Utilities;
 
 namespace HomePageVST.Controllers
@@ -37,7 +36,7 @@ namespace HomePageVST.Controllers
         }
 
         [ChildActionOnly]
-        [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "none")]
+        [OutputCache(Duration = 3600, VaryByParam = "none")]
         public ActionResult CoporateCitizenImageSlide()
         {
             var images = _imageService.GetActiveImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN_ID);
@@ -45,7 +44,7 @@ namespace HomePageVST.Controllers
         }
 
         [ChildActionOnly]
-        [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "none")]
+        [OutputCache(Duration = 3600, VaryByParam = "none")]
         public ActionResult Header()
         {
             var listHheaderCategoryDTO = _headerCategoryService.GetAll();
@@ -65,7 +64,6 @@ namespace HomePageVST.Controllers
         }
 
         [ChildActionOnly]
-        [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "none")]
         public ActionResult Footer()
         {
             return PartialView();
