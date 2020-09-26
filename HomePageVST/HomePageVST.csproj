@@ -296,6 +296,7 @@
     <Compile Include="Controllers\WaterTankIndustryController.cs" />
     <Compile Include="Controllers\WeldingController.cs" />
     <Compile Include="Filters\CompressFilterAttribute.cs" />
+    <Compile Include="Filters\PartialCacheAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
