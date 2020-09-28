@@ -9,11 +9,7 @@ namespace Repositories
         public IGenericRepository<HeaderCategory> HeaderCategoryRepository { get; private set; }
         public IGenericRepository<HeaderDetail> HeaderDetailRepository { get; private set; }
         public IGenericRepository<UserLogin> UserLoginRepository { get; private set; }
-        public IGenericRepository<Role> RoleRepository { get; private set; }
         public IGenericRepository<Document> DocumentRepository { get; private set; }
-        public IGenericRepository<Benefit> BenefitRepository { get; private set; }
-        public IGenericRepository<Candidate> CandidateRepository { get; private set; }
-        public IGenericRepository<JobSkill> JobSkillRepository { get; private set; }
         public IGenericRepository<Recruitment> RecruitmentRepository { get; private set; }
         public IGenericRepository<Image> ImageRepository { get; private set; }
 
@@ -27,11 +23,7 @@ namespace Repositories
             HeaderCategoryRepository = new GenericRepository<HeaderCategory>(_dbContext);
             HeaderDetailRepository = new GenericRepository<HeaderDetail>(_dbContext);
             UserLoginRepository = new GenericRepository<UserLogin>(_dbContext);
-            RoleRepository = new GenericRepository<Role>(_dbContext);
             DocumentRepository = new GenericRepository<Document>(_dbContext);
-            BenefitRepository = new GenericRepository<Benefit>(_dbContext);
-            CandidateRepository = new GenericRepository<Candidate>(_dbContext);
-            JobSkillRepository = new GenericRepository<JobSkill>(_dbContext);
             RecruitmentRepository = new GenericRepository<Recruitment>(_dbContext);
             ImageRepository = new GenericRepository<Image>(_dbContext);
         }

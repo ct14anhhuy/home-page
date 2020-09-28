@@ -8,7 +8,7 @@ namespace DTO
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Enter your user name")]
+        [Required(ErrorMessage = "Enter your username")]
         [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "User name invalid, enter again")]
         public string UserName { get; set; }
 

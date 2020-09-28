@@ -89,12 +89,8 @@ namespace HomePageVST.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError(string.Empty, "Something wrong, enter again");
                 }
-                return View(userLogin);
             }
-            else
-            {
-                return View(userLogin);
-            }
+            return View(userLogin);
         }
 
         public ActionResult Logout()

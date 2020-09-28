@@ -30,7 +30,6 @@ namespace HomePageVST
 
             bundles.Add(new ScriptBundle("~/js/home").Include(
                 "~/assets/Scripts/home.js"));
-
             #endregion
 
             #region StyleBundle

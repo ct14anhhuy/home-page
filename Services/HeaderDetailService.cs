@@ -9,20 +9,20 @@ namespace Services
 {
     public class HeaderDetailService : IHeaderDetailService
     {
-        private IGenericRepository<HeaderDetail> _HeaderDetailRepository;
+        private IGenericRepository<HeaderDetail> _headerDetailRepository;
         private IUnitOfWork _unitOfWork;
         private IMapper _mapper;
 
         public HeaderDetailService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
-            _HeaderDetailRepository = _unitOfWork.HeaderDetailRepository;
+            _headerDetailRepository = _unitOfWork.HeaderDetailRepository;
             _mapper = mapper;
         }
 
         public IEnumerable<HeaderDetailDTO> GetAll()
         {
-            IEnumerable<HeaderDetail> listHeaderDetail = _HeaderDetailRepository.GetAll();
+            IEnumerable<HeaderDetail> listHeaderDetail = _headerDetailRepository.GetAll();
             return _mapper.Map<IEnumerable<HeaderDetailDTO>>(listHeaderDetail);
         }
     }
