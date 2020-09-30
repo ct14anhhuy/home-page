@@ -2,7 +2,6 @@
 body:after {
   content: url(../../media/images/close.jpg) url(../../media/images/loading.png) url(../../media/images/previous.png) url(../../media/images/next.png);
   content: url(../../media/images/loading.png) url(../../media/images/previous.png) url(../../media/images/close.jpg) url(../../media/images/next.png);
-
   display: none;
 }
 

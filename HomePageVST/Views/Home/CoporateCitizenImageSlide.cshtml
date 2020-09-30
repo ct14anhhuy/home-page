@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<DTO.ImageDTO>
-
 <div id="cpSlide" class="container">
     <div class="row">
         <div class="col-xs-11 col-md-10 col-centered" style="padding-bottom:20px">
@@ -39,46 +38,36 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div id="video-frame" class="row">
         <div class="col-xs-12 col-md-10 col-centered" style="padding-bottom:20px">
             <h4 class="wow fadeInUp" data-wow-delay="0.4s">Introduction Posco VST</h4>
-            <table id="tblVideo" style="width:100%; table-layout:fixed">
-                <tr>
-                    <td align="center" width="33%">
-                        <video class="video-js"
-                               controls
-                               preload="none"
-                               width="310"
-                               height="174"
-                               poster="~/media/images/poster ok.jpg"
-                               data-setup="{}">
-                            <source src="@Url.Content("media/videos/POSCO-VST-180418.mp4")" type="video/mp4" />
-                        </video>
-                    </td>
-                    <td align="center" width="33%">
-                        <video class="video-js"
-                               controls
-                               preload="none"
-                               width="310"
-                               height="174"
-                               poster="~/media/images/poster ok.jpg"
-                               data-setup="{}">
-                            <source src="@Url.Content("media/videos/posco-vst-15.12.2015.mp4")" type="video/mp4" />
-                        </video>
-                    </td>
-                    <td align="center" width="33%">
-                        <video class="video-js"
-                               controls
-                               preload="none"
-                               width="310"
-                               height="174"
-                               poster="~/media/images/poster ok.jpg"
-                               data-setup="{}">
-                            <source src="@Url.Content("media/videos/POSCO-VST-final-6.12.2017.mp4")" type="video/mp4" />
-                        </video>
-                    </td>
-                </tr>
-            </table>
+            <div class="col-md-4" style="padding:0px 5px">
+                <video class="video-js"
+                       controls
+                       preload="none"
+                       poster="~/media/images/poster ok.jpg"
+                       data-setup="{}">
+                    <source src="@Url.Content("media/videos/POSCO-VST-180418.mp4")" type="video/mp4" />
+                </video>
+            </div>
+            <div class="col-md-4" style="padding:0px 5px">
+                <video class="video-js"
+                       controls
+                       preload="none"
+                       poster="~/media/images/poster ok.jpg"
+                       data-setup="{}">
+                    <source src="@Url.Content("media/videos/posco-vst-15.12.2015.mp4")" type="video/mp4" />
+                </video>
+            </div>
+            <div class="col-md-4" style="padding:0px 5px">
+                <video class="video-js"
+                       controls
+                       preload="none"
+                       poster="~/media/images/poster ok.jpg"
+                       data-setup="{}">
+                    <source src="@Url.Content("media/videos/POSCO-VST-final-6.12.2017.mp4")" type="video/mp4" />
+                </video>
+            </div>
         </div>
     </div>
 </div>
