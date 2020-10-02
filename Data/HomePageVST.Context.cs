@@ -9,18 +9,17 @@
 
 namespace Data
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Diagnostics;
-
+    
     public partial class HomePageVSTEntities : DbContext
     {
         public HomePageVSTEntities()
             : base("name=HomePageVSTEntities")
         {
-            Database.Log = s => Debug.WriteLine(s);
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
