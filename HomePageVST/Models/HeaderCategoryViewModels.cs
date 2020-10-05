@@ -1,6 +1,6 @@
 ﻿namespace HomePageVST.Models
 {
-    public class HeaderCategoryViewModel
+    public class HeaderCategoryViewModels
     {
         public int HeaderCategoryId { get; set; }
         public string HeaderCategoryName { get; set; }

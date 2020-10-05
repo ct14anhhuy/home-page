@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HomePageVST.Models
 {
-    public class ImageViewModel : ImageDTO
+    public class ImageViewModels : ImageDTO
     {
         [AllowFileSize(FileSize = 10 * 1024 * 1024, ErrorMessage = "Maximum allowed file size is 10 MB")]
         [Display(Name = "Image File")]

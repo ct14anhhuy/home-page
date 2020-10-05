@@ -15,8 +15,11 @@
     @RenderSection("headerCss", required: false)
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
     @{Html.RenderAction("Header", "Home");}
-    <div style="width:100%;margin:auto;">
+    <div style="width:1350px;margin:auto;">
         <div style="float:left;" id="left-menu">
             @RenderSection("LeftMenu", required: true)
         </div>

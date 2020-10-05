@@ -25,5 +25,11 @@ namespace Services
             IEnumerable<HeaderDetail> listHeaderDetail = _headerDetailRepository.GetAll();
             return _mapper.Map<IEnumerable<HeaderDetailDTO>>(listHeaderDetail);
         }
+
+        public IEnumerable<HeaderDetailDTO> GetUrls()
+        {
+            IEnumerable<HeaderDetail> listHeaderDetail = _headerDetailRepository.GetMultiByPredicate(h => h.Alias != null);
+            return _mapper.Map<IEnumerable<HeaderDetailDTO>>(listHeaderDetail);
+        }
     }
 }

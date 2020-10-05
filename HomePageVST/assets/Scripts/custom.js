@@ -2,8 +2,11 @@
     "use strict";
 
     // PRE LOADER
-    $(window).load(function () {
-        $('.preloader').fadeOut(1000); // set duration in brackets
+    var preloader = $('#preloader');
+    $(window).on('load', function () {
+        setTimeout(function () {
+            preloader.fadeOut('slow', function () { $(this).remove(); });
+        }, 300)
     });
 
     //Navigation Section

@@ -52,7 +52,7 @@ namespace HomePageVST.Controllers
             var listHeaderDetailDTO = _headerDetailService.GetAll();
             var listHeaderCategoryViewModel = from c in listHheaderCategoryDTO
                                               join d in listHeaderDetailDTO on c.Id equals d.HeaderCategoryId
-                                              select new HeaderCategoryViewModel
+                                              select new HeaderCategoryViewModels
                                               {
                                                   HeaderCategoryId = c.Id,
                                                   HeaderCategoryName = c.Name,

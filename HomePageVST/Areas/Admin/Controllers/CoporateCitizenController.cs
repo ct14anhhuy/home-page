@@ -18,6 +18,7 @@ namespace HomePageVST.Areas.Admin.Controllers
         public CoporateCitizenController(IImageService imageService)
         {
             _imageService = imageService;
+            ViewBag.Active = "coporate";
         }
 
         public ActionResult Index()
@@ -33,7 +34,7 @@ namespace HomePageVST.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ImageViewModel imageViewModel)
+        public ActionResult Create(ImageViewModels imageViewModel)
         {
             imageViewModel.DatePosted = DateTime.Today;
             imageViewModel.IsActive = true;

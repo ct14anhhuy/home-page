@@ -34,7 +34,7 @@ namespace HomePageVST.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DocumentViewModel document)
+        public ActionResult Create(DocumentViewModels document)
         {
             document.IsActive = true;
             document.UploadedDate = DateTime.Today;

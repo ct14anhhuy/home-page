@@ -6,5 +6,7 @@ namespace Services.Interfaces
     public interface IHeaderDetailService
     {
         IEnumerable<HeaderDetailDTO> GetAll();
+
+        IEnumerable<HeaderDetailDTO> GetUrls();
     }
 }

@@ -43,8 +43,10 @@
                     <img class="img-responsive" style="height:150px; width:250px" src="@item.MinimalFilePath" />
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <ul class="d-flex justify-content-center">
+                        <li class="mr-3"><a href="/Admin/CoporateCitizen/Edit/@item.Id" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                        <li><a href="/Admin/CoporateCitizen/Delete/@item.Id" class="text-danger"><i class="ti-trash"></i></a></li>
+                    </ul>
                 </td>
             </tr>
         }

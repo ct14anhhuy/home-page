@@ -51,7 +51,7 @@ namespace HomePageVST.Areas.Admin.Controllers
                 else
                 {
                     ModelState.AddModelError(string.Empty, "user name or pass incorrect!");
-                    return View(userLogin);
+                    return View();
                 }
             }
             return View();

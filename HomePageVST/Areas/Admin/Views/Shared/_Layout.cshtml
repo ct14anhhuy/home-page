@@ -1,81 +1,139 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<html>
 <head>
-    <title>Admin</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Posco VST Admin Dashboard</title>
     <link rel="icon" type="image/png" href="~/media/images/icon/P.png" />
-    @Styles.Render("~/css/admin")
-    <style>
-        .navbar {
-            margin-bottom: 50px;
-            border-radius: 0;
-        }
-
-        .jumbotron {
-            margin: auto;
-        }
-
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-            margin-top: 20px;
-        }
-
-        .navbar-nav {
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        #header {
-            position: relative;
-            color: white;
-            font-size: 30px;
-            background-color: #00bcd4;
-            background-image: url('/media/images/icon/bg.png');
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/slicknav.min.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/typography.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/default-css.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/styles.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/themes/DataTables/css/jquery.dataTables.min.css">
+    <script src="~/Areas/Admin/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     @RenderSection("headerCss", required: false)
 </head>
+
 <body>
-    <div class="text-center" id="header">
-        <strong>POSCO VST Admin Page</strong>
+    <div id="preloader">
+        <div class="loader"></div>
     </div>
-    <nav class="navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a href="~/index.html"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-                <li id="recruitment-mn"><a href="/admin/recruitment" title="Recruitment">Recruitment</a></li>
-                <li id="ssg-mn"><a href="/admin/StanlessSteelGuidebook" title="Stanless Steel Guidebook">Stanless Steel Guidebook</a></li>
-                <li id="corrosion-mn"><a href="/admin/Corrosion" title="Corrosion">Corrosion</a></li>
-                <li id="welding-mn"><a href="/admin/Welding" title="Welding">Welding</a></li>
-                <li id="forming-mn"><a href="/admin/Forming" title="Forming">Forming</a></li>
-                <li id="wti-mn"><a href="/admin/WaterTankIndustry" title="Water tank industry">Water tank industry</a></li>
-                <li id="445nf-mn"><a href="/admin/About445NF" title="445NF">445NF</a></li>
-                <li id="news"><a href="/admin/NewsInfomation" title="News & Infomation">News & Infomation</a></li>
-                <li id="coporate"><a href="/admin/CoporateCitizen" title="Coporate Citizen">Coporate Citizen</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                @if (User.IsInRole("Admin"))
-                {
-                    <li id="create-user-mn"><a href="/admin/userlogin/createuser"><span class="glyphicon glyphicon-user"></span>Create User</a></li>
-                }
-                <li id="change-password-mn"><a href="/admin/userlogin/changepassword"><span class="glyphicon glyphicon-user"></span>Change password</a></li>
-                <li><a href="/admin/userlogin/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-            </ul>
+    <div class="page-container">
+        <div class="sidebar-menu">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <a href="/index.html"><img src="~/media/images/poscovstlogo-white.png" alt="logo"></a>
+                </div>
+            </div>
+            <div class="main-menu">
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 817px;">
+                    <div class="menu-inner" style="overflow: hidden; width: auto; height: 817px;">
+                        <nav>
+                            <ul class="metismenu" id="menu">
+                                <li><a href="~/index.html" aria-expanded="false"><span>Home</span></a></li>
+                                <li id="recruitment-mn"><a href="/admin/recruitment" aria-expanded="false"><span>Recruitment</span></a></li>
+                                <li id="ssg-mn"><a href="/admin/StanlessSteelGuidebook" aria-expanded="false"><span>Stanless Steel Guidebook</span></a></li>
+                                <li id="corrosion-mn"><a href="/admin/Corrosion" aria-expanded="false"><span>Corrosion</span></a></li>
+                                <li id="welding-mn"><a href="/admin/Welding" aria-expanded="false"><span>Welding</span></a></li>
+                                <li id="forming-mn"><a href="/admin/Forming" aria-expanded="false"><span>Forming</span></a></li>
+                                <li id="wti-mn"><a href="/admin/WaterTankIndustry" aria-expanded="false"><span>Water tank industry</span></a></li>
+                                <li id="445nf-mn"><a href="/admin/About445NF" aria-expanded="false"><span>445NF</span></a></li>
+                                <li id="news-mn"><a href="/admin/NewsInfomation" aria-expanded="false"><span>News & Infomation</span></a></li>
+                                <li id="coporate-mn"><a href="/admin/CoporateCitizen" aria-expanded="false"><span>Coporate Citizen</span></a></li>
+                            </ul>
+                        </nav>
+                    </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 674.231px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                </div>
+            </div>
         </div>
-    </nav>
-    <div class="container-fluid">
-        @RenderBody()
+        <div class="main-content" style="min-height: 865px;">
+            <div class="header-area">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-sm-8 clearfix">
+                        <div class="nav-btn pull-left">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-4 clearfix">
+                        <ul class="notification-area pull-right">
+                            <li id="full-view"><i class="ti-fullscreen"></i></li>
+                            <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="page-title-area">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <ul class="breadcrumbs pull-left">
+                                <li><a href="index.html">Home</a></li>
+                                <li><span>Dashboard</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 clearfix">
+                        <div class="user-profile pull-right">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown" aria-expanded="false">@User.Identity.Name <i class="fa fa-angle-down"></i></h4>
+                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(45px, 45px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a class="dropdown-item" href="/admin/userlogin/createuser">Create User</a>
+                                }
+                                <a class="dropdown-item" href="/admin/userlogin/changepassword">Change password</a>
+                                <a class="dropdown-item" href="/admin/userlogin/logout">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-inner">
+                <div class="row mt-5 mb-5">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="market-status-table mt-4">
+                                    <div class="table-responsive">
+                                        @RenderBody()
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer-area">
+                <p>Copyright &copy; 2020 POSCO VST</p>
+            </div>
+        </footer>
     </div>
-    <footer class="container-fluid text-center">
-        Copyright &copy; 2020 POSCO VST
-    </footer>
-    @Scripts.Render("~/js/admin")
+    <script src="~/Areas/Admin/assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/popper.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/owl.carousel.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/jquery.slicknav.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/plugins.js"></script>
+    <script src="~/Areas/Admin/assets/js/scripts.js"></script>
+    <script src="~/Content/themes/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/themes/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="~/Content/themes/DataTables/js/jquery.dataTables.min.js"></script>
+    @RenderSection("footerJs", required: false)
     <script>
-        $(".table").addClass("table-hover table-bordered");
         $(".table").DataTable();
         $("#@ViewBag.Active-mn").addClass("active");
     </script>
-    @RenderSection("footerJs", required: false)
 </body>
 </html>

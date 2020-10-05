@@ -244,6 +244,7 @@
     <Compile Include="Areas\Admin\Controllers\WeldingController.cs" />
     <Compile Include="Controllers\CoporateCitizenController.cs" />
     <Compile Include="Controllers\Core\ControllerCore.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Filters\AllowFileExtensionAttribute.cs" />
     <Compile Include="Filters\AllowFileSizeAttribute.cs" />
     <Compile Include="Filters\AntiModelInjection\HtmlExtensions.cs" />
@@ -297,19 +298,47 @@
     <Compile Include="Controllers\WeldingController.cs" />
     <Compile Include="Filters\CompressFilterAttribute.cs" />
     <Compile Include="Filters\PartialCacheAttribute.cs" />
+    <Compile Include="Filters\SitemapActionResult.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DocumentViewModel.cs" />
-    <Compile Include="Models\HeaderCategoryViewModel.cs" />
+    <Compile Include="Models\DocumentViewModels.cs" />
+    <Compile Include="Models\HeaderCategoryViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ImageViewModel.cs" />
+    <Compile Include="Models\ImageViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SitemapViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\assets\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\assets\css\default-css.css" />
+    <Content Include="Areas\Admin\assets\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\assets\css\metisMenu.css" />
+    <Content Include="Areas\Admin\assets\css\owl.carousel.min.css" />
+    <Content Include="Areas\Admin\assets\css\responsive.css" />
+    <Content Include="Areas\Admin\assets\css\slicknav.min.css" />
+    <Content Include="Areas\Admin\assets\css\styles.css" />
+    <Content Include="Areas\Admin\assets\css\themify-icons.css" />
+    <Content Include="Areas\Admin\assets\css\typography.css" />
+    <Content Include="Areas\Admin\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\assets\fonts\themify.svg" />
+    <Content Include="Areas\Admin\assets\js\bar-chart.js" />
+    <Content Include="Areas\Admin\assets\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\assets\js\jquery.slicknav.min.js" />
+    <Content Include="Areas\Admin\assets\js\jquery.slimscroll.min.js" />
+    <Content Include="Areas\Admin\assets\js\line-chart.js" />
+    <Content Include="Areas\Admin\assets\js\maps.js" />
+    <Content Include="Areas\Admin\assets\js\metisMenu.min.js" />
+    <Content Include="Areas\Admin\assets\js\owl.carousel.min.js" />
+    <Content Include="Areas\Admin\assets\js\pie-chart.js" />
+    <Content Include="Areas\Admin\assets\js\plugins.js" />
+    <Content Include="Areas\Admin\assets\js\popper.min.js" />
+    <Content Include="Areas\Admin\assets\js\scripts.js" />
+    <Content Include="Areas\Admin\assets\js\vendor\jquery-2.2.4.min.js" />
+    <Content Include="Areas\Admin\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="assets\Scripts\home.js" />
     <Content Include="media\images\Posco family in vietnam.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -861,6 +890,7 @@
     <Content Include="media\images\Posco.jpg" />
     <Content Include="media\images\PoscoFamily01.jpg" />
     <Content Include="media\images\PoscoFamily02.jpg" />
+    <Content Include="media\images\poscovstlogo-white.png" />
     <Content Include="media\images\poscovstlogo.png" />
     <Content Include="media\images\poster ok.jpg" />
     <Content Include="media\images\Precision.png" />
@@ -1263,6 +1293,14 @@
     <Content Include="assets\Scripts\bootstrap.js" />
     <Content Include="assets\Scripts\bootstrap.min.js" />
     <Content Include="assets\Scripts\custom.js" />
+    <Content Include="Areas\Admin\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\assets\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\assets\fonts\themify.eot" />
+    <Content Include="Areas\Admin\assets\fonts\themify.ttf" />
+    <Content Include="Areas\Admin\assets\fonts\themify.woff" />
     <None Include="assets\Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="assets\Scripts\jquery-1.12.4.js" />
     <Content Include="assets\Scripts\jquery-1.12.4.min.js" />
@@ -1361,6 +1399,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="logs\" />
+    <Folder Include="Views\Sitemap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
