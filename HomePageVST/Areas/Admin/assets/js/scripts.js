@@ -32,6 +32,10 @@
     };
     $(window).ready(e), $(window).on("resize", e);
 
+    /*================================
+    sidebar menu
+    ==================================*/
+    $("#menu").metisMenu();
 
     /*================================
     slimscroll activation
