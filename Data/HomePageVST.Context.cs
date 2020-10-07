@@ -35,5 +35,7 @@ namespace Data
         public virtual DbSet<Recruitment> Recruitments { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
+        public virtual DbSet<CoporateCitizenCategory> CoporateCitizenCategories { get; set; }
+        public virtual DbSet<CoporateCitizenContent> CoporateCitizenContents { get; set; }
     }
 }

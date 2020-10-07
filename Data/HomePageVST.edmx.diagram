@@ -22,6 +22,9 @@
         <AssociationConnector Association="HomePageVSTModel.Fk_Images_HeaderDetail" ManuallyRouted="false" />
         <AssociationConnector Association="HomePageVSTModel.Fk_JobSkill_Recruitment" ManuallyRouted="false" />
         <AssociationConnector Association="HomePageVSTModel.Fk_UserLogin_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HomePageVSTModel.CoporateCitizenCategory" Width="1.5" PointX="0.75" PointY="10.875" />
+        <EntityTypeShape EntityType="HomePageVSTModel.CoporateCitizenContent" Width="1.5" PointX="3" PointY="11.125" />
+        <AssociationConnector Association="HomePageVSTModel.Fk_CoporateCitizenContent_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

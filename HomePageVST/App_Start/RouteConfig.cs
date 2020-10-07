@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Services.Interfaces;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace HomePageVST
@@ -339,6 +340,13 @@ namespace HomePageVST
 
         private static void RegisterStaticRoutes_PR(RouteCollection routes)
         {
+            routes.MapRoute(
+              name: "CoporateCitizenNewsroom",
+              url: "coporate-citizen-newsroom-p{categoryId}.html",
+              defaults: new { controller = "CoporateCitizen", action = "Newsroom", categoryId = UrlParameter.Optional },
+              namespaces: new string[] { "HomePageVST.Controllers" }
+           );
+
             routes.MapRoute(
                name: "CoporateCitizen",
                url: "coporate-citizen.html",

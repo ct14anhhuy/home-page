@@ -12,9 +12,11 @@ namespace Repositories
         public IGenericRepository<Document> DocumentRepository { get; private set; }
         public IGenericRepository<Recruitment> RecruitmentRepository { get; private set; }
         public IGenericRepository<Image> ImageRepository { get; private set; }
+        public IGenericRepository<CoporateCitizenCategory> CoporateCitizenCategoryRepository { get; private set; }
+        public IGenericRepository<CoporateCitizenContent> CoporateCitizenContentRepository { get; private set; }
 
         private HomePageVSTEntities _dbContext;
-        private bool disposed;
+        private bool _disposed;
 
         public UnitOfWork(HomePageVSTEntities dbContext)
         {
@@ -26,6 +28,8 @@ namespace Repositories
             DocumentRepository = new GenericRepository<Document>(_dbContext);
             RecruitmentRepository = new GenericRepository<Recruitment>(_dbContext);
             ImageRepository = new GenericRepository<Image>(_dbContext);
+            CoporateCitizenCategoryRepository = new GenericRepository<CoporateCitizenCategory>(_dbContext);
+            CoporateCitizenContentRepository = new GenericRepository<CoporateCitizenContent>(_dbContext);
         }
 
         public void Commit()
@@ -41,14 +45,14 @@ namespace Repositories
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
                     _dbContext.Dispose();
                 }
             }
-            this.disposed = true;
+            _disposed = true;
         }
 
         ~UnitOfWork()

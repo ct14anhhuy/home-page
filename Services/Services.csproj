@@ -138,10 +138,14 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfig\AutoMapperConfiguration.cs" />
     <Compile Include="AutoMapperConfig\MappingProfile.cs" />
+    <Compile Include="CoporateCitizenCategoryService.cs" />
+    <Compile Include="CoporateCitizenContentService.cs" />
     <Compile Include="DocumentService.cs" />
     <Compile Include="HeaderCategoryService.cs" />
     <Compile Include="HeaderDetailService.cs" />
     <Compile Include="ImageService.cs" />
+    <Compile Include="Interfaces\ICoporateCitizenCategoryService.cs" />
+    <Compile Include="Interfaces\ICoporateCitizenContentService.cs" />
     <Compile Include="Interfaces\IDocumentService.cs" />
     <Compile Include="Interfaces\IHeaderCategoryService.cs" />
     <Compile Include="Interfaces\IHeaderDetailService.cs" />

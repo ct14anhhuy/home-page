@@ -5,6 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="HomePageVSTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CoporateCitizenCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Thumbnail" Type="varchar" MaxLength="200" />
+          <Property Name="DatePosted" Type="date" />
+        </EntityType>
+        <EntityType Name="CoporateCitizenContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CoporateCitizenCategoryId" Type="int" />
+        </EntityType>
         <EntityType Name="Benefit">
           <Key>
             <PropertyRef Name="Id" />
@@ -135,6 +153,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Fk_CoporateCitizenContent_Category">
+          <End Role="CoporateCitizenCategory" Type="Self.CoporateCitizenCategory" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CoporateCitizenContent" Type="Self.CoporateCitizenContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoporateCitizenCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoporateCitizenContent">
+              <PropertyRef Name="CoporateCitizenCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Fk_Document_HeaderDetail">
           <End Role="HeaderDetail" Type="Self.HeaderDetail" Multiplicity="0..1" />
           <End Role="Document" Type="Self.Document" Multiplicity="*" />
@@ -196,6 +228,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HomePageVSTModelStoreContainer">
+          <EntitySet Name="CoporateCitizenCategory" EntityType="Self.CoporateCitizenCategory" Schema="Crawl" store:Type="Tables" />
+          <EntitySet Name="CoporateCitizenContent" EntityType="Self.CoporateCitizenContent" Schema="Crawl" store:Type="Tables" />
           <EntitySet Name="Benefit" EntityType="Self.Benefit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
@@ -213,6 +247,10 @@
           <AssociationSet Name="Fk_Candidate_Recruitment" Association="Self.Fk_Candidate_Recruitment">
             <End Role="Recruitment" EntitySet="Recruitment" />
             <End Role="Candidate" EntitySet="Candidate" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_CoporateCitizenContent_Category" Association="Self.Fk_CoporateCitizenContent_Category">
+            <End Role="CoporateCitizenCategory" EntitySet="CoporateCitizenCategory" />
+            <End Role="CoporateCitizenContent" EntitySet="CoporateCitizenContent" />
           </AssociationSet>
           <AssociationSet Name="Fk_Document_HeaderDetail" Association="Self.Fk_Document_HeaderDetail">
             <End Role="HeaderDetail" EntitySet="HeaderDetail" />
@@ -482,7 +520,47 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="UserLogin" EntitySet="UserLogins" />
           </AssociationSet>
+          <EntitySet Name="CoporateCitizenCategories" EntityType="HomePageVSTModel.CoporateCitizenCategory" />
+          <EntitySet Name="CoporateCitizenContents" EntityType="HomePageVSTModel.CoporateCitizenContent" />
+          <AssociationSet Name="Fk_CoporateCitizenContent_Category" Association="HomePageVSTModel.Fk_CoporateCitizenContent_Category">
+            <End Role="CoporateCitizenCategory" EntitySet="CoporateCitizenCategories" />
+            <End Role="CoporateCitizenContent" EntitySet="CoporateCitizenContents" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CoporateCitizenCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Thumbnail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DatePosted" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CoporateCitizenContents" Relationship="HomePageVSTModel.Fk_CoporateCitizenContent_Category" FromRole="CoporateCitizenCategory" ToRole="CoporateCitizenContent" />
+        </EntityType>
+        <EntityType Name="CoporateCitizenContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CoporateCitizenCategoryId" Type="Int32" />
+          <NavigationProperty Name="CoporateCitizenCategory" Relationship="HomePageVSTModel.Fk_CoporateCitizenContent_Category" FromRole="CoporateCitizenContent" ToRole="CoporateCitizenCategory" />
+        </EntityType>
+        <Association Name="Fk_CoporateCitizenContent_Category">
+          <End Type="HomePageVSTModel.CoporateCitizenCategory" Role="CoporateCitizenCategory" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HomePageVSTModel.CoporateCitizenContent" Role="CoporateCitizenContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoporateCitizenCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoporateCitizenContent">
+              <PropertyRef Name="CoporateCitizenCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -602,6 +680,26 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
                 <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoporateCitizenCategories">
+            <EntityTypeMapping TypeName="HomePageVSTModel.CoporateCitizenCategory">
+              <MappingFragment StoreEntitySet="CoporateCitizenCategory">
+                <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoporateCitizenContents">
+            <EntityTypeMapping TypeName="HomePageVSTModel.CoporateCitizenContent">
+              <MappingFragment StoreEntitySet="CoporateCitizenContent">
+                <ScalarProperty Name="CoporateCitizenCategoryId" ColumnName="CoporateCitizenCategoryId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

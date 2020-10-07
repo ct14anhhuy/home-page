@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="BenefitDTO.cs" />
     <Compile Include="CandidateDTO.cs" />
+    <Compile Include="CoporateCitizenCategoryDTO.cs" />
+    <Compile Include="CoporateCitizenContentDTO.cs" />
     <Compile Include="DocumentDTO.cs" />
     <Compile Include="HeaderCategoryDTO.cs" />
     <Compile Include="HeaderDetailDTO.cs" />

@@ -10,6 +10,8 @@ namespace Repositories.Interfaces
         IGenericRepository<Document> DocumentRepository { get; }
         IGenericRepository<Recruitment> RecruitmentRepository { get; }
         IGenericRepository<Image> ImageRepository { get; }
+        IGenericRepository<CoporateCitizenCategory> CoporateCitizenCategoryRepository { get; }
+        IGenericRepository<CoporateCitizenContent> CoporateCitizenContentRepository { get; }
 
         void Commit();
     }
