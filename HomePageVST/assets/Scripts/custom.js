@@ -9,6 +9,15 @@
         }, 300)
     });
 
+    //Facebook chat button
+    $(function () {
+        $(".pulse").hover(function () {
+            $(this).removeClass("pulse");
+        }, function () {
+            $(this).addClass("pulse");
+        });
+    });
+
     //Navigation Section
     $('.navbar-collapse a').on('click', function () {
         $(".navbar-collapse").collapse('hide');

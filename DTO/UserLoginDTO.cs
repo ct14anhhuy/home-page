@@ -24,13 +24,11 @@ namespace DTO
         [IgnoreMap]
         [Required(ErrorMessage = "Enter your password")]
         [DataType(DataType.Password)]
-        [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Password invalid, enter again")]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [IgnoreMap]
         [DataType(DataType.Password)]
-        [RegularExpression("^[a-zA-Z0-9]*$", ErrorMessage = "Password invalid, enter again")]
         [Display(Name = "New Password")]
         public string NewPassword { get; set; }
 

@@ -1,7 +1,6 @@
 ﻿using DTO;
 using HomePageVST.Controllers.Core;
 using HomePageVST.Filters.AntiModelInjection;
-using HomePageVST.Models;
 using Services.Interfaces;
 using System;
 using System.Net;
@@ -33,21 +32,21 @@ namespace HomePageVST.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ImageViewModels imageViewModel)
+        public ActionResult Create(ImageDTO imageDTO)
         {
-            imageViewModel.DatePosted = DateTime.Today;
-            imageViewModel.IsActive = true;
-            imageViewModel.HeaderDetailId = CommonConstants.NEWS_INFOMATION_ID;
+            imageDTO.DatePosted = DateTime.Today;
+            imageDTO.IsActive = true;
+            imageDTO.HeaderDetailId = CommonConstants.NEWS_INFOMATION_ID;
             ModelState["DatePosted"].Errors.Clear();
 
             if (ModelState.IsValid)
             {
-                _imageService.Add(imageViewModel);
+                _imageService.Add(imageDTO);
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(imageViewModel);
+                return View(imageDTO);
             }
         }
 
