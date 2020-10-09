@@ -1,7 +1,7 @@
 ﻿using DTO;
-using HomePageVST.Authentication;
 using HomePageVST.Controllers.Core;
-using HomePageVST.Filters.AntiModelInjection;
+using HomePageVST.Extensions.AntiModelInjection;
+using HomePageVST.Extensions.Authentication;
 using Services.Interfaces;
 using System;
 using System.Web.Mvc;

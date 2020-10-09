@@ -3,7 +3,7 @@ using System;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace HomePageVST.Authentication
+namespace HomePageVST.Extensions.Authentication
 {
     public class UserRoleProvider : RoleProvider
     {

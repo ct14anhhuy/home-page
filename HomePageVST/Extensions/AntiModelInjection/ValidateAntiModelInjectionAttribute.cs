@@ -4,7 +4,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace HomePageVST.Filters.AntiModelInjection
+namespace HomePageVST.Extensions.AntiModelInjection
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class ValidateAntiModelInjectionAttribute : ActionFilterAttribute

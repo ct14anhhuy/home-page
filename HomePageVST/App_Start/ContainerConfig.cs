@@ -2,7 +2,7 @@
 using Autofac.Integration.Mvc;
 using AutoMapper;
 using Data;
-using HomePageVST.Authentication;
+using HomePageVST.Extensions.Authentication;
 using Repositories;
 using Repositories.Interfaces;
 using Services;

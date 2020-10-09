@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace HomePageVST.Filters.AntiModelInjection
+namespace HomePageVST.Extensions.AntiModelInjection
 {
     [Serializable]
     public sealed class HttpAntiModelInjectionException : HttpException

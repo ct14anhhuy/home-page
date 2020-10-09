@@ -1,6 +1,6 @@
 ﻿using DTO;
 using HomePageVST.Controllers.Core;
-using HomePageVST.Filters.AntiModelInjection;
+using HomePageVST.Extensions.AntiModelInjection;
 using HomePageVST.Models;
 using Services.Interfaces;
 using System;

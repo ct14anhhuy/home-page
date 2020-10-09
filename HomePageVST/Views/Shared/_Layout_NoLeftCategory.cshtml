@@ -19,12 +19,9 @@
         <div class="loader"></div>
     </div>
     @{Html.RenderAction("Header", "Home");}
-    <div style="width:1350px;margin:auto;">
-        <div style="float:left;" id="left-menu">
-            @RenderSection("LeftMenu", required: true)
-        </div>
-        @RenderBody()
-    </div>
+
+    @RenderBody()
+
     @{Html.RenderAction("Footer", "Home");}
     <!--#region Facebook chat-->
     <div class="fb-wrap pulsing">

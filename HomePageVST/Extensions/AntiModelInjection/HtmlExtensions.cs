@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace HomePageVST.Filters.AntiModelInjection
+namespace HomePageVST.Extensions.AntiModelInjection
 {
     public static class HtmlExtensions
     {

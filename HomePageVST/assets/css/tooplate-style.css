@@ -241,7 +241,7 @@ http://www.tooplate.com/view/2098-health
     animation: spinner .9s linear infinite;
   }
 
-  @-webkit-@keyframes spinner {
+  @keyframes spinner {
     to {transform: rotate(360deg);}
   }
 

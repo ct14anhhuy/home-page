@@ -1,5 +1,6 @@
 ﻿using System.Web.Optimization;
 using Utilities;
+using StyleBundle = HomePageVST.Extensions.CustomBundles.StyleBundle;
 
 namespace HomePageVST
 {
@@ -8,6 +9,7 @@ namespace HomePageVST
         public static void RegisterBundles(BundleCollection bundles)
         {
             #region ScriptBundle
+
             bundles.Add(new ScriptBundle("~/js/plugins").Include(
                 "~/assets/Scripts/jquery.js",
                 "~/Content/themes/bootstrap-3.2.0/js/bootstrap.min.js",
@@ -30,9 +32,11 @@ namespace HomePageVST
 
             bundles.Add(new ScriptBundle("~/js/home").Include(
                 "~/assets/Scripts/home.js"));
-            #endregion
+
+            #endregion ScriptBundle
 
             #region StyleBundle
+
             bundles.Add(new StyleBundle("~/css/base")
              .Include("~/Content/themes/bootstrap-3.2.0/css/bootstrap.min.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/font-awesome.min.css", new CssRewriteUrlTransform())
@@ -51,7 +55,8 @@ namespace HomePageVST
 
             bundles.Add(new StyleBundle("~/css/home")
                .Include("~/assets/css/home.css", new CssRewriteUrlTransform()));
-            #endregion
+
+            #endregion StyleBundle
 
             BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
         }
