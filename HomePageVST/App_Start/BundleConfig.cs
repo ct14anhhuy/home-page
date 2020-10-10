@@ -51,7 +51,8 @@ namespace HomePageVST
             bundles.Add(new StyleBundle("~/css/customs")
                .Include("~/assets/css/customs.css", new CssRewriteUrlTransform())
                .Include("~/assets/css/left-menu.css", new CssRewriteUrlTransform())
-               .Include("~/assets/css/dialog.css", new CssRewriteUrlTransform()));
+               .Include("~/assets/css/dialog.css", new CssRewriteUrlTransform())
+               .Include("~/assets/css/bootstrap-nonresponsive.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/css/home")
                .Include("~/assets/css/home.css", new CssRewriteUrlTransform()));
