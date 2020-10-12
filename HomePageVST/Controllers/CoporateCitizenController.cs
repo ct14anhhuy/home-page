@@ -12,8 +12,8 @@ namespace HomePageVST.Controllers
         private ICoporateCitizenCategoryService _coporateCitizenCategoryService;
         private ICoporateCitizenContentService _coporateCitizenContentService;
 
-        public CoporateCitizenController(IImageService imageService, 
-            ICoporateCitizenCategoryService coporateCitizenCategoryService, 
+        public CoporateCitizenController(IImageService imageService,
+            ICoporateCitizenCategoryService coporateCitizenCategoryService,
             ICoporateCitizenContentService coporateCitizenContentService)
         {
             _imageService = imageService;

@@ -31,7 +31,7 @@ namespace HomePageVST.Controllers
 
             sitemapItems.Add(new SitemapViewModels
             {
-                URL = "index.html",
+                URL = "home.html",
                 Priority = "1",
                 DateAdded = new DateTime(2020, 10, 5)
             });

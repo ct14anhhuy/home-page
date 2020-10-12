@@ -21,12 +21,12 @@
                             <td align="center" bgcolor="#F0F0F0" class="Std_Font_B" width="220px" style="font-family:Tahoma; font-size:15px"><b>Link Detail</b></td>
                         </tr>
                         @{
-                            int idx = 0;
+                            int seq = 0;
                             foreach (var doc in Model)
                             {
-                                idx = idx + 1;
+                                seq++;
                                 <tr style="background-color:white">
-                                    <td align="center" class="Std_Font_B" width="50px" style="font-family:Tahoma; font-size:15px">@idx</td>
+                                    <td align="center" class="Std_Font_B" width="50px" style="font-family:Tahoma; font-size:15px">@seq</td>
                                     <td align="left" class="Std_Font_B" width="50px" style="font-family:Tahoma; font-size:15px; padding-left:10px">@doc.Description</td>
                                     <td align="center" class="Std_Font_B" width="50px" style="font-family:Tahoma; font-size:15px">
                                         <a href='javascript:showDocs("/docs/vw/@doc.FileName")'>Here</a>

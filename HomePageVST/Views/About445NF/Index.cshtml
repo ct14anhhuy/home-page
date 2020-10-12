@@ -3,7 +3,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div style="width:980px;margin-left:20%">
     <div class="col-xs-10">
         <h4 class="wow fadeInUp" data-wow-delay="0.3s" style="margin-left:auto; margin-right:auto"><center>ABOUT STAINLESS STEEL</center></h4>
@@ -12,7 +11,6 @@
                 <div class="headderin" style="margin-top: -18px; width: 400px;">
                     <label style="font-size: 20px; font-weight: bold; background-color: white; padding-left: 5px; padding-right: 5px; color: #193292; margin-left: 20px">Series 400 Stainless Steel</label>
                 </div>
-
                 <div style="font-size:14px; font-family:Tahoma; color:#797977; width:850px">
                     <table border="1" cellpadding="0" cellspacing="0" width="720px" style="margin-left:20px; margin-right:20px">
                         <tr>
@@ -22,12 +20,12 @@
                         </tr>
                         <tr>
                             @{
-                                int idx = 0;
+                                int seq = 0;
                                 foreach (var doc in Model)
                                 {
-                                    idx = idx + 1;
+                                    seq++;
                                 <tr style="background-color:white">
-                                    <td align="center" class="Std_Font_B" width="50px" style="font-family:Tahoma; font-size:15px">@idx</td>
+                                    <td align="center" class="Std_Font_B" width="50px" style="font-family:Tahoma; font-size:15px">@seq</td>
                                     <td align="left" class="Std_Font_B" width="50px" style="font-family:Tahoma; font-size:15px; padding-left:10px">@doc.Description</td>
                                     <td align="center" class="Std_Font_B" width="50px" style="font-family:Tahoma; font-size:15px">
                                         <a href='javascript:showDocs("/docs/vw/@doc.FileName")'>Here</a>
@@ -41,9 +39,7 @@
             </div>
         </div>
     </div>
-
     <div class="PrintMessage">You are not authorized to print this document</div>
-
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" style="height: 95%; width: 100%">
             <div class="modal-content" style="height: 100%">
@@ -59,7 +55,6 @@
             </div>
         </div>
     </div>
-
     @section LeftMenu {
         <ul class="menu-vertical" style="color:gray;margin-top:18.5px;font-size:8px;">
             <li class="mv-item" style="background-color:white;border-top:1px solid gray;"><a href="stainless-steel-guidebook.html" style="font-size: 10.5pt;font-weight:bold">▶&nbsp;<b>Stanless Steel Guidebook</b></a></li>
@@ -68,12 +63,10 @@
             <li class="mv-item" style="background-color:white;border-top:1px solid gray;"><a href="forming.html" style="font-size: 10.5pt;font-weight:bold">▶&nbsp;<b>Forming</b></a></li>
             <li class="mv-item border-menu" style="background-color:white;border-top:1px solid gray;"><a href="javascript:testclick300()" style="font-size: 10.5pt;"><p class="" style="margin-right:10px;display:none"></p><b>▶&nbsp;Application</b></a></li>
             <li class="subsub-mv-item 300" style="background-color:white;border-top:1px solid gray; display:none"><a href="water-tank-industry.html" style="font-size: 10.5pt;"><p class="showmuiten2" style="margin-right:10px;display:none">▶</p>Water Tank Industry</a></li>
-
             <li class="mv-item border-menu" style="background-color:white;border-top:1px solid gray;"><a href="javascript:testclick300()" style="font-size: 10.5pt;"><p class="" style="margin-right:10px;display:none"></p><b>▶&nbsp;Series 400 Stainless Steel</b></a></li>
             <li class="sub-mv-item Production" style="background-color: white; border-bottom: 1px solid gray; border-top: 1px solid gray; display: block;"><a href="about-445nf.html" style="font-size: 11pt;" class="act_sub"><p class="showmuiten1" style="margin-right: 10px; display: inline;">▶</p>445NF</a></li>
         </ul>
     }
-
     @section headerCss {
         <style>
             td a:hover {
@@ -82,7 +75,6 @@
             }
         </style>
     }
-
     @section footerJs {
         <script>
             function showDocs(url) {

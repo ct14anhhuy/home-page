@@ -9,7 +9,7 @@ namespace Utilities
 {
     public static class ImageHelper
     {
-        public static void SaveJpeg(string path, Image img)
+        private static void SaveJpeg(string path, Image img)
         {
             var qualityParam = new EncoderParameter(Encoder.Quality, 100L);
             var jpegCodec = GetEncoderInfo("image/jpeg");
@@ -50,10 +50,11 @@ namespace Utilities
             return res;
         }
 
-        public static void PerformImageResize(HttpPostedFileBase img, int pWidth, int pHeight, string miniFilePath)
+        public static void PerformImageResize(HttpPostedFileBase img, int newWidth, int newHeight, string filePath)
         {
-            Image imgResized = Resize(Image.FromStream(img.InputStream), pWidth, pHeight);
-            SaveJpeg(miniFilePath, imgResized);
+            Image imgOrigin = Image.FromStream(img.InputStream);
+            Image imgResized = Resize(imgOrigin, newWidth, newHeight);
+            SaveJpeg(filePath, imgResized);
         }
     }
 }

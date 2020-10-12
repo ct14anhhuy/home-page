@@ -1,5 +1,4 @@
-﻿using Services.Interfaces;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace HomePageVST
@@ -12,7 +11,7 @@ namespace HomePageVST
 
             routes.MapRoute(
               name: "Home",
-              url: "index.html",
+              url: "home.html",
               defaults: new { controller = "Home", action = "Index" },
               namespaces: new string[] { "HomePageVST.Controllers" }
            );
@@ -38,12 +37,12 @@ namespace HomePageVST
               namespaces: new string[] { "HomePageVST.Controllers" }
            );
 
-            RegisterStaticRoutes_Introduction(routes);
-            RegisterStaticRoutes_Product(routes);
-            RegisterStaticRoutes_OpenBusiness(routes);
-            RegisterStaticRoutes_PR(routes);
-            RegisterStaticRoutes_contact(routes);
-            RegisterStaticRoutes_About(routes);
+            Introduction(routes);
+            Product(routes);
+            OpenBusiness(routes);
+            PR(routes);
+            Contact(routes);
+            About(routes);
 
             routes.MapRoute(
                 name: "Default",
@@ -53,7 +52,7 @@ namespace HomePageVST
             );
         }
 
-        private static void RegisterStaticRoutes_About(RouteCollection routes)
+        private static void About(RouteCollection routes)
         {
             routes.MapRoute(
               name: "StainlessSteelGuidebook",
@@ -98,7 +97,7 @@ namespace HomePageVST
            );
         }
 
-        private static void RegisterStaticRoutes_Introduction(RouteCollection routes)
+        private static void Introduction(RouteCollection routes)
         {
             routes.MapRoute(
               name: "Introduction",
@@ -129,7 +128,7 @@ namespace HomePageVST
             );
         }
 
-        private static void RegisterStaticRoutes_Product(RouteCollection routes)
+        private static void Product(RouteCollection routes)
         {
             routes.MapRoute(
                name: "C301301L",
@@ -307,7 +306,7 @@ namespace HomePageVST
             );
         }
 
-        private static void RegisterStaticRoutes_OpenBusiness(RouteCollection routes)
+        private static void OpenBusiness(RouteCollection routes)
         {
             routes.MapRoute(
               name: "Recruitment",
@@ -338,7 +337,7 @@ namespace HomePageVST
           );
         }
 
-        private static void RegisterStaticRoutes_PR(RouteCollection routes)
+        private static void PR(RouteCollection routes)
         {
             routes.MapRoute(
               name: "CoporateCitizenNewsroom",
@@ -369,7 +368,7 @@ namespace HomePageVST
             );
         }
 
-        private static void RegisterStaticRoutes_contact(RouteCollection routes)
+        private static void Contact(RouteCollection routes)
         {
             routes.MapRoute(
                name: "ContactVST",
