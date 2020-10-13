@@ -45,7 +45,7 @@ namespace Services
             //Save thumbnail
             ImageHelper.PerformImageResize(imageDTO.ImageFile, 300, 0, miniFilePath);
 
-            imageDTO.FilePath = ConfigHelper.ReadSetting("image.News.Path") + fileName;
+            imageDTO.FilePath = ConfigHelper.ReadSetting("Image.News.Path") + fileName;
             imageDTO.MinimalFilePath = ConfigHelper.ReadSetting("Thumbnail.News.Path") + fileName;
             var image = _imageRepository.Add(_mapper.Map<Image>(imageDTO));
             _unitOfWork.Commit();

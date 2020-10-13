@@ -8,12 +8,12 @@ namespace HomePageVST.Filters
     public class SitemapActionResult : ActionResult
     {
         private List<SitemapViewModels> _sitemap;
-        private string _Website;
+        private string _website;
 
-        public SitemapActionResult(List<SitemapViewModels> sitemap, string Website)
+        public SitemapActionResult(List<SitemapViewModels> sitemap, string website)
         {
             _sitemap = sitemap;
-            _Website = Website;
+            _website = website;
         }
 
         public override void ExecuteResult(ControllerContext context)
@@ -25,7 +25,7 @@ namespace HomePageVST.Filters
                 foreach (var siteMapItem in _sitemap)
                 {
                     writer.WriteStartElement("url");
-                    writer.WriteElementString("loc", string.Format(this._Website + "{0}", siteMapItem.URL));
+                    writer.WriteElementString("loc", string.Format(_website + "{0}", siteMapItem.URL));
                     if (siteMapItem.DateAdded != null)
                     {
                         writer.WriteElementString("lastmod", string.Format("{0:yyyy-MM-dd}", siteMapItem.DateAdded));

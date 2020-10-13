@@ -6,7 +6,6 @@ namespace Repositories
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        public IGenericRepository<HeaderCategory> HeaderCategoryRepository { get; private set; }
         public IGenericRepository<HeaderDetail> HeaderDetailRepository { get; private set; }
         public IGenericRepository<UserLogin> UserLoginRepository { get; private set; }
         public IGenericRepository<Document> DocumentRepository { get; private set; }
@@ -22,7 +21,6 @@ namespace Repositories
         {
             _dbContext = dbContext;
 
-            HeaderCategoryRepository = new GenericRepository<HeaderCategory>(_dbContext);
             HeaderDetailRepository = new GenericRepository<HeaderDetail>(_dbContext);
             UserLoginRepository = new GenericRepository<UserLogin>(_dbContext);
             DocumentRepository = new GenericRepository<Document>(_dbContext);

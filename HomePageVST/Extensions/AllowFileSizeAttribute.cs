@@ -5,12 +5,13 @@ namespace HomePageVST.Filters
 {
     public class AllowFileSizeAttribute : ValidationAttribute
     {
-        public int FileSize { get; set; } = 100 * 1024 * 1024;
+        public int FileSize { get; set; }
+
         public override bool IsValid(object value)
         {
-            HttpPostedFileBase file = value as HttpPostedFileBase;
+            var file = value as HttpPostedFileBase;
             bool isValid = true;
-            int allowedFileSize = this.FileSize;
+            int allowedFileSize = FileSize;
             if (file != null)
             {
                 var fileSize = file.ContentLength;

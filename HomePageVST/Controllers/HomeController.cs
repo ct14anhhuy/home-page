@@ -1,24 +1,18 @@
 ﻿using HomePageVST.Controllers.Core;
 using HomePageVST.Filters;
-using HomePageVST.Models;
 using Services.Interfaces;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using Utilities;
 
 namespace HomePageVST.Controllers
 {
     public class HomeController : ControllerCore
     {
-        private IHeaderCategoryService _headerCategoryService;
         private IHeaderDetailService _headerDetailService;
         private IImageService _imageService;
 
-        public HomeController(IHeaderCategoryService headerCategoryService, IHeaderDetailService headerDetailService, IImageService imageService)
+        public HomeController(IHeaderDetailService headerDetailService, IImageService imageService)
         {
-            _headerCategoryService = headerCategoryService;
             _headerDetailService = headerDetailService;
             _imageService = imageService;
         }
@@ -50,20 +44,8 @@ namespace HomePageVST.Controllers
         [PartialCache("Cache-1H-CS")]
         public ActionResult Header()
         {
-            var listHheaderCategoryDTO = _headerCategoryService.GetAll();
-            var listHeaderDetailDTO = _headerDetailService.GetAll();
-            var listHeaderCategoryViewModel = from c in listHheaderCategoryDTO
-                                              join d in listHeaderDetailDTO on c.Id equals d.HeaderCategoryId
-                                              select new HeaderCategoryViewModels
-                                              {
-                                                  HeaderCategoryId = c.Id,
-                                                  HeaderCategoryName = c.Name,
-                                                  HeaderDetailId = d.Id,
-                                                  HeaderDetailName = d.Name,
-                                                  HeaderDetailAlias = d.Alias,
-                                                  ParentId = d.ParentId
-                                              };
-            return PartialView(listHeaderCategoryViewModel);
+            var listHeaderDetailDTO = _headerDetailService.GetMenus();
+            return PartialView(listHeaderDetailDTO);
         }
 
         [ChildActionOnly]

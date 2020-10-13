@@ -420,7 +420,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CoporateCitizenViewModels.cs" />
     <Compile Include="Models\DocumentViewModels.cs" />
-    <Compile Include="Models\HeaderCategoryViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SitemapViewModels.cs" />

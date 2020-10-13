@@ -20,9 +20,9 @@ namespace Services
             _mapper = mapper;
         }
 
-        public IEnumerable<HeaderDetailDTO> GetAll()
+        public IEnumerable<HeaderDetailDTO> GetMenus()
         {
-            IEnumerable<HeaderDetail> listHeaderDetail = _headerDetailRepository.GetAll();
+            var listHeaderDetail = _headerDetailRepository.GetAll(c => c.HeaderCategory);
             return _mapper.Map<IEnumerable<HeaderDetailDTO>>(listHeaderDetail);
         }
 
