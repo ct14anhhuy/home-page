@@ -1,11 +1,8 @@
 ﻿@model IEnumerable<DTO.ImageDTO>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-
 <h4>@Html.ActionLink("Create New", "Create")</h4>
 <br />
 <table class="table">
@@ -52,3 +49,8 @@
         }
     </tbody>
 </table>
+@section ShortPath {
+    <ul class="breadcrumbs pull-left">
+        <li><span>Coporate Citizen</span></li>
+    </ul>
+}

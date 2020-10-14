@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<DTO.RecruitmentDTO>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -56,3 +55,8 @@
         }
     </tbody>
 </table>
+@section ShortPath {
+    <ul class="breadcrumbs pull-left">
+        <li><span>Recruitment</span></li>
+    </ul>
+}

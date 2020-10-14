@@ -21,9 +21,9 @@
         <div class="loader"></div>
     </div>
     @{Html.RenderAction("Header", "Home");}
-
-    @RenderBody()
-
+    <div id="content-wrap" style="width:1350px;margin:auto;">
+        @RenderBody()
+    </div>
     @{Html.RenderAction("Footer", "Home");}
     <!--#region Facebook chat-->
     <div class="fb-wrap pulsing">
@@ -35,5 +35,6 @@
     @Scripts.Render("~/js/plugins")
     @Scripts.Render("~/js/customs")
     @RenderSection("footerJs", required: false)
+    </div>
 </body>
 </html>

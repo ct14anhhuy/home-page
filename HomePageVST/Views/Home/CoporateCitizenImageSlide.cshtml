@@ -1,79 +1,77 @@
 ﻿@model IEnumerable<DTO.ImageDTO>
-<div id="cpSlide" class="container">
-    <div class="row">
-        <div class="col-xs-12 col-centered" style="padding-bottom:20px">
-            <h4 class="wow fadeInUp" data-wow-delay="0.4s" style="margin-left:15px">Coporate Citizen</h4>
-            <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
-                <div class="carousel-inner">
-                    @{
-                        int i = 0;
-                        string active = "";
-                        foreach (var image in Model)
-                        {
-                            i++;
-                            active = i == 1 ? "active" : "";
-                            <div class="item @active">
-                                <div class="carousel-col">
-                                    <a href="@image.FilePath" data-lightbox="image-1" data-title="@image.ImageDescription">
-                                        <img class="img-responsive" style="height:150px; width:250px" src="@image.MinimalFilePath" />
-                                        <span class="galery-link">@image.ImageDescription</span>
-                                    </a>
-                                </div>
-                            </div>
-                        }
+<div class="row">
+    <div class="col-xs-12 col-centered" style="padding-bottom:20px">
+        <h4 class="wow fadeInUp" data-wow-delay="0.4s" style="margin-left:15px">Coporate Citizen</h4>
+        <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+            <div class="carousel-inner">
+                @{
+                    int i = 0;
+                    string active = "";
+                    foreach (var image in Model)
+                    {
+                        i++;
+                        active = i == 1 ? "active" : "";
+                <div class="item @active">
+                    <div class="carousel-col">
+                        <a href="@image.FilePath" data-lightbox="image-1" data-title="@image.ImageDescription">
+                            <img class="img-responsive" style="height:150px; width:250px" src="@image.MinimalFilePath" />
+                            <span class="galery-link">@image.ImageDescription</span>
+                        </a>
+                    </div>
+                </div>
                     }
-                </div>
-                <div class="left carousel-control">
-                    <a href="#carousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </div>
-                <div class="right carousel-control">
-                    <a href="#carousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
+                }
+            </div>
+            <div class="left carousel-control">
+                <a href="#carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </div>
+            <div class="right carousel-control">
+                <a href="#carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
     </div>
-    <div id="video-frame" class="row">
-        <div class="col-xs-12 col-centered" style="padding-bottom:20px">
-            <h4 class="wow fadeInUp" data-wow-delay="0.4s" style="margin-left:15px">Introduction Posco VST</h4>
-            <div class="col-xs-4 vid">
-                <center>
-                    <video class="video-js"
-                           controls
-                           preload="none"
-                           poster="~/media/images/poster ok.jpg"
-                           data-setup="{}">
-                        <source src="@Url.Content("media/videos/POSCO-VST-180418.mp4")" type="video/mp4" />
-                    </video>
-                </center>
-            </div>
-            <div class="col-xs-4 vid">
-                <center>
-                    <video class="video-js"
-                           controls
-                           preload="none"
-                           poster="~/media/images/poster ok.jpg"
-                           data-setup="{}">
-                        <source src="@Url.Content("media/videos/posco-vst-15.12.2015.mp4")" type="video/mp4" />
-                    </video>
-                </center>
-            </div>
-            <div class="col-xs-4 vid">
-                <center>
-                    <video class="video-js"
-                           controls
-                           preload="none"
-                           poster="~/media/images/poster ok.jpg"
-                           data-setup="{}">
-                        <source src="@Url.Content("media/videos/POSCO-VST-final-6.12.2017.mp4")" type="video/mp4" />
-                    </video>
-                </center>
-            </div>
+</div>
+<div id="video-frame" class="row">
+    <div class="col-xs-12 col-centered" style="padding-bottom:20px">
+        <h4 class="wow fadeInUp" data-wow-delay="0.4s" style="margin-left:15px">Introduction Posco VST</h4>
+        <div class="col-xs-4 vid">
+            <center>
+                <video class="video-js"
+                       controls
+                       preload="none"
+                       poster="~/media/images/poster ok.jpg"
+                       data-setup="{}">
+                    <source src="@Url.Content("media/videos/POSCO-VST-180418.mp4")" type="video/mp4" />
+                </video>
+            </center>
+        </div>
+        <div class="col-xs-4 vid">
+            <center>
+                <video class="video-js"
+                       controls
+                       preload="none"
+                       poster="~/media/images/poster ok.jpg"
+                       data-setup="{}">
+                    <source src="@Url.Content("media/videos/posco-vst-15.12.2015.mp4")" type="video/mp4" />
+                </video>
+            </center>
+        </div>
+        <div class="col-xs-4 vid">
+            <center>
+                <video class="video-js"
+                       controls
+                       preload="none"
+                       poster="~/media/images/poster ok.jpg"
+                       data-setup="{}">
+                    <source src="@Url.Content("media/videos/POSCO-VST-final-6.12.2017.mp4")" type="video/mp4" />
+                </video>
+            </center>
         </div>
     </div>
 </div>

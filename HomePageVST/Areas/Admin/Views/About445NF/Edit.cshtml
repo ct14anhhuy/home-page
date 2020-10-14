@@ -1,20 +1,15 @@
 ﻿@model DTO.DocumentDTO
 @using HomePageVST.Extensions.AntiModelInjection
-
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Edit</h4>
-        <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-5">
@@ -22,7 +17,6 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.UploadedDate, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-2">
@@ -30,7 +24,6 @@
                 @Html.ValidationMessageFor(model => model.UploadedDate, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-2">
@@ -40,15 +33,12 @@
                 </div>
             </div>
         </div>
-
         @Html.AntiModelInjectionFor(x => x.Id)
         @Html.AntiModelInjectionFor(x => x.FileName)
         @Html.AntiModelInjectionFor(x => x.CategoryId)
-
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.FileName)
         @Html.HiddenFor(model => model.CategoryId)
-
         <div class="form-group">
             <div class="col-md-offset-1 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -56,11 +46,15 @@
         </div>
     </div>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+@section ShortPath {
+    <ul class="breadcrumbs pull-left">
+        <li>@Html.ActionLink("445NF", "Index")</li>
+        <li><span>Edit</span></li>
+    </ul>
+}
 @section footerJs {
     <script>
 

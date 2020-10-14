@@ -21,7 +21,7 @@
         <div class="loader"></div>
     </div>
     @{Html.RenderAction("Header", "Home");}
-    <div style="width:1350px;margin:auto;">
+    <div id="content-wrap" style="width:1350px;margin:auto;">
         <div style="float:left;" id="left-menu">
             @RenderSection("LeftMenu", required: true)
         </div>

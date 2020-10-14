@@ -1,16 +1,13 @@
 ﻿@model DTO.RecruitmentDTO
-
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Create</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.JobTitle, htmlAttributes: new { @class = "control-label col-md-1" })
@@ -19,7 +16,6 @@
                 @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-10">
@@ -27,7 +23,6 @@
                 @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.JobRequirement, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-10">
@@ -35,7 +30,6 @@
                 @Html.ValidationMessageFor(model => model.JobRequirement, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-2">
@@ -43,7 +37,6 @@
                 @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.DateExpired, htmlAttributes: new { @class = "control-label col-md-1" })
             <div class="col-md-2">
@@ -58,17 +51,19 @@
         </div>
     </div>
 }
-
 <div style="padding-left:20px">
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+@section ShortPath {
+    <ul class="breadcrumbs pull-left">
+        <li>@Html.ActionLink("Recruitment", "Index")</li>
+        <li><span>Create New</span></li>
+    </ul>
+}
 @section footerJs {
     <script>
-
         CKEDITOR.replace('txtJobDescription');
         CKEDITOR.replace('txtJobRequirement');
-
         $(document).ready(function () {
             $('input[type=datetime]').datepicker({
                 dateFormat: "mm/dd/yy",

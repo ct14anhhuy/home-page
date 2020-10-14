@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<DTO.DocumentDTO>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
-<h4>@Html.ActionLink("Upload File", "Create")</h4>
+<h4>@Html.ActionLink("Create New", "Create")</h4>
 <br />
-
 <table class="table">
     <thead>
         <tr>
@@ -52,3 +49,8 @@
         }
     </tbody>
 </table>
+@section ShortPath {
+    <ul class="breadcrumbs pull-left">
+        <li><span>Welding</span></li>
+    </ul>
+}

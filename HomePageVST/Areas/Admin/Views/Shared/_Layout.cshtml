@@ -38,7 +38,7 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li><a href="~/home.html"><span>Home</span></a></li>
+                            <li><a href="~/home.html"><span class="ti-home"></span><span>Home</span></a></li>
                             <li id="recruitment-mn"><a href="/admin/recruitment"><span>Recruitment</span></a></li>
                             <li id="ssg-mn"><a href="/admin/StanlessSteelGuidebook"><span>Stainless Steel Guidebook</span></a></li>
                             <li id="corrosion-mn"><a href="/admin/Corrosion"><span>Corrosion</span></a></li>
@@ -75,11 +75,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <ul class="breadcrumbs pull-left">
-                                <li>
-                                    <h3 style="color:#4f6896;">Posco VST Admin Dashboard</h3>
-                                </li>
-                            </ul>
+                            @RenderSection("ShortPath", required: false)
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -102,7 +98,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="market-status-table mt-4">
+                                <div class="market-status-table">
                                     <div class="table-responsive">
                                         @RenderBody()
                                     </div>
