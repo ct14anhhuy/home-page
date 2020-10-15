@@ -49,7 +49,6 @@ namespace HomePageVST.Controllers
         }
 
         [ChildActionOnly]
-        [PartialCache("Cache-1H-CS")]
         public ActionResult Footer()
         {
             return PartialView();

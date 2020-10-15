@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div id="content-detail" style="width:980px;margin-left:20%">
+<div class="content-detail" style="width:980px;margin-left:20%">
     <div class="row">
         <div class="col-xs-10">
             <center><h4 class="wow fadeInUp" data-wow-delay="0.6s" style="margin-left:auto; margin-right:auto">COPORATE CITIZEN</h4></center>
@@ -71,6 +71,12 @@
 }
 @section headerCss {
     <style>
+        @@media screen and (max-width: 1024px) {
+            #content-detail .col-xs-10 {
+                overflow: unset;
+            }
+        }
+
         .archive_list ul {
             width: auto;
             height: auto;

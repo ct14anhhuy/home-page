@@ -10,6 +10,8 @@ namespace HomePageVST.Controllers
     public class SitemapController : Controller
     {
         private IHeaderDetailService _headerDetailService;
+        private const string WEBSITE_URL = "http://www.poscovst.com.vn/";
+
         public SitemapController(IHeaderDetailService headerDetailService)
         {
             _headerDetailService = headerDetailService;
@@ -18,7 +20,6 @@ namespace HomePageVST.Controllers
         [OutputCache(Duration = 1800, VaryByParam = "none")]
         public SitemapActionResult Index()
         {
-            var website = "http://www.poscovst.com.vn/";
             var sitemapItems = new List<SitemapViewModels>();
             var urls = _headerDetailService.GetUrls();
 
@@ -47,12 +48,12 @@ namespace HomePageVST.Controllers
             {
                 sitemapItems.Add(new SitemapViewModels
                 {
-                    URL = url.Alias + ".html",
+                    URL = $"{url.Alias}.html",
                     Priority = ".8",
                     DateAdded = new DateTime(2020, 10, 5)
                 });
             }
-            return new SitemapActionResult(sitemapItems, website);
+            return new SitemapActionResult(sitemapItems, WEBSITE_URL);
         }
     }
 }

@@ -1,11 +1,10 @@
 ﻿@model DTO.CoporateCitizenContentDTO
-
 @{
     ViewBag.Title = "Newsroom";
     Layout = "~/Views/Shared/_Layout_NoLeftCategory.cshtml";
 }
 
-<div id="content-detail" class="sub single post" style="width:980px;margin-left:20%">
+<div class="content-detail sub single post" style="width:980px;margin-left:20%">
     <div class="col-xs-10">
         <article class="post_detail">
             <div class="info">
@@ -28,6 +27,10 @@
         #content h1, h2, h3, h4, h5, h6 {
             font-weight: 500;
             font-size: 30px;
+        }
+
+        h1 {
+            font-size: 2em;
         }
 
         strong {
@@ -58,8 +61,7 @@
         img.aligncenter.size-full.wp-image-71390,
         .single .post_content img {
             border: 0;
-            height: auto;
-            max-width: 100%;
+            width: 100% !important;
             vertical-align: middle;
         }
 
