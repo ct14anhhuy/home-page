@@ -48,7 +48,7 @@
         width: 100% !important;
     }
 
-    table[style="margin-top:20px;width:900px"] {
+    table[style*="width"] {
         width: 100% !important;
     }
 
@@ -56,7 +56,91 @@
         width: 100% !important;
     }
 
-    table[width="890px"] {
+    .modal-dialog[style="height: 95%; width: 100%"] {
+        width: 95% !important;
+    }
+}
+
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+
+    h4 {
+        font-size: 2.5em;
+    }
+
+    .navbar-static-top div[style="width:960px;margin:auto;"] div[style="float:right;height:40px"] {
+        height: auto !important;
+        margin-right: 25px;
+    }
+
+    #navbar_menu > ul > li > a {
+        font-size: 25px;
+    }
+
+    #navbar_menu ul ul {
+        z-index: 10;
+        width: 100%;
+        min-width: 130px;
+    }
+
+        #navbar_menu ul ul li {
+            height: auto !important;
+        }
+
+        #navbar_menu ul ul ul {
+            width: 150px;
+            min-width: 130px;
+        }
+
+            #navbar_menu ul ul ul ul {
+                width: 150px;
+                min-width: 130px;
+            }
+
+        div[style="height: auto; border: 2px solid #cccccc; padding: 20px;"] a,
+        .content-detail .col-xs-10 div[style*="width:850px"],
+        .content-detail .col-xs-10 div[style*="width:850px"] table tbody tr[height="20"] td,
+        .content-detail .col-xs-10 div[style*="width:850px"] table tbody tr td[style*="font-size:15px"],
+        .content-detail .col-xs-10 div[style*="width:850px"] table tbody tr td a,
+        .content-detail .col-xs-10 table tbody tr[style="font-size:15px; font-family:Tahoma"],
+        #navbar_menu ul ul li a,
+        #accordian .h5 span,
+        footer .container a,
+        .meta,
+        b, p, strong {
+            font-size: 20px !important;
+        }
+
+    #home h3,
+    footer .container h4 {
+        font-size: 25px !important;
+    }
+
+    .content-detail .col-xs-10 div[style="font-size:15px; font-family:Tahoma; color:#797977; width:800px"] {
+        font-size: 18px !important;
+    }
+
+    img[src="/media/images/icon/SLOGANVST.png"] {
         width: 100% !important;
+        height: auto !important;
+    }
+
+    img[src="/media/images/poscovstlogo.png"] {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .content-detail .col-xs-10 div[style*="width:850px"] .col-xs-4 {
+        height: 230px !important;
+        margin-bottom: auto !important;
+    }
+
+    div[style="border: 3px solid #7DB9DF; margin-left: 10px; margin-top: 20px; margin-bottom: 10px; margin-right: 10px; height: 576px;"] {
+        font-size: 20px !important;
+        height: 800px !important;
+    }
+
+    .modal-header .close {
+        font-size: 50px;
+        margin-top: -20px !important;
     }
 }

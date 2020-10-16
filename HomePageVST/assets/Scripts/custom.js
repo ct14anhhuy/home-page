@@ -38,10 +38,13 @@
     $(function () {
         $('.navbar-default a, #home a, footer a, #sub-footer a').on('click', function (event) {
             var $anchor = $(this);
-            $('html, body').stop().animate({
-                scrollTop: $($anchor.attr('href')).offset().top - 49
-            }, 1000);
-            event.preventDefault();
+            var nav = $($anchor.attr('href'));
+            if (nav.length) {
+                $('html, body').stop().animate({
+                    scrollTop: nav.offset().top - 49
+                }, 1000);
+                event.preventDefault();
+            }
         });
     });
 
