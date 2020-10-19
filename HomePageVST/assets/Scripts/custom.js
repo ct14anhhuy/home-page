@@ -48,6 +48,17 @@
         });
     });
 
+    function mobileViewUpdate() {
+        var viewportWidth = $(window).width();
+        if (viewportWidth <= 1024) {
+            $(".content-detail .col-xs-10").removeClass("col-xs-10").addClass("col-xs-11");
+        } else {
+            $(".content-detail .col-xs-11").removeClass("col-xs-11").addClass("col-xs-10");
+        }
+    }
+    $(window).load(mobileViewUpdate);
+    $(window).resize(mobileViewUpdate);
+
     // WOW ANIMATION
     new WOW({ mobile: false }).init();
 })(jQuery);

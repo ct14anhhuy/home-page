@@ -25,12 +25,12 @@
         width: 980px !important;
     }
 
-        .content-detail .col-xs-10 {
+        .content-detail .col-xs-11 {
             float: none;
             margin: auto;
         }
 
-    .of-x .col-xs-10 {
+    .of-x .col-xs-11 {
         overflow-x: auto;
         overflow-y: hidden;
     }
@@ -38,7 +38,6 @@
     #content-detail div[style="font-size:14px; font-family:Tahoma; color:#797977; width:850px"] {
         width: 100% !important;
     }
-
 
     div[style="font-size:14px; font-family:Tahoma; color:#797977; width:850px"] img {
         width: 100% !important;
@@ -59,10 +58,18 @@
     .modal-dialog[style="height: 95%; width: 100%"] {
         width: 95% !important;
     }
+
+    .Std_Font_B[style*="/media/images/banner.jpg"] {
+        background-size: cover;
+    }
+
+    .content-detail .col-xs-11 table[style="margin-left:20px; margin-right:20px"] {
+        margin: auto !important;
+        width: 95% !important;
+    }
 }
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
-
     h4 {
         font-size: 2.5em;
     }
@@ -72,9 +79,13 @@
         margin-right: 25px;
     }
 
-    #navbar_menu > ul > li > a {
-        font-size: 25px;
+    #navbar_menu > ul > li {
+        margin-bottom: 10px;
     }
+
+        #navbar_menu > ul > li > a {
+            font-size: 25px;
+        }
 
     #navbar_menu ul ul {
         z-index: 10;
@@ -86,22 +97,18 @@
             height: auto !important;
         }
 
-        #navbar_menu ul ul ul {
+        #navbar_menu ul ul ul,
+        #navbar_menu ul ul ul ul {
             width: 150px;
             min-width: 130px;
         }
 
-            #navbar_menu ul ul ul ul {
-                width: 150px;
-                min-width: 130px;
-            }
-
         div[style="height: auto; border: 2px solid #cccccc; padding: 20px;"] a,
-        .content-detail .col-xs-10 div[style*="width:850px"],
-        .content-detail .col-xs-10 div[style*="width:850px"] table tbody tr[height="20"] td,
-        .content-detail .col-xs-10 div[style*="width:850px"] table tbody tr td[style*="font-size:15px"],
-        .content-detail .col-xs-10 div[style*="width:850px"] table tbody tr td a,
-        .content-detail .col-xs-10 table tbody tr[style="font-size:15px; font-family:Tahoma"],
+        .content-detail .col-xs-11 div[style*="width:850px"],
+        .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr[height="20"] td,
+        .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr td[style*="font-size:15px"],
+        .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr td a,
+        .content-detail .col-xs-11 table tbody tr[style="font-size:15px; font-family:Tahoma"],
         #navbar_menu ul ul li a,
         #accordian .h5 span,
         footer .container a,
@@ -115,7 +122,7 @@
         font-size: 25px !important;
     }
 
-    .content-detail .col-xs-10 div[style="font-size:15px; font-family:Tahoma; color:#797977; width:800px"] {
+    .content-detail .col-xs-11 div[style="font-size:15px; font-family:Tahoma; color:#797977; width:800px"] {
         font-size: 18px !important;
     }
 
@@ -129,7 +136,7 @@
         height: auto !important;
     }
 
-    .content-detail .col-xs-10 div[style*="width:850px"] .col-xs-4 {
+    .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-4 {
         height: 230px !important;
         margin-bottom: auto !important;
     }
