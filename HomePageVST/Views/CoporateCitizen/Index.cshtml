@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="content-detail" style="width:980px;margin-left:20%">
-    <div class="row">
+    <div id="ccRow" class="row">
         <div class="col-xs-10">
             <center><h4 class="wow fadeInUp" data-wow-delay="0.6s" style="margin-left:auto; margin-right:auto">COPORATE CITIZEN</h4></center>
             <div class="archive_list">
@@ -30,19 +30,19 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div id="infographicsRow" class="row">
         <div class="col-xs-10">
             <center><h4 class="wow fadeInUp" data-wow-delay="0.6s" style="margin-left:auto; margin-right:auto">Infographics</h4></center>
             <div style="font-size:14px; font-family:Tahoma; color:#797977; width:850px">
                 @foreach (var image in Model.Images)
                 {
                     <div class="col-xs-4" style="height:170px;margin-bottom:20px;padding-right:3px;padding-left:0">
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <a href="@image.FilePath" data-lightbox="image-1" data-title="@image.ImageDescription">
                                 <img class="wow fadeInUp lazy" data-wow-delay="0.7s" data-src="@image.MinimalFilePath" style="width: 100%;height:143px" />
                             </a>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <span class="galery-link">@image.ImageDescription</span>
                         </div>
                     </div>

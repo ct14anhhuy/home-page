@@ -11,14 +11,14 @@
                     {
                         i++;
                         active = i == 1 ? "active" : "";
-                <div class="item @active">
-                    <div class="carousel-col">
-                        <a href="@image.FilePath" data-lightbox="image-1" data-title="@image.ImageDescription">
-                            <img class="img-responsive" style="height:150px; width:250px" src="@image.MinimalFilePath" />
-                            <span class="galery-link">@image.ImageDescription</span>
-                        </a>
-                    </div>
-                </div>
+                        <div class="item @active">
+                            <div class="carousel-col">
+                                <a href="@image.FilePath" data-lightbox="image-1" data-title="@image.ImageDescription">
+                                    <img class="img-responsive" src="@image.MinimalFilePath" />
+                                    <span class="galery-link">@image.ImageDescription</span>
+                                </a>
+                            </div>
+                        </div>
                     }
                 }
             </div>

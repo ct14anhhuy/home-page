@@ -25,7 +25,12 @@
         width: 980px !important;
     }
 
-        .content-detail .col-xs-11 {
+        .content-detail .row {
+            max-width: 100%;
+        }
+
+        .content-detail .col-xs-11,
+        #infographicsRow {
             float: none;
             margin: auto;
         }
@@ -35,13 +40,18 @@
         overflow-y: hidden;
     }
 
-    #content-detail div[style="font-size:14px; font-family:Tahoma; color:#797977; width:850px"] {
+    .content-detail .col-xs-11 div[style*="width:850px"] {
         width: 100% !important;
     }
 
-    div[style="font-size:14px; font-family:Tahoma; color:#797977; width:850px"] img {
-        width: 100% !important;
-    }
+        .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 {
+            height: 350px !important;
+        }
+
+            .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 img {
+                width: 100% !important;
+                height: 250px !important;
+            }
 
     img[src="media/images/picture_Introdution.png"] {
         width: 100% !important;
@@ -74,23 +84,31 @@
         font-size: 2.5em;
     }
 
+    .navbar-default {
+        padding: 35px 10px 10px;
+    }
+
+    #content-wrap {
+        margin-top: 10px !important;
+    }
+
     .navbar-static-top div[style="width:960px;margin:auto;"] div[style="float:right;height:40px"] {
         height: auto !important;
         margin-right: 25px;
+    }
+
+    .navbar-static-top div[style="width:860px;margin:auto; height:auto;"] {
+        width: 100% !important;
     }
 
     #navbar_menu > ul > li {
         margin-bottom: 10px;
     }
 
-        #navbar_menu > ul > li > a {
-            font-size: 25px;
-        }
-
     #navbar_menu ul ul {
         z-index: 10;
         width: 100%;
-        min-width: 130px;
+        min-width: 170px;
     }
 
         #navbar_menu ul ul li {
@@ -99,46 +117,48 @@
 
         #navbar_menu ul ul ul,
         #navbar_menu ul ul ul ul {
-            width: 150px;
-            min-width: 130px;
+            width: 170px;
         }
 
-        div[style="height: auto; border: 2px solid #cccccc; padding: 20px;"] a,
-        .content-detail .col-xs-11 div[style*="width:850px"],
-        .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr[height="20"] td,
-        .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr td[style*="font-size:15px"],
-        .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr td a,
-        .content-detail .col-xs-11 table tbody tr[style="font-size:15px; font-family:Tahoma"],
-        #navbar_menu ul ul li a,
-        #accordian .h5 span,
-        footer .container a,
-        .meta,
-        b, p, strong {
-            font-size: 20px !important;
-        }
+    .content-detail .col-xs-11 div[style*="width:850px"],
+    .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr[height="20"] td,
+    .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr td[style*="font-size:15px"],
+    .content-detail .col-xs-11 table tbody tr[style="font-size:15px; font-family:Tahoma"],
+    #accordian .h5 span,
+    .section-btn,
+    .meta, font[size="+1"],
+    a, b, p, strong, label {
+        font-size: 25px !important;
+        line-height: 40px !important;
+    }
+
+    .content-detail .col-xs-11 div[style="font-family:Tahoma; color:#797977"] {
+        margin-top: 15px;
+    }
+
+    .content-detail .col-xs-11 table[width="783"],
+    .content-detail .col-xs-11 table[width="783"] img {
+        width: 100% !important;
+    }
 
     #home h3,
     footer .container h4 {
         font-size: 25px !important;
     }
 
-    .content-detail .col-xs-11 div[style="font-size:15px; font-family:Tahoma; color:#797977; width:800px"] {
-        font-size: 18px !important;
+    .content-detail .col-xs-11 div[style*="width:800px"] {
+        font-size: 25px !important;
+        width: 100% !important;
     }
 
+    .content-detail .col-xs-11 table[width="600px"] {
+        width: 800px !important;
+    }
+
+    img[src="/media/images/poscovstlogo.png"],
     img[src="/media/images/icon/SLOGANVST.png"] {
         width: 100% !important;
         height: auto !important;
-    }
-
-    img[src="/media/images/poscovstlogo.png"] {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-4 {
-        height: 230px !important;
-        margin-bottom: auto !important;
     }
 
     div[style="border: 3px solid #7DB9DF; margin-left: 10px; margin-top: 20px; margin-bottom: 10px; margin-right: 10px; height: 576px;"] {
@@ -149,5 +169,27 @@
     .modal-header .close {
         font-size: 50px;
         margin-top: -20px !important;
+    }
+
+    img[src="media/images/VST_stone.png"] {
+        width: unset !important;
+        height: unset !important;
+    }
+
+    .col-xs-12.text-align-center[align="center"] {
+        display: none;
+    }
+
+    .archive_list .title {
+        max-height: 4.5em !important;
+    }
+
+    .headderin {
+        margin-top: -23px !important;
+    }
+
+    .fb-wrap {
+        height: 70px !important;
+        width: 70px !important;
     }
 }

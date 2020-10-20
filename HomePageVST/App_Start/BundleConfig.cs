@@ -53,7 +53,8 @@ namespace HomePageVST
                .Include("~/assets/css/left-menu.css", new CssRewriteUrlTransform())
                .Include("~/assets/css/dialog.css", new CssRewriteUrlTransform())
                .Include("~/assets/css/bootstrap-nonresponsive.css", new CssRewriteUrlTransform())
-               .Include("~/assets/css/fix-width.css", new CssRewriteUrlTransform()));
+               .Include("~/assets/css/fix-width.css", new CssRewriteUrlTransform())
+               );
 
             bundles.Add(new StyleBundle("~/css/home")
                .Include("~/assets/css/home.css", new CssRewriteUrlTransform()));

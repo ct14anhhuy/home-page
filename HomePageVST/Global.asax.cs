@@ -33,6 +33,15 @@ namespace HomePageVST
             LogHelper.Error(exception.Message);
         }
 
+        protected void Application_BeginRequest(object source, EventArgs e)
+        {
+            bool monitor = bool.Parse(ConfigHelper.ReadSetting("EnableMonitorPerRequest"));
+            if (monitor)
+            {
+                LogHelper.Info($"Request to {HttpContext.Current.Request.Url}");
+            }
+        }
+
         private void GetTotalUsersFromFileConfig()
         {
             var jObject = JsonHelper.Read(ConfigHelper.ReadSetting("VisitorsCounterFilePath"));
