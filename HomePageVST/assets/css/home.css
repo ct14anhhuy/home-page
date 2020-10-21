@@ -74,43 +74,41 @@ video.video-js {
         display: block;
     }
 
-@media screen and (min-width: 1024px) {
-    .carousel-inner .active.left {
-        left: -25%;
-    }
+.carousel-inner .active.left {
+    left: -25%;
+}
 
-    .carousel-inner .active.right {
-        left: 25%;
-    }
+.carousel-inner .active.right {
+    left: 25%;
+}
 
-    .carousel-inner .next {
-        left: 25%;
-    }
+.carousel-inner .next {
+    left: 25%;
+}
 
-    .carousel-inner .prev {
-        left: -25%;
-    }
+.carousel-inner .prev {
+    left: -25%;
+}
 
-    .carousel-col {
-        width: 25%;
-    }
+.carousel-col {
+    width: 25%;
+}
 
-    .active > div:first-child + div {
+.active > div:first-child + div {
+    display: block;
+}
+
+    .active > div:first-child + div + div {
         display: block;
     }
 
-        .active > div:first-child + div + div {
+        .active > div:first-child + div + div + div {
             display: block;
         }
 
-            .active > div:first-child + div + div + div {
-                display: block;
-            }
-
-    .img-responsive {
-        width: 100% !important;
-        height: 150px !important;
-    }
+.img-responsive {
+    width: 100% !important;
+    height: 150px !important;
 }
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
@@ -150,9 +148,14 @@ video.video-js {
         width: 100% !important;
         height: 200px !important;
     }
+
+    .glyphicon.glyphicon-chevron-left,
+    .glyphicon.glyphicon-chevron-right {
+        margin-top: -45px;
+    }
 }
 
 .block {
     width: 306px;
-    height: 230px;
+    height: 830px;
 }

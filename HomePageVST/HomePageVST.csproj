@@ -455,6 +455,7 @@
     <Content Include="Areas\Admin\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="assets\css\bootstrap-nonresponsive.css" />
     <Content Include="assets\css\fix-width.css" />
+    <Content Include="assets\Scripts\fix-width.js" />
     <Content Include="assets\Scripts\home.js" />
     <Content Include="media\images\Posco family in vietnam.jpg" />
     <Content Include="Content\themes\base\accordion.css" />

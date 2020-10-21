@@ -47,22 +47,6 @@
             }
         });
     });
-
-    function mobileViewUpdate() {
-        var viewportWidth = $(window).width();
-        if (viewportWidth <= 1024) {
-            $("#video-frame .col-centered .vid").removeClass("col-xs-4").addClass("col-xs-6");
-            $(".content-detail .col-xs-10 .col-xs-4").removeClass("col-xs-4").addClass("col-xs-6");
-            $(".content-detail .col-xs-10").removeClass("col-xs-10").addClass("col-xs-11");
-        } else {
-            $("#video-frame .col-centered .vid").removeClass("col-xs-6").addClass("col-xs-4");
-            $(".content-detail .col-xs-11 .col-xs-6").removeClass("col-xs-6").addClass("col-xs-4");
-            $(".content-detail .col-xs-11").removeClass("col-xs-11").addClass("col-xs-10");
-        }
-    }
-    $(window).load(mobileViewUpdate);
-    $(window).resize(mobileViewUpdate);
-
     // WOW ANIMATION
     new WOW({ mobile: false }).init();
 })(jQuery);

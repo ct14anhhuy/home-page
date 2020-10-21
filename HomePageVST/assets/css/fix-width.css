@@ -1,19 +1,17 @@
 ﻿@media screen and (max-width: 1024px) {
-    .navbar-static-top div[style="width:960px;margin:auto;"] {
-        width: 100% !important;
-    }
-
     #header-wrapper {
         padding: 0px 15px;
     }
 
-    img[src="/media/images/icon/SLOGANVST.png"] {
-        width: 85% !important;
+    .navbar-static-top div[style="width:960px;margin:auto;"] div[style="float:right;height:40px"] {
+        height: auto !important;
+        margin-right: 15px;
     }
 
-    #left-menu {
-        display: none;
-    }
+        #left-menu,
+        .navbar-static-top div[style="width:960px;margin:auto;"] div[style="float:right;height:40px"] a[href="login.html"] {
+            display: none;
+        }
 
     #content-wrap {
         width: 980px !important;
@@ -40,27 +38,19 @@
         overflow-y: hidden;
     }
 
-    .content-detail .col-xs-11 div[style*="width:850px"] {
-        width: 100% !important;
+    .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 {
+        height: 350px !important;
     }
 
-        .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 {
-            height: 350px !important;
+        .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 img {
+            width: 100% !important;
+            height: 250px !important;
         }
 
-            .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 img {
-                width: 100% !important;
-                height: 250px !important;
-            }
-
-    img[src="media/images/picture_Introdution.png"] {
-        width: 100% !important;
-    }
-
-    table[style*="width"] {
-        width: 100% !important;
-    }
-
+    .navbar-static-top div[style="width:960px;margin:auto;"],
+    .content-detail .col-xs-11 div[style*="width:850px"],
+    img[src="media/images/picture_Introdution.png"],
+    table[style*="width"],
     table[style="font-family:Tahoma; font-size:12px; color:#75758b"] {
         width: 100% !important;
     }
@@ -85,40 +75,39 @@
     }
 
     .navbar-default {
-        padding: 35px 10px 10px;
+        padding: 25px 10px 10px;
     }
 
     #content-wrap {
         margin-top: 10px !important;
     }
 
-    .navbar-static-top div[style="width:960px;margin:auto;"] div[style="float:right;height:40px"] {
-        height: auto !important;
-        margin-right: 25px;
-    }
-
-    .navbar-static-top div[style="width:860px;margin:auto; height:auto;"] {
-        width: 100% !important;
-    }
-
-    #navbar_menu > ul > li {
-        margin-bottom: 10px;
-    }
-
-    #navbar_menu ul ul {
-        z-index: 10;
+    #navbar_menu {
         width: 100%;
-        min-width: 170px;
     }
 
-        #navbar_menu ul ul li {
-            height: auto !important;
+        #navbar_menu > ul {
+            padding: 0px 25px;
         }
 
-        #navbar_menu ul ul ul,
-        #navbar_menu ul ul ul ul {
-            width: 170px;
+            #navbar_menu > ul > li {
+                margin-bottom: 10px;
+            }
+
+        #navbar_menu ul ul {
+            z-index: 10;
+            width: 100%;
+            min-width: 150px;
         }
+
+            #navbar_menu ul ul li {
+                height: auto !important;
+            }
+
+            #navbar_menu ul ul ul,
+            #navbar_menu ul ul ul ul {
+                width: 170px;
+            }
 
     .content-detail .col-xs-11 div[style*="width:850px"],
     .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr[height="20"] td,
@@ -136,6 +125,7 @@
         margin-top: 15px;
     }
 
+    .navbar-static-top div[style="width:860px;margin:auto; height:auto;"],
     .content-detail .col-xs-11 table[width="783"],
     .content-detail .col-xs-11 table[width="783"] img {
         width: 100% !important;
@@ -161,10 +151,28 @@
         height: auto !important;
     }
 
-    div[style="border: 3px solid #7DB9DF; margin-left: 10px; margin-top: 20px; margin-bottom: 10px; margin-right: 10px; height: 576px;"] {
-        font-size: 20px !important;
-        height: 800px !important;
+    div[style*="height: 576px;"] {
+        font-size: 25px !important;
+        height: 890px !important;
     }
+
+        div[style*="height: 576px;"] > div {
+            width: 100% !important;
+        }
+
+        div[style*="height: 576px;"] .divleft {
+            width: 40% !important;
+            margin-left: 40px !important;
+        }
+
+        div[style*="height: 576px;"] .divright {
+            width: 40% !important;
+            margin-right: 50px !important;
+        }
+
+        div[style*="height: 576px;"] table {
+            min-width: 350px;
+        }
 
     .modal-header .close {
         font-size: 50px;
@@ -176,8 +184,18 @@
         height: unset !important;
     }
 
-    .col-xs-12.text-align-center[align="center"] {
-        display: none;
+    .angle-up-btn {
+        bottom: unset;
+    }
+
+    .footer-link.col-xs-12 {
+        float: none !important;
+        text-align: center;
+    }
+
+    .border-top {
+        padding-top: 1.5em;
+        margin-bottom: 1em;
     }
 
     .archive_list .title {
@@ -186,10 +204,20 @@
 
     .headderin {
         margin-top: -23px !important;
+        width: 250px !important;
+    }
+
+    .headtable {
+        width: 100% !important;
     }
 
     .fb-wrap {
         height: 70px !important;
         width: 70px !important;
+    }
+
+    .Std_Font_B[style*="/media/images/banner.jpg"] > div * {
+        margin-top: unset !important;
+        margin-bottom: unset !important;
     }
 }
