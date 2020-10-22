@@ -22,7 +22,7 @@ video.video-js {
     overflow: hidden;
 }
 
-@media screen and (max-width: 1024px) and (orientation: portrait) {
+@media screen and (max-device-width: 1024px) and (orientation: portrait) {
     #video-frame .col-centered .vid + .vid + .vid {
         display: none;
     }
@@ -111,25 +111,25 @@ video.video-js {
     height: 150px !important;
 }
 
-@media screen and (max-width: 1024px) and (orientation: portrait) {
+@media screen and (max-device-width: 1024px) and (orientation: portrait) {
     .carousel-inner .active.left {
-        left: -33%;
+        left: -33.3%;
     }
 
     .carousel-inner .active.right {
-        left: 33%;
+        left: 33.3%;
     }
 
     .carousel-inner .next {
-        left: 33%;
+        left: 33.3%;
     }
 
     .carousel-inner .prev {
-        left: -33%;
+        left: -33.3%;
     }
 
     .carousel-col {
-        width: 33%;
+        width: 33.3%;
     }
 
     .active > div:first-child + div {
@@ -143,6 +143,10 @@ video.video-js {
             .active > div:first-child + div + div + div {
                 display: none;
             }
+
+    .active + div > div:first-child + div + div + div {
+        display: none;
+    }
 
     .img-responsive {
         width: 100% !important;

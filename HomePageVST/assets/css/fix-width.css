@@ -1,4 +1,4 @@
-﻿@media screen and (max-width: 1024px) {
+﻿@media screen and (max-device-width: 1024px) {
     #header-wrapper {
         padding: 0px 15px;
     }
@@ -15,6 +15,10 @@
 
     #content-wrap {
         width: 980px !important;
+    }
+
+    .owl-carousel.owl-theme.owl-loaded.owl-drag {
+        touch-action: none;
     }
 
     .content-detail {
@@ -47,6 +51,8 @@
             height: 250px !important;
         }
 
+    .content-detail .col-xs-11 div[style*="width:850px"] img[style="width: 90%; display: inline-block;"],
+    .content-detail .col-xs-11 img.wow.fadeInUp,
     .navbar-static-top div[style="width:960px;margin:auto;"],
     .content-detail .col-xs-11 div[style*="width:850px"],
     img[src="media/images/picture_Introdution.png"],
@@ -67,9 +73,21 @@
         margin: auto !important;
         width: 95% !important;
     }
+
+        .content-detail .col-xs-11 table[style="margin-left:20px; margin-right:20px"] > tbody > tr td:first-child {
+            width: 10% !important;
+        }
+
+            .content-detail .col-xs-11 table[style="margin-left:20px; margin-right:20px"] > tbody > tr td:first-child + td {
+                width: 70% !important;
+            }
+
+                .content-detail .col-xs-11 table[style="margin-left:20px; margin-right:20px"] > tbody > tr td:first-child + td + td {
+                    width: 20% !important;
+                }
 }
 
-@media screen and (max-width: 1024px) and (orientation: portrait) {
+@media screen and (max-device-width: 1024px) and (orientation: portrait) {
     h4 {
         font-size: 2.5em;
     }
@@ -179,6 +197,14 @@
         margin-top: -20px !important;
     }
 
+    .modal-body {
+        padding: unset !important;
+    }
+
+        .modal-body iframe {
+            height: 95% !important;
+        }
+
     img[src="media/images/VST_stone.png"] {
         width: unset !important;
         height: unset !important;
@@ -204,7 +230,7 @@
 
     .headderin {
         margin-top: -23px !important;
-        width: 250px !important;
+        width: 400px !important;
     }
 
     .headtable {
@@ -212,8 +238,8 @@
     }
 
     .fb-wrap {
-        height: 70px !important;
-        width: 70px !important;
+        height: 80px !important;
+        width: 80px !important;
     }
 
     .Std_Font_B[style*="/media/images/banner.jpg"] > div * {

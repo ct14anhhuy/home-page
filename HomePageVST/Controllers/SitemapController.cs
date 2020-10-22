@@ -10,7 +10,7 @@ namespace HomePageVST.Controllers
     public class SitemapController : Controller
     {
         private IHeaderDetailService _headerDetailService;
-        private const string WEBSITE_URL = "http://www.poscovst.com.vn/";
+        private const string WEBSITE_URL = "http://poscovst.com.vn/";
 
         public SitemapController(IHeaderDetailService headerDetailService)
         {
@@ -41,6 +41,13 @@ namespace HomePageVST.Controllers
             {
                 URL = "site-map.html",
                 Priority = "1",
+                DateAdded = new DateTime(2020, 10, 5)
+            });
+
+            sitemapItems.Add(new SitemapViewModels
+            {
+                URL = "application-of-sts.html",
+                Priority = "0.8",
                 DateAdded = new DateTime(2020, 10, 5)
             });
 

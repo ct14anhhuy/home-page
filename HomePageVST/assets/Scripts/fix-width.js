@@ -1,8 +1,9 @@
 ﻿function mobileViewUpdate() {
     var height = $(window).height();
     var width = $(window).width();
-    var viewportWidth = $(window).width();
-    if (viewportWidth <= 1024) {
+    var isMobile = window.matchMedia("only screen and (max-device-width: 1024px)").matches;
+
+    if (isMobile) {
         //for mobile device if(portrait) and else(landscape)
         if (height > width) {
             $(".footer-link").addClass("col-xs-12");
