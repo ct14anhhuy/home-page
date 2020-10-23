@@ -1057,9 +1057,10 @@
     <Content Include="media\images\series400\441_2.png" />
     <Content Include="media\images\series400\444_1.png" />
     <Content Include="media\images\series400\444_2.png" />
-    <Content Include="media\images\slider1.jpg" />
     <Content Include="media\images\slider2.jpg" />
     <Content Include="media\images\slider3.jpg" />
+    <Content Include="media\images\slider4.jpg" />
+    <Content Include="media\images\slider1.jpg" />
     <Content Include="media\images\surface.png" />
     <Content Include="media\images\surface_1.png" />
     <Content Include="media\images\surface_2.png" />

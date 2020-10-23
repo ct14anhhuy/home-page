@@ -464,6 +464,9 @@ header {
     background-image: url(../../media/images/slider3.jpg);
 }
 
+.slider .item-fourth {
+    background-image: url(../../media/images/slider4.jpg);
+}
 /*---------------------------------------
       ABOUT
   -----------------------------------------*/
@@ -787,18 +790,15 @@ header {
      FOOTER
   -----------------------------------------*/
 
-footer {
-    padding-top: 20px;
-    padding-bottom: 20px;
+footer a,
+#sub-slide a {
+    color: #757575;
 }
 
-    footer a {
-        color: #757575;
+    footer a:hover,
+    #sub-slide a:hover {
+        color: #4267b2;
     }
-
-        footer a:hover {
-            color: #4267b2;
-        }
 
 .contact-info {
     padding-top: 10px;

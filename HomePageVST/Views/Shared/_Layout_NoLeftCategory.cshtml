@@ -19,9 +19,13 @@
     <div id="preloader">
         <div class="loader"></div>
     </div>
-    @{Html.RenderAction("Header", "Home");}
-    <div id="content-wrap" style="width:1350px;margin:auto;">
-        @RenderBody()
+    <div id="page-wrap">
+        @{Html.RenderAction("Header", "Home");}
+        <div id="content-wrap">
+            <div id="content-wrap" style="width:1350px;margin:auto;">
+                @RenderBody()
+            </div>
+        </div>
     </div>
     @{Html.RenderAction("Footer", "Home");}
     <!--#region Facebook chat-->
@@ -34,6 +38,5 @@
     @Scripts.Render("~/js/plugins")
     @Scripts.Render("~/js/customs")
     @RenderSection("footerJs", required: false)
-    </div>
 </body>
 </html>

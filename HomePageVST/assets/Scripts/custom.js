@@ -36,7 +36,7 @@
 
     //SMOOTHSCROLL
     $(function () {
-        $('.navbar-default a, #home a, footer a, #sub-footer a').on('click', function (event) {
+        $('.navbar-default a, #home a, footer a').on('click', function (event) {
             var $anchor = $(this);
             var nav = $($anchor.attr('href'));
             if (nav.length) {
