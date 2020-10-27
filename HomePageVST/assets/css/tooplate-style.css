@@ -791,7 +791,9 @@ header {
   -----------------------------------------*/
 
 footer a,
-#sub-slide a {
+footer p,
+#sub-slide a,
+#sub-slide p {
     color: #757575;
 }
 

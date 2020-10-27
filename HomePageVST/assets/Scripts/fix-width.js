@@ -1,4 +1,6 @@
-﻿function mobileViewUpdate() {
+﻿const HEADER_HEIGHT = "133px";
+
+function mobileViewUpdate() {
     var height = $(window).height();
     var width = $(window).width();
     var isMobile = window.matchMedia("only screen and (max-device-width: 1024px)").matches;
@@ -24,13 +26,18 @@
     }
 }
 
-function updateHeaderHeightOnViewChange() {
-    var headerHeight = "133px";
-    $("#sticky-wrapper").css("height", headerHeight);
-}
+$(window).load(function () {
+    mobileViewUpdate();
+    $('#header-wrapper div:first-child + div + div + div').toggleClass('sbar_collapsed');
+    $("#sticky-wrapper").css("height", HEADER_HEIGHT);
+});
 
-$(window).load(mobileViewUpdate);
 $(window).resize(function () {
     mobileViewUpdate();
-    updateHeaderHeightOnViewChange();
+    $("#sticky-wrapper").css("height", HEADER_HEIGHT);
+});
+
+$('.nav-btn').on('click', function () {
+    $('#header-wrapper div:first-child + div + div + div').toggleClass('sbar_collapsed');
+    $("#sticky-wrapper").css("height", HEADER_HEIGHT);
 });

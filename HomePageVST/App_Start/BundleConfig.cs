@@ -47,7 +47,8 @@ namespace HomePageVST
              .Include("~/assets/css/style.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/colors1.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/tooplate-style.css", new CssRewriteUrlTransform())
-             .Include("~/assets/css/lightbox.css", new CssRewriteUrlTransform()));
+             .Include("~/assets/css/lightbox.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/themify-icons.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/css/customs")
                .Include("~/assets/css/customs.css", new CssRewriteUrlTransform())

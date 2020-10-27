@@ -455,6 +455,8 @@
     <Content Include="Areas\Admin\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="assets\css\bootstrap-nonresponsive.css" />
     <Content Include="assets\css\fix-width.css" />
+    <Content Include="assets\css\themify-icons.css" />
+    <Content Include="assets\fonts\themify.svg" />
     <Content Include="assets\Scripts\fix-width.js" />
     <Content Include="assets\Scripts\home.js" />
     <Content Include="media\images\Posco family in vietnam.jpg" />
@@ -1419,6 +1421,9 @@
     <Content Include="Areas\Admin\assets\fonts\themify.eot" />
     <Content Include="Areas\Admin\assets\fonts\themify.ttf" />
     <Content Include="Areas\Admin\assets\fonts\themify.woff" />
+    <Content Include="assets\fonts\themify.eot" />
+    <Content Include="assets\fonts\themify.ttf" />
+    <Content Include="assets\fonts\themify.woff" />
     <None Include="assets\Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="assets\Scripts\jquery-1.12.4.js" />
     <Content Include="assets\Scripts\jquery-1.12.4.min.js" />
