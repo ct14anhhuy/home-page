@@ -27,9 +27,14 @@ video.video-js {
 }
 
 @media screen and (max-device-width: 1024px) and (orientation: portrait) {
+    #video-frame .col-centered .vid,
     #video-frame .col-centered .vid + .vid + .vid {
-        display: none;
+        display: block;
     }
+
+        #video-frame .col-centered .vid + .vid {
+            display: none;
+        }
 
     .video-js {
         height: 260px !important;
@@ -46,7 +51,6 @@ video.video-js {
 }
 
 .carousel-control {
-    width: 8%;
     width: 0px;
 }
 

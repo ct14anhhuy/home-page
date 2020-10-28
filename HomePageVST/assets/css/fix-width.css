@@ -8,9 +8,9 @@
 
 #page-wrap {
     min-height: 70% !important;
-    min-height: -webkit-calc(100% - 138px) !important;
-    min-height: -moz-calc(100% - 138px) !important;
-    min-height: calc(100% - 138px) !important;
+    min-height: -webkit-calc(100% - 133px) !important;
+    min-height: -moz-calc(100% - 133px) !important;
+    min-height: calc(100% - 133px) !important;
 }
 
 @media screen and (max-device-width: 1024px) {
@@ -42,7 +42,6 @@
 
     .content-detail {
         margin-left: unset !important;
-        margin-top: 25px;
         max-width: 100%;
         width: 980px !important;
     }
@@ -57,29 +56,23 @@
             margin: auto;
         }
 
-    .of-x .col-xs-11 {
-        overflow-x: auto;
-        overflow-y: hidden;
-    }
+            .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 {
+                height: 350px !important;
+            }
 
-    .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 {
-        height: 350px !important;
-    }
+                .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 img {
+                    width: 100% !important;
+                    height: 250px !important;
+                }
 
-        .content-detail .col-xs-11 div[style*="width:850px"] .col-xs-6 img {
-            width: 100% !important;
-            height: 250px !important;
-        }
-
-    .content-detail .col-xs-11 div[style*="width:850px"] img[style="width: 90%; display: inline-block;"],
-    .content-detail .col-xs-11 img.wow.fadeInUp,
-    .navbar-static-top div[style="width:960px;margin:auto;"],
-    .content-detail .col-xs-11 div[style*="width:850px"],
-    img[src="media/images/picture_Introdution.png"],
-    table[style*="width"],
-    table[style="font-family:Tahoma; font-size:12px; color:#75758b"] {
-        width: 100% !important;
-    }
+            .content-detail .col-xs-11 div[style*="width:850px"] img[style="width: 90%; display: inline-block;"],
+            .content-detail .col-xs-11 img.wow.fadeInUp,
+            .navbar-static-top div[style="width:960px;margin:auto;"],
+            .content-detail .col-xs-11 div[style*="width:850px"],
+            img[src="media/images/picture_Introdution.png"],
+            table[style*="width"] {
+                width: 100% !important;
+            }
 
     .modal-dialog[style="height: 95%; width: 100%"] {
         width: 95% !important;
@@ -116,6 +109,10 @@
         padding: 25px 10px 10px;
     }
 
+    .layout .navbar-default {
+        margin-bottom: 15px;
+    }
+
     #navbar_menu {
         width: 100%;
     }
@@ -127,12 +124,6 @@
             #navbar_menu > ul > li {
                 margin-bottom: 10px;
             }
-
-        #navbar_menu ul ul {
-            z-index: 10;
-            width: 100%;
-            min-width: 150px;
-        }
 
             #navbar_menu ul ul li {
                 height: auto !important;
@@ -148,6 +139,10 @@
     a, b, p, strong, label {
         font-size: 25px !important;
         line-height: 40px !important;
+    }
+
+    table[style="font-family:Tahoma; font-size:12px; color:#75758b"] * {
+        font-size: 11.5px !important;
     }
 
     .content-detail .col-xs-11 div[style="font-family:Tahoma; color:#797977"] {
@@ -310,5 +305,6 @@
         max-width: 100%;
         min-width: 50%;
         width: unset;
+        z-index: 10;
     }
 }

@@ -28,14 +28,14 @@
                             {
                                 var listHeaderDetailByCategoryId = Model.Where(x => x.HeaderCategoryId == headerCategory.HeaderCategoryId && x.ParentId == null);
                                 <li>
-                                    <a href="#">@headerCategory.Name</a>
+                                    <a>@headerCategory.Name</a>
                                     @if (listHeaderDetailByCategoryId.Any())
                                     {
                                         <ul>
                                             @foreach (var headerDetail in listHeaderDetailByCategoryId)
                                             {
                                                 var listHeaderDetailByCategoryIdSub = Model.Where(x => x.HeaderCategoryId == headerDetail.HeaderCategoryId && x.ParentId == headerDetail.Id);
-                                                string url = headerDetail.Alias == null ? "#" : headerDetail.Alias + ".html";
+                                                string url = headerDetail.Alias == null ? "javascript:void(0)" : headerDetail.Alias + ".html";
                                                 <li class="li-category">
                                                     <a href="@url">@headerDetail.Name</a>
                                                     @if (listHeaderDetailByCategoryIdSub.Any())
@@ -44,7 +44,7 @@
                                                             @foreach (var headerDetailSub in listHeaderDetailByCategoryIdSub)
                                                             {
                                                                 var listHeaderDetailByCategoryIdSub2 = Model.Where(x => x.HeaderCategoryId == headerDetailSub.HeaderCategoryId && x.ParentId == headerDetailSub.Id);
-                                                                string urlSub = headerDetailSub.Alias == null ? "#" : headerDetailSub.Alias + ".html";
+                                                                string urlSub = headerDetailSub.Alias == null ? "javascript:void(0)" : headerDetailSub.Alias + ".html";
                                                                 <li class="li-category">
                                                                     <a href="@urlSub">@headerDetailSub.Name</a>
                                                                     @if (listHeaderDetailByCategoryIdSub2.Any())
@@ -52,7 +52,7 @@
                                                                         <ul>
                                                                             @foreach (var headerDetailSub2 in listHeaderDetailByCategoryIdSub2)
                                                                             {
-                                                                                string urlSub2 = headerDetailSub2.Alias == null ? "#" : headerDetailSub2.Alias + ".html";
+                                                                                string urlSub2 = headerDetailSub2.Alias == null ? "javascript:void(0)" : headerDetailSub2.Alias + ".html";
                                                                                 <li class="li-category">
                                                                                     <a href="@urlSub2">@headerDetailSub2.Name</a>
                                                                                 </li>
