@@ -15,7 +15,7 @@ namespace HomePageVST.Filters
             if (file != null)
             {
                 var fileExtension = Path.GetExtension(file.FileName);
-                isValid = fileExtension == this.FileExtension;
+                isValid = fileExtension == FileExtension;
             }
             return isValid;
         }
