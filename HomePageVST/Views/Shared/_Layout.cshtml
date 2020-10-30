@@ -29,13 +29,9 @@
         </div>
     </div>
     @{Html.RenderAction("Footer", "Home");}
-    <!--#region Facebook chat-->
-    <div class="fb-wrap pulsing">
-        <a href="#">
-            <img id="fb-img" src="~/media/images/icon/face-b.png" />
-        </a>
-    </div>
-    <!--#endregion-->
+
+    @{Html.RenderPartial("FacebookMessenger");}
+
     @Scripts.Render("~/js/plugins")
     @Scripts.Render("~/js/customs")
     @RenderSection("footerJs", required: false)

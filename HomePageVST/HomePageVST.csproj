@@ -1519,6 +1519,7 @@
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Views\Shared\_Layout_NoLeftCategory.cshtml" />
     <Content Include="Views\CoporateCitizen\Newsroom.cshtml" />
+    <Content Include="Views\Shared\FacebookMessenger.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

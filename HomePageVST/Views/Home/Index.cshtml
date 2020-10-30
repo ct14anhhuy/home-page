@@ -101,9 +101,27 @@
                             <div class="footer-thumb">
                                 <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact</h4>
                                 <div class="opening-hours">
-                                    <p class="title-footer" style="font-size:15px"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone:<span> 0251-3560-360 </span></p>
-                                    <p class="title-footer" style="font-size:15px"><i class="fa fa-envelope" aria-hidden="true"></i> E-mail:<span> tran.trinh@posco.net </span></p>
-                                    <p class="title-footer" style="font-size:15px"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook:<span> <a href="https://www.facebook.com/poscovst.vn" style="font-size:15px" target="_blank">fb.com/poscovst.vn</a> </span></p>
+                                    <p class="title-footer" style="font-size:15px"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone:<span> <a href="tel:02513560360">0251-3560-360</a></span></p>
+                                    <p class="title-footer" style="font-size:15px"><i class="fa fa-envelope" aria-hidden="true"></i> E-mail:<span> tran.trinh@posco.net</span></p>
+                                    @if (Request.Browser.IsMobileDevice)
+                                    {
+                                        if (Request.UserAgent.Contains("iPhone"))
+                                        {
+                                            <p class="title-footer" style="font-size:15px"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook:<span> <a href="fb://profile/103854038169058" style="font-size:15px" target="_blank">Posco VST</a></span></p>
+                                        }
+                                        else if (Request.UserAgent.Contains("Android"))
+                                        {
+                                            <p class="title-footer" style="font-size:15px"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook:<span> <a href="fb://page/103854038169058" style="font-size:15px" target="_blank">Posco VST</a></span></p>
+                                        }
+                                        else
+                                        {
+                                            <p class="title-footer" style="font-size:15px"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook:<span> <a href="https://m.facebook.com/Posco-VST-103854038169058" style="font-size:15px" target="_blank">Posco VST</a></span></p>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p class="title-footer" style="font-size:15px"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook:<span> <a href="https://www.facebook.com/Posco-VST-103854038169058" style="font-size:15px" target="_blank">Posco VST</a> </span></p>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -114,13 +132,9 @@
         </div>
     </div>
     @{Html.RenderAction("Footer", "Home");}
-    <!--#region Facebook chat-->
-    <div class="fb-wrap pulsing">
-        <a href="#">
-            <img id="fb-img" src="~/media/images/icon/face-b.png" />
-        </a>
-    </div>
-    <!--#endregion-->
+
+    @{Html.RenderPartial("FacebookMessenger");}
+
     @Scripts.Render("~/js/plugins")
     @Scripts.Render("~/js/customs")
     @Scripts.Render("~/js/home")

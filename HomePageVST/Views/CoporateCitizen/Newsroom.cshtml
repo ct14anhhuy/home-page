@@ -3,25 +3,25 @@
     ViewBag.Title = "Newsroom";
     Layout = "~/Views/Shared/_Layout_NoLeftCategory.cshtml";
 }
-
-<div class="content-detail sub single post" style="width:980px;margin-left:20%">
-    <div class="col-xs-10">
-        <article class="post_detail">
-            <div class="info">
-                <h1 class="post_title">@Model.CoporateCitizenCategory.Title</h1>
-                <div class="meta">
-                    <span class="date">@Convert.ToDateTime(@Model.CoporateCitizenCategory.DatePosted).ToShortDateString()</span>
+<div id="content-wrap" style="width:1350px;margin:auto;">
+    <div class="content-detail sub single post" style="width:980px;margin-left:20%">
+        <div class="col-xs-10">
+            <article class="post_detail">
+                <div class="info">
+                    <h1 class="post_title">@Model.CoporateCitizenCategory.Title</h1>
+                    <div class="meta">
+                        <span class="date">@Convert.ToDateTime(@Model.CoporateCitizenCategory.DatePosted).ToShortDateString()</span>
+                    </div>
                 </div>
-            </div>
-            <div class="post_content_wrap">
-                <div class="post_content">
-                    @Html.Raw(Model.Content)
+                <div class="post_content_wrap">
+                    <div class="post_content">
+                        @Html.Raw(Model.Content)
+                    </div>
                 </div>
-            </div>
-        </article>
+            </article>
+        </div>
     </div>
 </div>
-
 @section headerCss {
     <style>
         #content h1, h2, h3, h4, h5, h6 {
