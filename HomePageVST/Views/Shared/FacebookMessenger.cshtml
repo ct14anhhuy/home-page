@@ -1,16 +1,12 @@
-﻿@if (Request.Browser.IsMobileDevice)
-{
-    <a href="https://m.me/103854038169058" target="_blank">
-        <div class="fb-wrap pulsing">
-            <img id="fb-img" src="~/media/images/icon/face-b.png" />
-        </div>
-    </a>
+﻿@{
+    string fbMsgUrl = "https://www.messenger.com/t/103854038169058";
+    if (Request.Browser.IsMobileDevice)
+    {
+        fbMsgUrl = "https://m.me/103854038169058";
+    }
 }
-else
-{
-    <a href="https://www.messenger.com/t/103854038169058" target="_blank">
-        <div class="fb-wrap pulsing">
-            <img id="fb-img" src="~/media/images/icon/face-b.png" />
-        </div>
-    </a>
-}
+<a href="@fbMsgUrl" target="_blank">
+    <div class="fb-wrap pulsing">
+        <img id="fb-img" src="~/media/images/icon/face-b.png" />
+    </div>
+</a>

@@ -247,3 +247,28 @@
     height: 100%;
 }
 /*---------End Facebook chat button----------*/
+.fade.show {
+    opacity: 1;
+}
+
+.alert-dismiss .alert {
+    padding: 13px 15px;
+}
+
+.alert {
+    letter-spacing: 0;
+    font-size: 13px;
+    border: none;
+    padding: 10px 16px;
+}
+
+.alert-dismiss .alert-dismissible .close {
+    top: -28px;
+    right: -11px;
+    outline: none;
+    font-size: 13px;
+}
+
+.alert strong, .alert-link {
+    font-weight: 600;
+}
