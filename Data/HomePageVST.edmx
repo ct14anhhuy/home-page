@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Link" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Thumbnail" Type="varchar" MaxLength="200" />
           <Property Name="DatePosted" Type="date" />
         </EntityType>
@@ -47,6 +47,20 @@
           <Property Name="CVName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CVPath" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="RecruitmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordSalt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="Actived" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Document">
           <Key>
@@ -232,6 +246,7 @@
           <EntitySet Name="CoporateCitizenContent" EntityType="Self.CoporateCitizenContent" Schema="Crawl" store:Type="Tables" />
           <EntitySet Name="Benefit" EntityType="Self.Benefit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HeaderCategory" EntityType="Self.HeaderCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HeaderDetail" EntityType="Self.HeaderDetail" Schema="dbo" store:Type="Tables" />
@@ -526,6 +541,7 @@
             <End Role="CoporateCitizenCategory" EntitySet="CoporateCitizenCategories" />
             <End Role="CoporateCitizenContent" EntitySet="CoporateCitizenContents" />
           </AssociationSet>
+          <EntitySet Name="Customers" EntityType="HomePageVSTModel.Customer" />
         </EntityContainer>
         <EntityType Name="CoporateCitizenCategory">
           <Key>
@@ -533,7 +549,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Link" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Thumbnail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="DatePosted" Type="DateTime" Precision="0" />
           <NavigationProperty Name="CoporateCitizenContents" Relationship="HomePageVSTModel.Fk_CoporateCitizenContent_Category" FromRole="CoporateCitizenCategory" ToRole="CoporateCitizenContent" />
@@ -561,6 +577,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Actived" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -699,6 +729,21 @@
               <MappingFragment StoreEntitySet="CoporateCitizenContent">
                 <ScalarProperty Name="CoporateCitizenCategoryId" ColumnName="CoporateCitizenCategoryId" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="HomePageVSTModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Actived" ColumnName="Actived" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

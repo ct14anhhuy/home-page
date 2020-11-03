@@ -140,11 +140,13 @@
     <Compile Include="AutoMapperConfig\MappingProfile.cs" />
     <Compile Include="CoporateCitizenCategoryService.cs" />
     <Compile Include="CoporateCitizenContentService.cs" />
+    <Compile Include="CustomerService.cs" />
     <Compile Include="DocumentService.cs" />
     <Compile Include="HeaderDetailService.cs" />
     <Compile Include="ImageService.cs" />
     <Compile Include="Interfaces\ICoporateCitizenCategoryService.cs" />
     <Compile Include="Interfaces\ICoporateCitizenContentService.cs" />
+    <Compile Include="Interfaces\ICustomerService.cs" />
     <Compile Include="Interfaces\IDocumentService.cs" />
     <Compile Include="Interfaces\IHeaderDetailService.cs" />
     <Compile Include="Interfaces\IImageService.cs" />

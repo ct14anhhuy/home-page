@@ -66,6 +66,9 @@
     <Compile Include="CoporateCitizenContent.cs">
       <DependentUpon>HomePageVST.tt</DependentUpon>
     </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>HomePageVST.tt</DependentUpon>
+    </Compile>
     <Compile Include="Document.cs">
       <DependentUpon>HomePageVST.tt</DependentUpon>
     </Compile>

@@ -32,8 +32,8 @@ namespace HomePageVST
 
             routes.MapRoute(
               name: "Document",
-              url: "docs/vw/{fileName}",
-              defaults: new { controller = "Document", action = "GetReport", fileName = UrlParameter.Optional },
+              url: "docs/vw/{docId}",
+              defaults: new { controller = "Document", action = "GetReport", docId = UrlParameter.Optional },
               namespaces: new string[] { "HomePageVST.Controllers" }
            );
 

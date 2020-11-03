@@ -25,6 +25,7 @@
         <EntityTypeShape EntityType="HomePageVSTModel.CoporateCitizenCategory" Width="1.5" PointX="0.75" PointY="10.875" />
         <EntityTypeShape EntityType="HomePageVSTModel.CoporateCitizenContent" Width="1.5" PointX="3" PointY="11.125" />
         <AssociationConnector Association="HomePageVSTModel.Fk_CoporateCitizenContent_Category" />
+        <EntityTypeShape EntityType="HomePageVSTModel.Customer" Width="1.5" PointX="10.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

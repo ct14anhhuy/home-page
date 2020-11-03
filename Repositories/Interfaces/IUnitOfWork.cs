@@ -6,6 +6,7 @@ namespace Repositories.Interfaces
     {
         IGenericRepository<HeaderDetail> HeaderDetailRepository { get; }
         IGenericRepository<UserLogin> UserLoginRepository { get; }
+        IGenericRepository<Customer> CustomerRepository { get; }
         IGenericRepository<Document> DocumentRepository { get; }
         IGenericRepository<Recruitment> RecruitmentRepository { get; }
         IGenericRepository<Image> ImageRepository { get; }

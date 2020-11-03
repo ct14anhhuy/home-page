@@ -8,6 +8,7 @@ namespace Repositories
     {
         public IGenericRepository<HeaderDetail> HeaderDetailRepository { get; private set; }
         public IGenericRepository<UserLogin> UserLoginRepository { get; private set; }
+        public IGenericRepository<Customer> CustomerRepository { get; private set; }
         public IGenericRepository<Document> DocumentRepository { get; private set; }
         public IGenericRepository<Recruitment> RecruitmentRepository { get; private set; }
         public IGenericRepository<Image> ImageRepository { get; private set; }
@@ -23,6 +24,7 @@ namespace Repositories
 
             HeaderDetailRepository = new GenericRepository<HeaderDetail>(_dbContext);
             UserLoginRepository = new GenericRepository<UserLogin>(_dbContext);
+            CustomerRepository = new GenericRepository<Customer>(_dbContext);
             DocumentRepository = new GenericRepository<Document>(_dbContext);
             RecruitmentRepository = new GenericRepository<Recruitment>(_dbContext);
             ImageRepository = new GenericRepository<Image>(_dbContext);

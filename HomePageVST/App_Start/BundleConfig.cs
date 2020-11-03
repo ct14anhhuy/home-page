@@ -56,6 +56,7 @@ namespace HomePageVST
                .Include("~/assets/css/dialog.css", new CssRewriteUrlTransform())
                .Include("~/assets/css/bootstrap-nonresponsive.css", new CssRewriteUrlTransform())
                .Include("~/assets/css/fix-width.css", new CssRewriteUrlTransform())
+               .Include("~/assets/css/modal.css", new CssRewriteUrlTransform())
                );
 
             bundles.Add(new StyleBundle("~/css/home")

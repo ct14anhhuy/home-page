@@ -275,13 +275,9 @@ document.webL10n = (function (window, document, undefined) {
         if (langCount === 0) {
             // we might have a pre-compiled dictionary instead
             var dict = getL10nDictionary();
-            console.log(dict);
             if (dict && dict.locales && dict.default_locale) {
-                console.log('using the embedded JSON directory, early way out');
                 gL10nData = dict.locales[lang] || dict.locales[dict.default_locale];
                 callback();
-            } else {
-                console.log('no resource to load, early way out');
             }
             // early way out
             fireL10nReadyEvent(lang);
@@ -844,7 +840,6 @@ document.webL10n = (function (window, document, undefined) {
             } else if (arg in gL10nData) {
                 sub = gL10nData[arg][gTextProp];
             } else {
-                console.log('argument {{' + arg + '}} for #' + key + ' is undefined.');
                 return str;
             }
 

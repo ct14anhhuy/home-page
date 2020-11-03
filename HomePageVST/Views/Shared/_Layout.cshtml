@@ -28,6 +28,9 @@
             @RenderBody()
         </div>
     </div>
+
+    @{Html.RenderPartial("CustomerLogin");}
+
     @{Html.RenderAction("Footer", "Home");}
 
     @{Html.RenderPartial("FacebookMessenger");}

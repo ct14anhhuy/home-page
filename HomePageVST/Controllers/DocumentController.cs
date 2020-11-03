@@ -14,9 +14,9 @@ namespace HomePageVST.Controllers
             _documentService = documentService;
         }
 
-        // GET: Document
-        public ActionResult GetReport(string fileName)
+        public ActionResult GetReport(int docId)
         {
+            string fileName = _documentService.GetDocumentById(docId).FileName;
             ViewBag.PdfFileName = ConfigHelper.ReadSetting("Pdf.Path") + fileName;
             return View();
         }

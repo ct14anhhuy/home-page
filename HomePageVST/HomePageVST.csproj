@@ -357,6 +357,7 @@
     <Compile Include="Areas\Admin\Controllers\WeldingController.cs" />
     <Compile Include="Controllers\CoporateCitizenController.cs" />
     <Compile Include="Controllers\Core\ControllerCore.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Extensions\AllowFileExtensionAttribute.cs" />
     <Compile Include="Extensions\AllowFileSizeAttribute.cs" />
@@ -454,9 +455,11 @@
     <Content Include="Areas\Admin\assets\js\vendor\jquery-2.2.4.min.js" />
     <Content Include="Areas\Admin\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="assets\css\bootstrap-nonresponsive.css" />
+    <Content Include="assets\css\modal.css" />
     <Content Include="assets\css\fix-width.css" />
     <Content Include="assets\css\themify-icons.css" />
     <Content Include="assets\fonts\themify.svg" />
+    <Content Include="assets\Scripts\ajax\customer.js" />
     <Content Include="assets\Scripts\fix-width.js" />
     <Content Include="assets\Scripts\home.js" />
     <Content Include="media\images\Posco family in vietnam.jpg" />
@@ -1520,11 +1523,13 @@
     <Content Include="Views\Shared\_Layout_NoLeftCategory.cshtml" />
     <Content Include="Views\CoporateCitizen\Newsroom.cshtml" />
     <Content Include="Views\Shared\FacebookMessenger.cshtml" />
+    <Content Include="Views\Shared\CustomerLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="logs\" />
+    <Folder Include="Views\Customer\" />
     <Folder Include="Views\Sitemap\" />
   </ItemGroup>
   <ItemGroup>
