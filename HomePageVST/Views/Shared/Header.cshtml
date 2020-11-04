@@ -13,7 +13,14 @@
                         <a href="home.html" style="color: #A9A8A8; font-size:14px"><b>Home</b></a>
                         <a href="contact-vst.html" style="color: #A9A8A8; font-size:14px"><b> | Contact Us</b></a>
                         <a href="site-map.html" class="smoothScroll" style="color: #A9A8A8; font-size:14px"><b> | Site Map</b></a>
-                        <a href="#" class="smoothScroll" style="color: #A9A8A8; font-size:14px" data-toggle="modal" data-target="#loginModal"><b> | Login</b></a>
+                        @if (Session["CustomerEmail"] != null)
+                        {
+                            <a href="/Customer/Logout" class="smoothScroll" style="color: #A9A8A8; font-size:14px"><b> | Logout</b></a>
+                        }
+                        else
+                        {
+                            <a href="#" class="smoothScroll" style="color: #A9A8A8; font-size:14px" data-toggle="modal" data-target="#loginModal"><b> | Login</b></a>
+                        }
                     </center>
                 </div>
                 <div class="nav-btn clear">

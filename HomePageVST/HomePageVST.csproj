@@ -348,6 +348,7 @@
     <Compile Include="Areas\Admin\Controllers\About445NFController.cs" />
     <Compile Include="Areas\Admin\Controllers\CoporateCitizenController.cs" />
     <Compile Include="Areas\Admin\Controllers\CorrosionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\FormingController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsInfomationController.cs" />
     <Compile Include="Areas\Admin\Controllers\RecruitmentController.cs" />
@@ -460,6 +461,7 @@
     <Content Include="assets\css\themify-icons.css" />
     <Content Include="assets\fonts\themify.svg" />
     <Content Include="assets\Scripts\ajax\customer.js" />
+    <Content Include="assets\Scripts\ajax\document.js" />
     <Content Include="assets\Scripts\fix-width.js" />
     <Content Include="assets\Scripts\home.js" />
     <Content Include="media\images\Posco family in vietnam.jpg" />
@@ -1427,6 +1429,8 @@
     <Content Include="assets\fonts\themify.eot" />
     <Content Include="assets\fonts\themify.ttf" />
     <Content Include="assets\fonts\themify.woff" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Edit.cshtml" />
     <None Include="assets\Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="assets\Scripts\jquery-1.12.4.js" />
     <Content Include="assets\Scripts\jquery-1.12.4.min.js" />

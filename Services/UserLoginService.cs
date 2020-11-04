@@ -36,25 +36,25 @@ namespace Services
 
         public bool CheckLogin(string userName, string password)
         {
-            bool verifyPassword = false;
+            bool verify = false;
             var user = _userLoginRepository.GetSingleByPredicate(x => x.UserName == userName && x.IsActive);
             if (user != null)
             {
-                verifyPassword = CryptoService.VerifyPassword(password, Convert.FromBase64String(user.PasswordHash), Convert.FromBase64String(user.PasswordSalt));
+                verify = CryptoService.VerifyPassword(password, Convert.FromBase64String(user.PasswordHash), Convert.FromBase64String(user.PasswordSalt));
             }
-            return verifyPassword;
+            return verify;
         }
 
         public bool ChangePassword(UserLoginDTO userLogin)
         {
             bool checkError = false;
-            bool verifyPassword = false;
+            bool verify = false;
 
             var user = _userLoginRepository.GetSingleByPredicate(x => x.UserName == userLogin.UserName && x.IsActive);
             if (user != null)
             {
-                verifyPassword = CryptoService.VerifyPassword(userLogin.Password, Convert.FromBase64String(user.PasswordHash), Convert.FromBase64String(user.PasswordSalt));
-                if (verifyPassword)
+                verify = CryptoService.VerifyPassword(userLogin.Password, Convert.FromBase64String(user.PasswordHash), Convert.FromBase64String(user.PasswordSalt));
+                if (verify)
                 {
                     byte[] salt = CryptoService.GenerateSalt();
                     userLogin.PasswordSalt = Convert.ToBase64String(salt);

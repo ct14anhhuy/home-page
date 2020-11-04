@@ -36,8 +36,6 @@ namespace HomePageVST.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(DocumentViewModels document)
         {
-            document.IsActive = true;
-            document.UploadedDate = DateTime.Today;
             document.CategoryId = CommonConstants.CORROSION_CATEGORY_ID;
             ModelState["FileName"].Errors.Clear();
             ModelState["UploadedDate"].Errors.Clear();

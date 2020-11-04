@@ -19,11 +19,11 @@ namespace DTO
         [Required(ErrorMessage = "Enter uploaded date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         [Display(Name = "Uploaded Date")]
-        public DateTime? DatePosted { get; set; }
+        public DateTime? DatePosted { get; set; } = DateTime.Today;
 
         [Required(ErrorMessage = "Enter actived")]
         [Display(Name = "Actived")]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         #region IgnoreMap
 

@@ -29,7 +29,10 @@
         </div>
     </div>
 
-    @{Html.RenderPartial("CustomerLogin");}
+    @if (Session["CustomerEmail"] == null)
+    {
+        Html.RenderPartial("CustomerLogin");
+    }
 
     @{Html.RenderAction("Footer", "Home");}
 
@@ -38,5 +41,8 @@
     @Scripts.Render("~/js/plugins")
     @Scripts.Render("~/js/customs")
     @RenderSection("footerJs", required: false)
+
+    <script src="~/assets/Scripts/ajax/document.js"></script>
+
 </body>
 </html>

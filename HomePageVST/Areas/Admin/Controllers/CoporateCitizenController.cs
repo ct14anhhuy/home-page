@@ -2,7 +2,6 @@
 using HomePageVST.Controllers.Core;
 using HomePageVST.Extensions.AntiModelInjection;
 using Services.Interfaces;
-using System;
 using System.Net;
 using System.Web.Mvc;
 using Utilities;
@@ -35,8 +34,6 @@ namespace HomePageVST.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ImageDTO imageDTO)
         {
-            imageDTO.DatePosted = DateTime.Today;
-            imageDTO.IsActive = true;
             imageDTO.HeaderDetailId = CommonConstants.COPORATE_CITIZEN_ID;
             ModelState["DatePosted"].Errors.Clear();
 

@@ -9,11 +9,11 @@ namespace DTO
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Enter your company name")]
-        [Display(Name = "CompanyName")]
+        [Display(Name = "Company Name")]
         public string CompanyName { get; set; }
 
         [Required(ErrorMessage = "Enter your company address")]
-        [Display(Name = "CompanyAddress")]
+        [Display(Name = "Company Address")]
         public string CompanyAddress { get; set; }
 
         [Required(ErrorMessage = "Enter your telephone")]
@@ -27,8 +27,11 @@ namespace DTO
 
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
-        public DateTime DateCreated { get; set; }
-        public bool Actived { get; set; }
+        [Display(Name = "Date Created")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime DateCreated { get; set; } = DateTime.Today;
+        [Display(Name = "Actived")]
+        public bool IsActive { get; set; } = false;
 
         [IgnoreMap]
         [Required(ErrorMessage = "Enter your password")]

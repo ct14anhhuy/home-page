@@ -14,17 +14,46 @@ namespace HomePageVST.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateCustomer(CustomerDTO customer)
+        public JsonResult Register(CustomerDTO customer)
         {
             if (ModelState.IsValid)
             {
                 _customerService.CreateCustomer(customer);
-                return Json(new { Message = "", JsonRequestBehavior.AllowGet });
+                return Json(new { createdSuccess = true }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return new HttpStatusCodeResult(400);
+                return Json(new { createdSuccess = false }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [HttpGet]
+        public JsonResult CheckLoggedIn()
+        {
+            bool logged = Session["CustomerEmail"] != null;
+            return Json(new { logged = logged }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Login(string email, string password)
+        {
+            var result = _customerService.CheckLogin(email, password);
+            if (result)
+            {
+                Session["CustomerEmail"] = email;
+                return Json(new { loginSuccess = true }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { loginSuccess = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            Session["CustomerEmail"] = null;
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

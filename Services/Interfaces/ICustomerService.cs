@@ -5,12 +5,14 @@ namespace Services.Interfaces
 {
     public interface ICustomerService
     {
-        IEnumerable<CustomerDTO> GetActivedCustomers();
-
         CustomerDTO CreateCustomer(CustomerDTO customerDTO);
 
-        void SetActiveCustomer(CustomerDTO customerDTO);
+        bool CheckLogin(string email, string password);
 
-        CustomerDTO RemoveCustomer(int customerId);
+        IEnumerable<CustomerDTO> GetAll();
+
+        CustomerDTO GetById(int id);
+
+        void Edit(CustomerDTO customer);
     }
 }

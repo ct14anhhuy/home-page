@@ -22,6 +22,6 @@ namespace Data
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
         public System.DateTime DateCreated { get; set; }
-        public bool Actived { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -26,7 +26,10 @@
         </div>
     </div>
 
-    @{Html.RenderPartial("CustomerLogin");}
+    @if (Session["CustomerEmail"] == null)
+    {
+        Html.RenderPartial("CustomerLogin");
+    }
 
     @{Html.RenderAction("Footer", "Home");}
 

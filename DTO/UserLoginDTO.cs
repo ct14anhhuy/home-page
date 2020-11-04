@@ -16,8 +16,8 @@ namespace DTO
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
         public int RoleId { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public bool IsActive { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.Today;
+        public bool IsActive { get; set; } = true;
 
         #region IgnoreMap
 

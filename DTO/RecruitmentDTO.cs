@@ -25,14 +25,14 @@ namespace DTO
         [Display(Name = "Date Posted")]
         [Required(ErrorMessage = "Enter date posted")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DatePosted { get; set; }
+        public DateTime DatePosted { get; set; } = DateTime.Today;
 
         [Display(Name = "Date Expired")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? DateExpired { get; set; }
 
         [Display(Name = "Actived")]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         public virtual ICollection<BenefitDTO> Benefits { get; set; }
         public virtual ICollection<CandidateDTO> Candidates { get; set; }

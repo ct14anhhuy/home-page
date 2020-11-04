@@ -17,11 +17,11 @@ namespace DTO
         [Required(ErrorMessage = "Enter uploaded date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         [Display(Name = "Uploaded Date")]
-        public DateTime? UploadedDate { get; set; }
+        public DateTime? UploadedDate { get; set; } = DateTime.Today;
 
         [Required(ErrorMessage = "Enter actived")]
         [Display(Name = "Actived")]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         [Required(ErrorMessage = "Enter file name")]
         [Display(Name = "File Name")]

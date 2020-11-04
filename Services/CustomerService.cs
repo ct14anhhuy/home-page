@@ -22,12 +22,6 @@ namespace Services
             _mapper = mapper;
         }
 
-        public IEnumerable<CustomerDTO> GetActivedCustomers()
-        {
-            var customers = _customerRepository.GetAll();
-            return _mapper.Map<IEnumerable<CustomerDTO>>(customers);
-        }
-
         public CustomerDTO CreateCustomer(CustomerDTO customerDTO)
         {
             byte[] salt = CryptoService.GenerateSalt();
@@ -38,17 +32,33 @@ namespace Services
             return _mapper.Map<CustomerDTO>(customer);
         }
 
-        public void SetActiveCustomer(CustomerDTO customerDTO)
+        public bool CheckLogin(string email, string password)
         {
-            _customerRepository.Update(_mapper.Map<Customer>(customerDTO));
-            _unitOfWork.Commit();
+            bool verify = false;
+            var customer = _customerRepository.GetSingleByPredicate(x => x.Email == email && x.IsActive);
+            if (customer != null)
+            {
+                verify = CryptoService.VerifyPassword(password, Convert.FromBase64String(customer.PasswordHash), Convert.FromBase64String(customer.PasswordSalt));
+            }
+            return verify;
         }
 
-        public CustomerDTO RemoveCustomer(int customerId)
+        public IEnumerable<CustomerDTO> GetAll()
         {
-            var customer = _customerRepository.Delete(customerId);
-            _unitOfWork.Commit();
+            var customers = _customerRepository.GetAll();
+            return _mapper.Map<IEnumerable<CustomerDTO>>(customers);
+        }
+
+        public CustomerDTO GetById(int id)
+        {
+            var customer = _customerRepository.GetSingleById(id);
             return _mapper.Map<CustomerDTO>(customer);
+        }
+
+        public void Edit(CustomerDTO customer)
+        {
+            _customerRepository.Update(_mapper.Map<Customer>(customer));
+            _unitOfWork.Commit();
         }
     }
 }

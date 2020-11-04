@@ -111,8 +111,6 @@ namespace HomePageVST.Areas.Admin.Controllers
         public ActionResult CreateUser(UserLoginDTO userLogin)
         {
             userLogin.RoleId = CommonConstants.USER_ROLE;
-            userLogin.IsActive = true;
-            userLogin.CreatedAt = DateTime.Today;
             if (ModelState.IsValid)
             {
                 _userLoginService.CreateUser(userLogin);

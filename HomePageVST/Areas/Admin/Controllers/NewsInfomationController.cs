@@ -34,8 +34,6 @@ namespace HomePageVST.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ImageDTO imageDTO)
         {
-            imageDTO.DatePosted = DateTime.Today;
-            imageDTO.IsActive = true;
             imageDTO.HeaderDetailId = CommonConstants.NEWS_INFOMATION_ID;
             ModelState["DatePosted"].Errors.Clear();
 

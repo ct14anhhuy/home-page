@@ -22,11 +22,12 @@ namespace HomePageVST
                 "~/assets/Scripts/lightbox.min.js"));
 
             bundles.Add(new ScriptBundle("~/js/customs").Include(
-                "~/assets/Scripts/scripts.js",
-                "~/assets/Scripts/left-menu.js",
-                "~/assets/Scripts/custom.js",
-                "~/assets/Scripts/dialog.js",
-                "~/assets/Scripts/fix-width.js"));
+               "~/assets/Scripts/scripts.js",
+               "~/assets/Scripts/left-menu.js",
+               "~/assets/Scripts/custom.js",
+               "~/assets/Scripts/dialog.js",
+               "~/assets/Scripts/fix-width.js",
+               "~/assets/Scripts/ajax/customer.js"));
 
             bundles.Add(new ScriptBundle("~/js/jquery.lazy").Include(
                 "~/Content/themes/jquery.lazy/jquery.lazy.min.js"));

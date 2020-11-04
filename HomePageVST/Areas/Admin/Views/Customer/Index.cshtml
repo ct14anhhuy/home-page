@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DTO.CustomerDTO>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    <ul class="d-flex justify-content-center">
+                        <li class="mr-3"><a href="/Admin/Customer/Edit/@item.Id" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                        <li><a href="/Admin/Customer/Delete/@item.Id" class="text-danger"><i class="ti-trash"></i></a></li>
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section ShortPath {
+    <ul class="breadcrumbs pull-left">
+        <li><span>Customer</span></li>
+    </ul>
+}
