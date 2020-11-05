@@ -42,6 +42,7 @@ namespace HomePageVST.Areas.Admin.Controllers
         [ValidateAntiModelInjection("Id")]
         public ActionResult Edit(CustomerDTO customer)
         {
+            ModelState["Password"].Errors.Clear();
             if (ModelState.IsValid)
             {
                 try
@@ -59,6 +60,28 @@ namespace HomePageVST.Areas.Admin.Controllers
             {
                 return View(customer);
             }
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var customer = _customerService.GetById((int)id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(CustomerDTO customer)
+        {
+            _customerService.Delete(customer.Id);
+            return RedirectToAction("Index");
         }
     }
 }

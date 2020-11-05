@@ -46,9 +46,7 @@
             </div>
         </div>
         @Html.AntiModelInjectionFor(x => x.Id)
-        @Html.AntiModelInjectionFor(x => x.DateCreated)
         @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.DateCreated)
         <div class="form-group">
             <div class="col-md-offset-1 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -61,7 +59,7 @@
 </div>
 @section ShortPath {
     <ul class="breadcrumbs pull-left">
-        <li>@Html.ActionLink("Coporate Citizen", "Index")</li>
+        <li>@Html.ActionLink("Customer", "Index")</li>
         <li><span>Edit</span></li>
     </ul>
 }

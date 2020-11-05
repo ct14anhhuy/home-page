@@ -1431,6 +1431,7 @@
     <Content Include="assets\fonts\themify.woff" />
     <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Delete.cshtml" />
     <None Include="assets\Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="assets\Scripts\jquery-1.12.4.js" />
     <Content Include="assets\Scripts\jquery-1.12.4.min.js" />

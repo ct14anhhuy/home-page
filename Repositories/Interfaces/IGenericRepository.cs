@@ -27,5 +27,7 @@ namespace Repositories.Interfaces
         TEntity GetSingleByPredicate(Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes);
 
         void Update(TEntity entity);
+
+        void Update(TEntity entity, params Expression<Func<TEntity, object>>[] properties);
     }
 }

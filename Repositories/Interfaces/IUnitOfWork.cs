@@ -13,6 +13,6 @@ namespace Repositories.Interfaces
         IGenericRepository<CoporateCitizenCategory> CoporateCitizenCategoryRepository { get; }
         IGenericRepository<CoporateCitizenContent> CoporateCitizenContentRepository { get; }
 
-        void Commit();
+        void Commit(bool? validateOnSaveEnabled = null);
     }
 }

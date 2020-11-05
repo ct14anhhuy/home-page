@@ -49,8 +49,7 @@ namespace Services
         {
             bool checkError = false;
             bool verify = false;
-
-            var user = _userLoginRepository.GetSingleByPredicate(x => x.UserName == userLogin.UserName && x.IsActive);
+            var user = _userLoginRepository.GetSingleByPredicate(x => x.Id == userLogin.Id && x.IsActive);
             if (user != null)
             {
                 verify = CryptoService.VerifyPassword(userLogin.Password, Convert.FromBase64String(user.PasswordHash), Convert.FromBase64String(user.PasswordSalt));
@@ -59,8 +58,8 @@ namespace Services
                     byte[] salt = CryptoService.GenerateSalt();
                     userLogin.PasswordSalt = Convert.ToBase64String(salt);
                     userLogin.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(userLogin.NewPassword, salt));
-                    _userLoginRepository.Update(_mapper.Map<UserLogin>(userLogin));
-                    _unitOfWork.Commit();
+                    _userLoginRepository.Update(_mapper.Map<UserLogin>(userLogin), u => u.PasswordHash, u => u.PasswordSalt);
+                    _unitOfWork.Commit(false);
                     checkError = true;
                 }
             }

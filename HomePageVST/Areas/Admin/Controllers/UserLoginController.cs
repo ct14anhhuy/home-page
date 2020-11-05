@@ -3,7 +3,6 @@ using HomePageVST.Controllers.Core;
 using HomePageVST.Extensions.AntiModelInjection;
 using HomePageVST.Extensions.Authentication;
 using Services.Interfaces;
-using System;
 using System.Web.Mvc;
 using System.Web.Security;
 using Utilities;
@@ -50,7 +49,7 @@ namespace HomePageVST.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "user name or pass incorrect!");
+                    ModelState.AddModelError(string.Empty, "User name or pass incorrect!");
                     return View();
                 }
             }
@@ -71,12 +70,9 @@ namespace HomePageVST.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateAntiModelInjection("Id")]
-        [ValidateAntiModelInjection("UserName")]
-        [ValidateAntiModelInjection("RoleId")]
-        [ValidateAntiModelInjection("CreatedAt")]
-        [ValidateAntiModelInjection("IsActive")]
         public ActionResult ChangePassword(UserLoginDTO userLogin)
         {
+            ModelState["UserName"].Errors.Clear();
             if (ModelState.IsValid)
             {
                 bool result = _userLoginService.ChangePassword(userLogin);

@@ -14,5 +14,7 @@ namespace Services.Interfaces
         CustomerDTO GetById(int id);
 
         void Edit(CustomerDTO customer);
+
+        CustomerDTO Delete(int id);
     }
 }

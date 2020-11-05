@@ -57,8 +57,15 @@ namespace Services
 
         public void Edit(CustomerDTO customer)
         {
-            _customerRepository.Update(_mapper.Map<Customer>(customer));
+            _customerRepository.Update(_mapper.Map<Customer>(customer), x => x.CompanyAddress, x => x.CompanyName, x => x.IsActive, x => x.Telephone);
+            _unitOfWork.Commit(validateOnSaveEnabled: false);
+        }
+
+        public CustomerDTO Delete(int id)
+        {
+            var customer = _customerRepository.Delete(id);
             _unitOfWork.Commit();
+            return _mapper.Map<CustomerDTO>(customer);
         }
     }
 }

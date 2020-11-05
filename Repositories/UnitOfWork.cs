@@ -32,8 +32,12 @@ namespace Repositories
             CoporateCitizenContentRepository = new GenericRepository<CoporateCitizenContent>(_dbContext);
         }
 
-        public void Commit()
+        public void Commit(bool? validateOnSaveEnabled = null)
         {
+            if (validateOnSaveEnabled != null)
+            {
+                _dbContext.Configuration.ValidateOnSaveEnabled = (bool)validateOnSaveEnabled;
+            }
             _dbContext.SaveChanges();
         }
 

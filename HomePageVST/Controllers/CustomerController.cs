@@ -1,10 +1,11 @@
 ﻿using DTO;
+using HomePageVST.Controllers.Core;
 using Services.Interfaces;
 using System.Web.Mvc;
 
 namespace HomePageVST.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomerController : ControllerCore
     {
         private ICustomerService _customerService;
 

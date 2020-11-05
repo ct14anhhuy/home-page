@@ -23,6 +23,10 @@
             color: #ffffff;
         }
 
+        .modal-customer .modal-header button.close {
+            font-weight: unset;
+        }
+
     .modal-customer .modal-body *,
     .modal-customer .modal-footer * {
         color: #4f6896;

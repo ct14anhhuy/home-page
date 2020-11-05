@@ -1,0 +1,54 @@
+﻿@model DTO.CustomerDTO
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+@section ShortPath {
+    <ul class="breadcrumbs pull-left">
+        <li>@Html.ActionLink("Customer", "Index")</li>
+        <li><span>Delete</span></li>
+    </ul>
+}
