@@ -54,6 +54,7 @@
     <Compile Include="CommonConstants.cs" />
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="CryptoService.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="FileService.cs" />
     <Compile Include="ImageHelper.cs" />
     <Compile Include="JsonHelper.cs" />

@@ -19,12 +19,17 @@ namespace HomePageVST.Controllers
         {
             if (ModelState.IsValid)
             {
+                bool checkExists = _customerService.GetCustomerByEmail(customer.Email);
+                if (checkExists)
+                {
+                    return Json(new { createdSuccess = false, isExists = true }, JsonRequestBehavior.AllowGet);
+                }
                 _customerService.CreateCustomer(customer);
-                return Json(new { createdSuccess = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { createdSuccess = true, isExists = false }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(new { createdSuccess = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { createdSuccess = false, isExists = false }, JsonRequestBehavior.AllowGet);
             }
         }
 

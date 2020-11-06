@@ -23,11 +23,15 @@
                     alert("Register successful");
                     $("#registerModal").modal("hide");
                 } else {
-                    alert("Register failed, check your input");
+                    if (data.isExists) {
+                        alert("Register failed, this email is already exists");
+                    } else {
+                        alert("Register failed, check your input");
+                    }
                 }
             },
             error: function () {
-                alert("Error while register, try again later");
+                alert("Error while register, check again later");
             }
         });
         return false;

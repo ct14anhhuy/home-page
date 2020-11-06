@@ -5,6 +5,7 @@ using Repositories.Interfaces;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Utilities;
 
 namespace Services
@@ -25,10 +26,12 @@ namespace Services
         public CustomerDTO CreateCustomer(CustomerDTO customerDTO)
         {
             byte[] salt = CryptoService.GenerateSalt();
+            string toEmail = "anhhuy.le@posco.net";
             customerDTO.PasswordSalt = Convert.ToBase64String(salt);
             customerDTO.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(customerDTO.Password, salt));
             var customer = _customerRepository.Add(_mapper.Map<Customer>(customerDTO));
             _unitOfWork.Commit();
+            EmailService.SendEmail(toEmail, EmailContent(customer));
             return _mapper.Map<CustomerDTO>(customer);
         }
 
@@ -61,11 +64,58 @@ namespace Services
             _unitOfWork.Commit(validateOnSaveEnabled: false);
         }
 
+        public bool ApprovalCustomer(int id)
+        {
+            bool result = false;
+            var customer = _customerRepository.GetSingleByPredicate(c => c.Id == id && !c.IsActive);
+            if (customer != null)
+            {
+                customer.IsActive = true;
+                _customerRepository.Update(customer, x => x.IsActive);
+                _unitOfWork.Commit(validateOnSaveEnabled: false);
+                result = true;
+            }
+            return result;
+        }
+
         public CustomerDTO Delete(int id)
         {
             var customer = _customerRepository.Delete(id);
             _unitOfWork.Commit();
             return _mapper.Map<CustomerDTO>(customer);
+        }
+
+        public bool GetCustomerByEmail(string email)
+        {
+            return _customerRepository.GetSingleByPredicate(c => c.Email == email) != null;
+        }
+
+        private string EmailContent(Customer customer)
+        {
+            StringBuilder content = new StringBuilder();
+            content.AppendLine($"<p>Hi.</p>");
+            content.AppendLine("<table cellpadding='1' cellspacing='1' style='width: 500px'");
+            content.AppendLine("<tbody>");
+            content.AppendLine("<tr>");
+            content.AppendLine("<td>Email</td>");
+            content.AppendLine($"<td>: {customer.Email}</td>");
+            content.AppendLine("</tr>");
+            content.AppendLine("<tr>");
+            content.AppendLine("<td>Company name</td>");
+            content.AppendLine($"<td>: {customer.CompanyName}</td>");
+            content.AppendLine("</tr>");
+            content.AppendLine("<tr>");
+            content.AppendLine("<td>Company address</td>");
+            content.AppendLine($"<td>: {customer.CompanyAddress}</td>");
+            content.AppendLine("</tr>");
+            content.AppendLine("<tr>");
+            content.AppendLine("<td>Telephone</td>");
+            content.AppendLine($"<td>: {customer.Telephone}</td>");
+            content.AppendLine("</tr>");
+            content.AppendLine("</tbody>");
+            content.AppendLine("</table>");
+            content.AppendLine($"<p>You can check at admin page of poscovst.com.vn or&nbsp;click&nbsp;<a href='http://poscovst.com.vn/Admin/Customer/ApprovalCustomer/{customer.Id}' target='_blank'>HERE</a>&nbsp;to approval for this customer.</p>");
+            return content.ToString();
         }
     }
 }

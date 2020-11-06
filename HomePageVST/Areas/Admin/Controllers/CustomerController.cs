@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace HomePageVST.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         private ICustomerService _customerService;
@@ -82,6 +83,14 @@ namespace HomePageVST.Areas.Admin.Controllers
         {
             _customerService.Delete(customer.Id);
             return RedirectToAction("Index");
+        }
+
+        [AllowAnonymous]
+        public ActionResult ApprovalCustomer(int id)
+        {
+            var result = _customerService.ApprovalCustomer(id);
+            ViewBag.approvalMsg = result ? "Approval successful" : "Approval failed";
+            return View();
         }
     }
 }

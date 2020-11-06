@@ -16,5 +16,9 @@ namespace Services.Interfaces
         void Edit(CustomerDTO customer);
 
         CustomerDTO Delete(int id);
+
+        bool ApprovalCustomer(int id);
+
+        bool GetCustomerByEmail(string email);
     }
 }

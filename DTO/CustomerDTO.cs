@@ -18,18 +18,22 @@ namespace DTO
 
         [Required(ErrorMessage = "Enter your telephone")]
         [Display(Name = "Telephone")]
+        [MinLength(9)]
         public string Telephone { get; set; }
 
         [Required(ErrorMessage = "Enter your email")]
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
+        [MinLength(10)]
         public string Email { get; set; }
 
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
+
         [Display(Name = "Date Created")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DateCreated { get; set; } = DateTime.Today;
+
         [Display(Name = "Actived")]
         public bool IsActive { get; set; } = false;
 
