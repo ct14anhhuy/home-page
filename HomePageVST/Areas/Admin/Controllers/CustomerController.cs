@@ -11,6 +11,7 @@ namespace HomePageVST.Areas.Admin.Controllers
     public class CustomerController : Controller
     {
         private ICustomerService _customerService;
+        private const string POSCO_MAIL_ADDRESS = "116.127.24.126";
 
         public CustomerController(ICustomerService customerService)
         {
@@ -88,8 +89,12 @@ namespace HomePageVST.Areas.Admin.Controllers
         [AllowAnonymous]
         public ActionResult ApprovalCustomer(int id)
         {
-            var result = _customerService.ApprovalCustomer(id);
-            ViewBag.approvalMsg = result ? "Approval successful" : "Approval failed";
+            ViewBag.approvalMsg = "";
+            if (Request.UserHostAddress != POSCO_MAIL_ADDRESS)
+            {
+                var result = _customerService.ApprovalCustomer(id);
+                ViewBag.approvalMsg = result ? "Approval successful" : "Approval failed";
+            }
             return View();
         }
     }

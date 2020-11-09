@@ -41,7 +41,6 @@ namespace HomePageVST.Controllers
         }
 
         [ChildActionOnly]
-        [PartialCache("Cache-1H-CS")]
         public ActionResult Header()
         {
             var listHeaderDetailDTO = _headerDetailService.GetMenus();

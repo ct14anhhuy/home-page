@@ -209,11 +209,11 @@
         margin-top: -20px !important;
     }
 
-    .modal-body {
+    #exampleModal .modal-body {
         padding: unset !important;
     }
 
-        .modal-body iframe {
+        #exampleModal .modal-body iframe {
             height: 95% !important;
         }
 

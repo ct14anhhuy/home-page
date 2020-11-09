@@ -20,7 +20,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.createdSuccess) {
-                    alert("Register successful");
+                    alert("Register successful, please wait while we approval your request");
                     $("#registerModal").modal("hide");
                 } else {
                     if (data.isExists) {
@@ -31,7 +31,7 @@
                 }
             },
             error: function () {
-                alert("Error while register, check again later");
+                alert("Error while register, try again later");
             }
         });
         return false;
@@ -56,7 +56,7 @@
                 if (data.loginSuccess) {
                     location.reload();
                 } else {
-                    alert("Login failed, check your input");
+                    alert("Login failed, check your input or contact us to check your account");
                 }
             },
             error: function () {

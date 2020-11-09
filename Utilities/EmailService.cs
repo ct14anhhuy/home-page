@@ -12,17 +12,16 @@ namespace Utilities
     {
         private const string SENDER_EMAIL = "poscovstbot@gmail.com";
         private const string SENDER_PASSWORD = "Pvst@123";
-        private const string EMAIL_SUBJECT = "Posco VST Bot";
         private const string SMTP_HOST = "smtp.gmail.com";
 
-        public static void SendEmail(string email, string content)
+        public static void SendEmail(string email, string subject, string content)
         {
             try
             {
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(SENDER_EMAIL);
                 mail.To.Add(email);
-                mail.Subject = EMAIL_SUBJECT;
+                mail.Subject = subject;
                 mail.Body = content;
                 mail.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
