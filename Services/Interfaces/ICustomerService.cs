@@ -20,5 +20,7 @@ namespace Services.Interfaces
         bool ApprovalCustomer(int id);
 
         bool GetCustomerByEmail(string email);
+
+        bool ChangePassword(string email, string password, string newPassword);
     }
 }

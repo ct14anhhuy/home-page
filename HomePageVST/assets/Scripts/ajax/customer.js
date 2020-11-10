@@ -65,4 +65,43 @@
         });
         return false;
     });
+
+    $("#btn-cus-change-password").click(function () {
+        var password = $("#changePasswordModal #password").val();
+        var newPassword = $("#changePasswordModal #newPassword").val();
+        var confirmNewPassword = $("#changePasswordModal #confirmNewPassword").val();
+
+        if (!password || !newPassword || !confirmNewPassword) {
+            alert('Check your input and try again');
+            return false;
+        }
+        else {
+            if (password == newPassword) {
+                alert("Password and new password can not be same");
+            } else if (newPassword != confirmNewPassword) {
+                alert('New password and confirm do not match');
+            }
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/Customer/ChangePassword/',
+            data: '{password: "' + password + '", newPassword: "' + newPassword + '"}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.isChangedSuccess) {
+                    alert("password changed successfully");
+                    location.reload();
+                } else {
+                    alert("password change failed, check your input or contact us to check your account");
+                }
+            },
+            error: function () {
+                alert("password change failed, try again later");
+            }
+        });
+        return false;
+    });
 });

@@ -91,6 +91,27 @@ namespace Services
             return _customerRepository.GetSingleByPredicate(c => c.Email == email) != null;
         }
 
+        public bool ChangePassword(string email, string password, string newPassword)
+        {
+            bool checkError = false;
+            bool verify = false;
+            var customer = _customerRepository.GetSingleByPredicate(x => x.Email == email && x.IsActive);
+            if (customer != null)
+            {
+                verify = CryptoService.VerifyPassword(password, Convert.FromBase64String(customer.PasswordHash), Convert.FromBase64String(customer.PasswordSalt));
+                if (verify)
+                {
+                    byte[] salt = CryptoService.GenerateSalt();
+                    customer.PasswordSalt = Convert.ToBase64String(salt);
+                    customer.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(newPassword, salt));
+                    _customerRepository.Update(customer, c => c.PasswordHash, c => c.PasswordSalt);
+                    _unitOfWork.Commit(false);
+                    checkError = true;
+                }
+            }
+            return checkError;
+        }
+
         private string EmailToAdminContent(Customer customer)
         {
             StringBuilder content = new StringBuilder();
@@ -116,7 +137,7 @@ namespace Services
             content.AppendLine("</tr>");
             content.AppendLine("</tbody>");
             content.AppendLine("</table>");
-            content.AppendLine($"<p>You can check at admin page of poscovst.com.vn or&nbsp;click&nbsp;<a href='http://poscovst.com.vn/Admin/Customer/ApprovalCustomer/{customer.Id}' target='_blank'>HERE</a>&nbsp;to approval for this customer.</p>");
+            content.AppendLine($"<p>You can check at admin page of www.poscovst.com.vn or&nbsp;click&nbsp;<a href='http://poscovst.com.vn/Admin/Customer/ApprovalCustomer/{customer.Id}' target='_blank'>HERE</a>&nbsp;to approval for this customer.</p>");
             return content.ToString();
         }
 
@@ -126,10 +147,10 @@ namespace Services
             content.AppendLine($"<p>Dear Mr/Mrs</p>");
             content.AppendLine($"<p>Thank you for contact to us.</p>");
             content.AppendLine($"<p>We would like to inform you that your email has been successfully actived.</p>");
-            content.AppendLine($"<p>Should you have any question, please do not hesitate to contact me.</p>");
+            content.AppendLine($"<p>Should you have any question, please do not hesitate to contact us.</p>");
             content.AppendLine($"<p><b>Your sincerely</b></p>");
             content.AppendLine($"<p><b>Posco VST Vietnam</b></p>");
-            content.AppendLine($"<p><b>Phone:</b> 0251 3560 360</p>");
+            content.AppendLine($"<p><b>Phone:</b> 0251-3560-360</p>");
             content.AppendLine($"<p><b>Email:</b> tran.phuonglan@posco.net</p>");
             content.AppendLine($"<p>* Please, do not reply this email.");
             return content.ToString();

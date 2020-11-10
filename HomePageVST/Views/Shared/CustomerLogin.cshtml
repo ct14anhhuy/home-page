@@ -1,103 +1,145 @@
-﻿<!--#region Unauthorized notification-->
-<div class="modal fade modal-customer" id="notifyModal" role="dialog">
-    <div class="modal-dialog modal-380">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">Unauthorized</h5>
-            </div>
-            <div class="modal-body">
-                <p>You need login to read this content</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login <i class="ti-arrow-right"></i></button>
+﻿@if (Session["CustomerEmail"] == null)
+{
+    <!--#region Unauthorized notification-->
+    <div class="modal fade modal-customer" id="notifyModal" role="dialog">
+        <div class="modal-dialog modal-380">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Unauthorized</h5>
+                </div>
+                <div class="modal-body">
+                    <p>You need login to read this content</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login <i class="ti-arrow-right"></i></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--#endregion-->
+    <!--#endregion-->
 
-<!--#region Customer login-->
-<div class="modal fade modal-customer" id="loginModal" role="dialog">
-    <div class="modal-dialog modal-380">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">Customer Login</h5>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="email" class="form-control" id="email" placeholder="Email" />
-                    </div>
+    <!--#region Customer login-->
+    <div class="modal fade modal-customer" id="loginModal" role="dialog">
+        <div class="modal-dialog modal-380">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Customer Login</h5>
                 </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password" class="form-control" id="password" placeholder="Password" />
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="Email" />
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Password" />
+                        </div>
+                    </div>
+                    <p>
+                        - If you don't have an account, please click register button
+                    </p>
                 </div>
-                <p>
-                    - If you don't have an account, please click register button
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="btn-cus-login">Login</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register <i class="ti-arrow-right"></i></button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btn-cus-login">Login</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register <i class="ti-arrow-right"></i></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--#endregion-->
+    <!--#endregion-->
 
-<!--#region Customer register-->
-<div class="modal fade modal-customer" id="registerModal" role="dialog">
-    <div class="modal-dialog modal-380">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h5 class="modal-title">Customer Register</h5>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <input type="text" class="form-control" id="companyName" placeholder="Company Name" required="required" />
+    <!--#region Customer register-->
+    <div class="modal fade modal-customer" id="registerModal" role="dialog">
+        <div class="modal-dialog modal-380">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Customer Register</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                            <input type="text" class="form-control" id="companyName" placeholder="Company Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-road"></i></span>
+                            <input type="text" class="form-control" id="companyAddress" placeholder="Address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            <input type="tel" class="form-control" id="telephone" placeholder="Telephone" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Password" />
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-road"></i></span>
-                        <input type="text" class="form-control" id="companyAddress" placeholder="Address" required="required" />
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btn-cus-register">Register</button>
                 </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                        <input type="tel" class="form-control" id="telephone" placeholder="Telephone" required="required" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password" class="form-control" id="password" placeholder="Password" required="required" />
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="btn-cus-register">Register</button>
             </div>
         </div>
     </div>
-</div>
-<!--#endregion-->
+    <!--#endregion-->
+}
+else
+{
+    <!--#region Customer change password-->
+    <div class="modal fade modal-customer" id="changePasswordModal" role="dialog">
+        <div class="modal-dialog modal-380">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Customer Change Password</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="Password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" id="newPassword" placeholder="New Password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" id="confirmNewPassword" placeholder="Confirm New Password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btn-cus-change-password">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#endregion-->
+}

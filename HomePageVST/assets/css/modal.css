@@ -32,7 +32,7 @@
         color: #4f6896;
     }
 
-.modal-dialog {
+.modal-customer .modal-dialog {
     display: inline-block;
     text-align: left;
     vertical-align: middle;
@@ -46,7 +46,7 @@
     margin: 10px 0px;
 }
 
-.modal-dialog.modal-380 {
+.modal-customer .modal-dialog.modal-380 {
     width: 380px;
 }
 

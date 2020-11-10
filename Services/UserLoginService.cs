@@ -58,7 +58,7 @@ namespace Services
                     byte[] salt = CryptoService.GenerateSalt();
                     userLogin.PasswordSalt = Convert.ToBase64String(salt);
                     userLogin.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(userLogin.NewPassword, salt));
-                    _userLoginRepository.Update(_mapper.Map<UserLogin>(userLogin), u => u.PasswordHash, u => u.PasswordSalt);
+                    _userLoginRepository.Update(user, u => u.PasswordHash, u => u.PasswordSalt);
                     _unitOfWork.Commit(false);
                     checkError = true;
                 }

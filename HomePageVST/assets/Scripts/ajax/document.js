@@ -6,7 +6,7 @@
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            if (data.logged) {
+            if (data.isLoggedIn || data.isCompanyAddress) {
                 $("#iContent").attr("src", url);
                 $("#exampleModal").modal("show");
             } else {

@@ -414,7 +414,6 @@
     <Compile Include="Extensions\CompressFilterAttribute.cs" />
     <Compile Include="Extensions\CustomBundles\CssMinify.cs" />
     <Compile Include="Extensions\CustomBundles\StyleBundle.cs" />
-    <Compile Include="Extensions\PartialCacheAttribute.cs" />
     <Compile Include="Extensions\SitemapActionResult.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

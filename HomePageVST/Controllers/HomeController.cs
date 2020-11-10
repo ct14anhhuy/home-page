@@ -1,7 +1,7 @@
 ﻿using HomePageVST.Controllers.Core;
-using HomePageVST.Filters;
 using Services.Interfaces;
 using System.Web.Mvc;
+using System.Web.UI;
 using Utilities;
 
 namespace HomePageVST.Controllers
@@ -33,7 +33,7 @@ namespace HomePageVST.Controllers
         }
 
         [ChildActionOnly]
-        [PartialCache("Cache-1H-CS")]
+        [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client)]
         public ActionResult CoporateCitizenImageSlide()
         {
             var images = _imageService.GetActiveImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN_ID);

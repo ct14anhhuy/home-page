@@ -13,6 +13,14 @@
     min-height: calc(100% - 133px) !important;
 }
 
+#logout-sm {
+    display: none;
+}
+
+#logout-xs {
+    display: unset;
+}
+
 @media screen and (max-device-width: 1024px) {
     #header-wrapper {
         padding: 0px 15px;
@@ -38,6 +46,14 @@
 
     .owl-carousel.owl-theme.owl-loaded.owl-drag {
         touch-action: manipulation;
+    }
+
+    #logout-sm {
+        display: unset;
+    }
+
+    #logout-xs {
+        display: none;
     }
 
     .content-detail {
@@ -133,6 +149,7 @@
     .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr[height="20"] td,
     .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr td[style*="font-size:15px"],
     .content-detail .col-xs-11 table tbody tr[style="font-size:15px; font-family:Tahoma"],
+    .lb-data .lb-caption, .lb-data .lb-number,
     #accordian .h5 span,
     .section-btn, .alert,
     .meta, font[size="+1"],
@@ -175,9 +192,13 @@
         width: 800px !important;
     }
 
-    img[src="/media/images/poscovstlogo.png"],
-    img[src="/media/images/icon/SLOGANVST.png"] {
+    img[src="/media/images/poscovstlogo.png"] {
         width: 100% !important;
+        height: auto !important;
+    }
+
+    img[src="/media/images/icon/SLOGANVST.png"] {
+        width: 90% !important;
         height: auto !important;
     }
 

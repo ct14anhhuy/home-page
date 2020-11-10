@@ -8,6 +8,7 @@ namespace HomePageVST.Controllers
     public class CustomerController : ControllerCore
     {
         private ICustomerService _customerService;
+        private const string ZSCALER_ADDRESS = "165.225.112";
 
         public CustomerController(ICustomerService customerService)
         {
@@ -36,8 +37,9 @@ namespace HomePageVST.Controllers
         [HttpGet]
         public JsonResult CheckLoggedIn()
         {
-            bool logged = Session["CustomerEmail"] != null;
-            return Json(new { logged = logged }, JsonRequestBehavior.AllowGet);
+            bool isCompanyAddress = Request.UserHostAddress.Contains(ZSCALER_ADDRESS) ? true : false;
+            bool isLoggedIn = Session["CustomerEmail"] != null;
+            return Json(new { isLoggedIn, isCompanyAddress }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -52,6 +54,26 @@ namespace HomePageVST.Controllers
             else
             {
                 return Json(new { loginSuccess = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult ChangePassword(string password, string newPassword)
+        {
+            if (Session["CustomerEmail"] == null)
+            {
+                return Json(new { isChangedSuccess = false }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                string email = Session["CustomerEmail"].ToString();
+                bool isChangedSuccess = _customerService.ChangePassword(email, password, newPassword);
+                if (isChangedSuccess)
+                {
+                    Session["CustomerEmail"] = null;
+                    Session.Clear();
+                }
+                return Json(new { isChangedSuccess }, JsonRequestBehavior.AllowGet);
             }
         }
 

@@ -15,7 +15,14 @@
                         <a href="site-map.html" class="smoothScroll" style="color: #A9A8A8; font-size:14px"><b> | Site Map</b></a>
                         @if (Session["CustomerEmail"] != null)
                         {
-                            <a href="/Customer/Logout" class="smoothScroll" style="color: #A9A8A8; font-size:14px"><b> | Logout</b></a>
+                            <a href="/Customer/Logout" id="logout-sm" class="smoothScroll" style="color: #A9A8A8; font-size:14px"><b> | Logout</b></a>
+                            <div class="dropdown" id="logout-xs">
+                                <a href="#" class="smoothScroll dropdown-toggle" data-toggle="dropdown" style="color: #A9A8A8; font-size:14px"><b> | <span class="caret"></span></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" class="smoothScroll" style="color: #A9A8A8; font-size:14px" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
+                                    <li><a href="/Customer/Logout" class="smoothScroll" style="color: #A9A8A8; font-size:14px">Logout</a></li>
+                                </ul>
+                            </div>
                         }
                         else
                         {
@@ -42,7 +49,7 @@
                                             @foreach (var headerDetail in listHeaderDetailByCategoryId)
                                             {
                                                 var listHeaderDetailByCategoryIdSub = Model.Where(x => x.HeaderCategoryId == headerDetail.HeaderCategoryId && x.ParentId == headerDetail.Id);
-                                                string url = headerDetail.Alias == null ? "javascript:void(0)" : headerDetail.Alias + ".html";
+                                                string url = headerDetail.Alias == null ? "#" : headerDetail.Alias + ".html";
                                                 <li class="li-category">
                                                     <a href="@url">@headerDetail.Name</a>
                                                     @if (listHeaderDetailByCategoryIdSub.Any())
@@ -51,7 +58,7 @@
                                                             @foreach (var headerDetailSub in listHeaderDetailByCategoryIdSub)
                                                             {
                                                                 var listHeaderDetailByCategoryIdSub2 = Model.Where(x => x.HeaderCategoryId == headerDetailSub.HeaderCategoryId && x.ParentId == headerDetailSub.Id);
-                                                                string urlSub = headerDetailSub.Alias == null ? "javascript:void(0)" : headerDetailSub.Alias + ".html";
+                                                                string urlSub = headerDetailSub.Alias == null ? "#" : headerDetailSub.Alias + ".html";
                                                                 <li class="li-category">
                                                                     <a href="@urlSub">@headerDetailSub.Name</a>
                                                                     @if (listHeaderDetailByCategoryIdSub2.Any())
@@ -59,7 +66,7 @@
                                                                         <ul>
                                                                             @foreach (var headerDetailSub2 in listHeaderDetailByCategoryIdSub2)
                                                                             {
-                                                                                string urlSub2 = headerDetailSub2.Alias == null ? "javascript:void(0)" : headerDetailSub2.Alias + ".html";
+                                                                                string urlSub2 = headerDetailSub2.Alias == null ? "#" : headerDetailSub2.Alias + ".html";
                                                                                 <li class="li-category">
                                                                                     <a href="@urlSub2">@headerDetailSub2.Name</a>
                                                                                 </li>
