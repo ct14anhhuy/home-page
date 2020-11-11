@@ -37,6 +37,9 @@ namespace DTO
         [Display(Name = "Actived")]
         public bool IsActive { get; set; } = false;
 
+        [Display(Name = "Verified")]
+        public bool IsVerify { get; set; }
+
         [IgnoreMap]
         [Required(ErrorMessage = "Enter your password")]
         [DataType(DataType.Password)]

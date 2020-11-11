@@ -26,12 +26,12 @@ namespace Services
         public CustomerDTO CreateCustomer(CustomerDTO customerDTO)
         {
             byte[] salt = CryptoService.GenerateSalt();
-            string adminEmail = ConfigHelper.ReadSetting("AdminEmail");
+            string verifyEmail = ConfigHelper.ReadSetting("VerifyEmail");
             customerDTO.PasswordSalt = Convert.ToBase64String(salt);
             customerDTO.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(customerDTO.Password, salt));
             var customer = _customerRepository.Add(_mapper.Map<Customer>(customerDTO));
             _unitOfWork.Commit();
-            EmailService.SendEmail(adminEmail, $"[{customer.CompanyName}] New customer request from www.poscovst.com.vn", EmailToAdminContent(customer));
+            EmailService.SendEmail(verifyEmail, $"[Verify][{customer.CompanyName}] New customer request from www.poscovst.com.vn", EmailToEmployee(customer, "Ms.Nguyet", "http://poscovst.com.vn/Admin/Customer/VerifyCustomer/", "verify"));
             return _mapper.Map<CustomerDTO>(customer);
         }
 
@@ -60,6 +60,10 @@ namespace Services
 
         public void Edit(CustomerDTO customer)
         {
+            if (customer.IsActive && !customer.IsVerify)
+            {
+                throw new Exception("Can not uncheck Verifed when Active checked");
+            }
             _customerRepository.Update(_mapper.Map<Customer>(customer), x => x.CompanyAddress, x => x.CompanyName, x => x.IsActive, x => x.Telephone);
             _unitOfWork.Commit(validateOnSaveEnabled: false);
         }
@@ -73,7 +77,23 @@ namespace Services
                 customer.IsActive = true;
                 _customerRepository.Update(customer, x => x.IsActive);
                 _unitOfWork.Commit(validateOnSaveEnabled: false);
-                EmailService.SendEmail(customer.Email, "[Posco VST] Your account has been approved", EmailToCustomerContent(customer.Email));
+                EmailService.SendEmail(customer.Email, $"[Posco VST] Your account has been approved", EmailToCustomer(customer.Email));
+                result = true;
+            }
+            return result;
+        }
+
+        public bool VerifyCustomer(int id)
+        {
+            bool result = false;
+            string approvalEmail = ConfigHelper.ReadSetting("ApprovalEmail");
+            var customer = _customerRepository.GetSingleByPredicate(c => c.Id == id && !c.IsVerify);
+            if (customer != null)
+            {
+                customer.IsVerify = true;
+                _customerRepository.Update(customer, c => c.IsVerify);
+                _unitOfWork.Commit(validateOnSaveEnabled: false);
+                EmailService.SendEmail(approvalEmail, $"[Approval][{customer.CompanyName}] New customer request from www.poscovst.com.vn", EmailToEmployee(customer, "Mr.Thai", "http://poscovst.com.vn/Admin/Customer/ApprovalCustomer/", "approval"));
                 result = true;
             }
             return result;
@@ -105,19 +125,19 @@ namespace Services
                     customer.PasswordSalt = Convert.ToBase64String(salt);
                     customer.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(newPassword, salt));
                     _customerRepository.Update(customer, c => c.PasswordHash, c => c.PasswordSalt);
-                    _unitOfWork.Commit(false);
+                    _unitOfWork.Commit(validateOnSaveEnabled: false);
                     checkError = true;
                 }
             }
             return checkError;
         }
 
-        private string EmailToAdminContent(Customer customer)
+        private string EmailToEmployee(Customer customer, string empName, string route, string action)
         {
             StringBuilder content = new StringBuilder();
-            content.AppendLine($"<p>Hello Ms.Lan</p>");
-            content.AppendLine($"<p>This's info of a new customer on www.poscovst.com.vn website</p>");
-            content.AppendLine("<table cellpadding='1' cellspacing='1' style='width: 500px'");
+            content.AppendLine($"<p>Hello {empName}</p>");
+            content.AppendLine("<p>This's info of a new customer on www.poscovst.com.vn website</p>");
+            content.AppendLine("<table border='0' cellpadding='1' cellspacing='1' style='width: 500px'");
             content.AppendLine("<tbody>");
             content.AppendLine("<tr>");
             content.AppendLine("<td>Email</td>");
@@ -137,22 +157,22 @@ namespace Services
             content.AppendLine("</tr>");
             content.AppendLine("</tbody>");
             content.AppendLine("</table>");
-            content.AppendLine($"<p>You can check at admin page of www.poscovst.com.vn or&nbsp;click&nbsp;<a href='http://poscovst.com.vn/Admin/Customer/ApprovalCustomer/{customer.Id}' target='_blank'>HERE</a>&nbsp;to approval for this customer.</p>");
+            content.AppendLine($"<p>You can click <a href='{route}{customer.Id}' target='_blank'>HERE</a> to {action} for this customer.</p>");
             return content.ToString();
         }
 
-        private string EmailToCustomerContent(string customerEmail)
+        private string EmailToCustomer(string customerEmail)
         {
             StringBuilder content = new StringBuilder();
-            content.AppendLine($"<p>Dear Mr/Mrs</p>");
-            content.AppendLine($"<p>Thank you for contact to us.</p>");
-            content.AppendLine($"<p>We would like to inform you that your email has been successfully actived.</p>");
-            content.AppendLine($"<p>Should you have any question, please do not hesitate to contact us.</p>");
-            content.AppendLine($"<p><b>Your sincerely</b></p>");
-            content.AppendLine($"<p><b>Posco VST Vietnam</b></p>");
-            content.AppendLine($"<p><b>Phone:</b> 0251-3560-360</p>");
-            content.AppendLine($"<p><b>Email:</b> tran.phuonglan@posco.net</p>");
-            content.AppendLine($"<p>* Please, do not reply this email.");
+            content.AppendLine("<p>Dear Mr/Mrs</p>");
+            content.AppendLine("<p>Thank you for contact to us.</p>");
+            content.AppendLine("<p>We would like to inform you that your email has been successfully actived.</p>");
+            content.AppendLine("<p>Should you have any question, please do not hesitate to contact us.</p>");
+            content.AppendLine("<p><b>Your sincerely</b></p>");
+            content.AppendLine("<p><b>Posco VST Vietnam</b></p>");
+            content.AppendLine("<p><b>Phone:</b> 0251-3560-360</p>");
+            content.AppendLine("<p><b>Email:</b> le.nguyet@posco.net</p>");
+            content.AppendLine("<p>* Please, do not reply this email.");
             return content.ToString();
         }
     }

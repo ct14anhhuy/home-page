@@ -87,15 +87,27 @@ namespace HomePageVST.Areas.Admin.Controllers
         }
 
         [AllowAnonymous]
+        public ActionResult VerifyCustomer(int id)
+        {
+            ViewBag.EmailResponseMsg = "";
+            if (Request.UserHostAddress != POSCO_MAIL_ADDRESS)
+            {
+                var result = _customerService.VerifyCustomer(id);
+                ViewBag.EmailResponseMsg = result ? "Verify successful, an email will be sent for approval" : "Verify failed, this account has been verified";
+            }
+            return View("EmailResponse");
+        }
+
+        [AllowAnonymous]
         public ActionResult ApprovalCustomer(int id)
         {
-            ViewBag.approvalMsg = "";
+            ViewBag.EmailResponseMsg = "";
             if (Request.UserHostAddress != POSCO_MAIL_ADDRESS)
             {
                 var result = _customerService.ApprovalCustomer(id);
-                ViewBag.approvalMsg = result ? "Approval successful" : "Approval failed";
+                ViewBag.EmailResponseMsg = result ? "Approval successful, an email will be sent to this customer" : "Approval failed, this account has been approved";
             }
-            return View();
+            return View("EmailResponse");
         }
     }
 }

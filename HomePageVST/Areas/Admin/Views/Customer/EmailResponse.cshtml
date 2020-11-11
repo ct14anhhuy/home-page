@@ -26,8 +26,9 @@
     <div class="error-area ptb--100 text-center">
         <div class="container">
             <div class="error-content">
-                <p>@ViewBag.ApprovalMsg</p>
+                <p>@ViewBag.EmailResponseMsg</p>
                 @Html.ActionLink("Back to Dashboard", "Index", "Customer")
+                <p>This message will auto close after 10 seconds</p>
             </div>
         </div>
     </div>
@@ -48,5 +49,10 @@
     <script src="~/Content/themes/ckeditor/ckeditor.js"></script>
     <script src="~/Content/themes/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script src="~/Content/themes/DataTables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        setTimeout(function () {
+            self.close();
+        }, 10000);
+    </script>
 </body>
 </html>

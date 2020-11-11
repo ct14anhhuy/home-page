@@ -2659,7 +2659,7 @@ table.dataTable thead td {
 
     .error-content a {
         display: inline-block;
-        margin-top: 40px;
+        margin: 10px 0px;
         background: #656aea;
         color: #fff;
         padding: 16px 26px;

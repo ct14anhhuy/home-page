@@ -23,5 +23,6 @@ namespace Data
         public string PasswordSalt { get; set; }
         public System.DateTime DateCreated { get; set; }
         public bool IsActive { get; set; }
+        public bool IsVerify { get; set; }
     }
 }

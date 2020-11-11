@@ -61,6 +61,7 @@
           <Property Name="PasswordSalt" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DateCreated" Type="date" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsVerify" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Document">
           <Key>
@@ -590,6 +591,7 @@
           <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsVerify" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -736,6 +738,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="HomePageVSTModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="IsVerify" ColumnName="IsVerify" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />

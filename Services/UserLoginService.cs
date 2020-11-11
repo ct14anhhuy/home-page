@@ -59,7 +59,7 @@ namespace Services
                     userLogin.PasswordSalt = Convert.ToBase64String(salt);
                     userLogin.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(userLogin.NewPassword, salt));
                     _userLoginRepository.Update(user, u => u.PasswordHash, u => u.PasswordSalt);
-                    _unitOfWork.Commit(false);
+                    _unitOfWork.Commit(validateOnSaveEnabled: false);
                     checkError = true;
                 }
             }
