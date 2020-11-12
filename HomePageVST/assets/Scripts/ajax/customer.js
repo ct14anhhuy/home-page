@@ -8,7 +8,7 @@
         customer.password = $("#registerModal #password").val();
 
         if (!customer.companyAddress || !customer.companyAddress || !customer.telephone || !customer.email || !customer.password) {
-            alert('Check your input and try again');
+            notifyMetro("Check your input and try again", "white");
             return false;
         }
 
@@ -20,18 +20,18 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.createdSuccess) {
-                    alert("Register successful, please wait while we approval your request");
+                    notifyMetro("Register successful, please wait while we approval your request", "success");
                     $("#registerModal").modal("hide");
                 } else {
                     if (data.isExists) {
-                        alert("Register failed, this email is already exists");
+                        notifyMetro("Register failed, this email is already exists", "white");
                     } else {
-                        alert("Register failed, check your input");
+                        notifyMetro("Register failed, check your input", "white");
                     }
                 }
             },
             error: function () {
-                alert("Error while register, try again later");
+                notifyMetro("Error while register, try again later", "error");
             }
         });
         return false;
@@ -42,7 +42,7 @@
         var password = $("#loginModal #password").val();
 
         if (!email || !password) {
-            alert('Check your input and try again');
+            notifyMetro("Check your input and try again", "white");
             return false;
         }
 
@@ -56,11 +56,11 @@
                 if (data.loginSuccess) {
                     location.reload();
                 } else {
-                    alert("Login failed, check your input or contact us to check your account");
+                    notifyMetro("Login failed, check your input or contact us to check your account", "white");
                 }
             },
             error: function () {
-                alert("Error while login, try again later");
+                notifyMetro("Error while login, try again later", "error");
             }
         });
         return false;
@@ -72,14 +72,13 @@
         var confirmNewPassword = $("#changePasswordModal #confirmNewPassword").val();
 
         if (!password || !newPassword || !confirmNewPassword) {
-            alert('Check your input and try again');
+            notifyMetro("Check your input and try again", "white");
             return false;
-        }
-        else {
+        } else {
             if (password == newPassword) {
-                alert("Password and new password can not be same");
+                notifyMetro("Password and new password can not be same", "white");
             } else if (newPassword != confirmNewPassword) {
-                alert('New password and confirm do not match');
+                notifyMetro("New password and confirm do not match", "white");
             }
             return false;
         }
@@ -92,14 +91,14 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.isChangedSuccess) {
-                    alert("password changed successfully");
+                    notifyMetro("password changed successfully", "success");
                     location.reload();
                 } else {
-                    alert("password change failed, check your input or contact us to check your account");
+                    notifyMetro("password change failed, check your input or contact us to check your account", "white");
                 }
             },
             error: function () {
-                alert("password change failed, try again later");
+                notifyMetro("password change failed, try again later", "error");
             }
         });
         return false;

@@ -14,7 +14,7 @@
             }
         },
         error: function () {
-            alert("Error, try again later");
+            $.notify("Error, try again later", "error");
         }
     });
 }

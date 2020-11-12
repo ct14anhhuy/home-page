@@ -18,13 +18,12 @@ namespace DTO
 
         [Required(ErrorMessage = "Enter your telephone")]
         [Display(Name = "Telephone")]
-        [MinLength(9)]
+        [Phone(ErrorMessage = "Invalid telephone")]
         public string Telephone { get; set; }
 
         [Required(ErrorMessage = "Enter your email")]
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
-        [MinLength(10)]
         public string Email { get; set; }
 
         public string PasswordHash { get; set; }

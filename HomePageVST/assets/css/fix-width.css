@@ -149,8 +149,8 @@
     .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr[height="20"] td,
     .content-detail .col-xs-11 div[style*="width:850px"] table tbody tr td[style*="font-size:15px"],
     .content-detail .col-xs-11 table tbody tr[style="font-size:15px; font-family:Tahoma"],
-    .lb-data .lb-caption, .lb-data .lb-number,
-    #accordian .h5 span,
+    .lb-data .lb-caption, .lb-data .lb-number, #accordian .h5 span,
+    .notifyjs-metro-base .title, .notifyjs-metro-base .text,
     .section-btn, .alert,
     .meta, font[size="+1"],
     a, b, p, strong, label {
