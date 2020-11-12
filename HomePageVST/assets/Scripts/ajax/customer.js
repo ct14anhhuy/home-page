@@ -104,3 +104,16 @@
         return false;
     });
 });
+
+function notifyMetro(text, style) {
+    $.notify({
+        title: "Info",
+        text: text,
+        image: "<img src='media/images/icon/P.png'/>"
+    }, {
+        style: 'metro',
+        className: style,
+        autoHide: true,
+        clickToHide: true
+    });
+}

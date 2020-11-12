@@ -95,16 +95,3 @@ $(document).bind("keyup keydown", function (e) {
         e.preventDefault();
     }
 });
-
-function notifyMetro(text, style) {
-    $.notify({
-        title: "Info",
-        text: text,
-        image: "<img src='media/images/icon/P.png'/>"
-    }, {
-        style: 'metro',
-        className: style,
-        autoHide: true,
-        clickToHide: true
-    });
-}

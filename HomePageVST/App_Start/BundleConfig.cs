@@ -24,13 +24,13 @@ namespace HomePageVST
               "~/Content/themes/notifyjs-0.4.2/dist/styles/metro/notify-metro.js"));
 
             bundles.Add(new ScriptBundle("~/js/customs").Include(
-               "~/assets/Scripts/ajax/customer.js",
-               "~/assets/Scripts/ajax/document.js",
                "~/assets/Scripts/scripts.js",
                "~/assets/Scripts/left-menu.js",
                "~/assets/Scripts/custom.js",
                "~/assets/Scripts/dialog.js",
-               "~/assets/Scripts/fix-width.js"));
+               "~/assets/Scripts/fix-width.js",
+               "~/assets/Scripts/ajax/customer.js",
+               "~/assets/Scripts/ajax/document.js"));
 
             bundles.Add(new ScriptBundle("~/js/jquery.lazy").Include(
                 "~/Content/themes/jquery.lazy/jquery.lazy.min.js"));
