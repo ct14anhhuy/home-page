@@ -1,7 +1,9 @@
 ﻿using DTO;
 using HomePageVST.Controllers.Core;
 using Services.Interfaces;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Utilities;
 
 namespace HomePageVST.Controllers
 {
@@ -16,16 +18,17 @@ namespace HomePageVST.Controllers
         }
 
         [HttpPost]
-        public JsonResult Register(CustomerDTO customer)
+        public async Task<JsonResult> Register(CustomerDTO customer)
         {
             if (ModelState.IsValid)
             {
+                string verifyEmail = ConfigHelper.ReadSetting("VerifyEmail");
                 bool checkExists = _customerService.GetCustomerByEmail(customer.Email);
                 if (checkExists)
                 {
                     return Json(new { createdSuccess = false, isExists = true }, JsonRequestBehavior.AllowGet);
                 }
-                _customerService.CreateCustomer(customer);
+                await _customerService.CreateCustomer(customer);
                 return Json(new { createdSuccess = true, isExists = false }, JsonRequestBehavior.AllowGet);
             }
             else

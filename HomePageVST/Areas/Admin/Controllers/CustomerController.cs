@@ -3,6 +3,7 @@ using HomePageVST.Extensions.AntiModelInjection;
 using Services.Interfaces;
 using System;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace HomePageVST.Areas.Admin.Controllers
@@ -87,24 +88,24 @@ namespace HomePageVST.Areas.Admin.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult VerifyCustomer(int id)
+        public async Task<ActionResult> VerifyCustomer(int id)
         {
             ViewBag.EmailResponseMsg = "";
             if (Request.UserHostAddress != POSCO_MAIL_ADDRESS)
             {
-                var result = _customerService.VerifyCustomer(id);
+                var result = await _customerService.VerifyCustomer(id);
                 ViewBag.EmailResponseMsg = result ? "Verify successful, an email will be sent for approval" : "Verify failed, this account has been verified";
             }
             return View("EmailResponse");
         }
 
         [AllowAnonymous]
-        public ActionResult ApprovalCustomer(int id)
+        public async Task<ActionResult> ApprovalCustomer(int id)
         {
             ViewBag.EmailResponseMsg = "";
             if (Request.UserHostAddress != POSCO_MAIL_ADDRESS)
             {
-                var result = _customerService.ApprovalCustomer(id);
+                var result = await _customerService.ApprovalCustomer(id);
                 ViewBag.EmailResponseMsg = result ? "Approval successful, an email will be sent to this customer" : "Approval failed, this account has been approved";
             }
             return View("EmailResponse");

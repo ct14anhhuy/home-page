@@ -5,7 +5,9 @@ using Repositories.Interfaces;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Utilities;
 
 namespace Services
@@ -23,7 +25,7 @@ namespace Services
             _mapper = mapper;
         }
 
-        public CustomerDTO CreateCustomer(CustomerDTO customerDTO)
+        public async Task<CustomerDTO> CreateCustomer(CustomerDTO customerDTO)
         {
             byte[] salt = CryptoService.GenerateSalt();
             string verifyEmail = ConfigHelper.ReadSetting("VerifyEmail");
@@ -31,7 +33,7 @@ namespace Services
             customerDTO.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(customerDTO.Password, salt));
             var customer = _customerRepository.Add(_mapper.Map<Customer>(customerDTO));
             _unitOfWork.Commit();
-            EmailService.SendEmail(verifyEmail, $"[Verify][{customer.CompanyName}] New customer request from www.poscovst.com.vn", EmailToEmployee(customer, "Ms.Nguyet", "http://poscovst.com.vn/Admin/Customer/VerifyCustomer/", "verify"));
+            await SendMailToEmployee(customer, verifyEmail, "Hello Ms.Nguyet", "http://poscovst.com.vn/Admin/Customer/VerifyCustomer/", "Verify");
             return _mapper.Map<CustomerDTO>(customer);
         }
 
@@ -68,7 +70,7 @@ namespace Services
             _unitOfWork.Commit(validateOnSaveEnabled: false);
         }
 
-        public bool ApprovalCustomer(int id)
+        public async Task<bool> ApprovalCustomer(int id)
         {
             bool result = false;
             var customer = _customerRepository.GetSingleByPredicate(c => c.Id == id && !c.IsActive);
@@ -77,13 +79,13 @@ namespace Services
                 customer.IsActive = true;
                 _customerRepository.Update(customer, x => x.IsActive);
                 _unitOfWork.Commit(validateOnSaveEnabled: false);
-                EmailService.SendEmail(customer.Email, $"[Posco VST] Your account has been approved", EmailToCustomer(customer.Email));
+                await SendMailToCustomer(customer);
                 result = true;
             }
             return result;
         }
 
-        public bool VerifyCustomer(int id)
+        public async Task<bool> VerifyCustomer(int id)
         {
             bool result = false;
             string approvalEmail = ConfigHelper.ReadSetting("ApprovalEmail");
@@ -93,7 +95,7 @@ namespace Services
                 customer.IsVerify = true;
                 _customerRepository.Update(customer, c => c.IsVerify);
                 _unitOfWork.Commit(validateOnSaveEnabled: false);
-                EmailService.SendEmail(approvalEmail, $"[Approval][{customer.CompanyName}] New customer request from www.poscovst.com.vn", EmailToEmployee(customer, "Mr.Thai", "http://poscovst.com.vn/Admin/Customer/ApprovalCustomer/", "approval"));
+                await SendMailToEmployee(customer, approvalEmail, "Hello Mr.Thai", "http://poscovst.com.vn/Admin/Customer/ApprovalCustomer/", "Approval");
                 result = true;
             }
             return result;
@@ -132,48 +134,53 @@ namespace Services
             return checkError;
         }
 
-        private string EmailToEmployee(Customer customer, string empName, string route, string action)
+        private async Task SendMailToEmployee(Customer customer, string email, string empName, string route, string action)
         {
-            StringBuilder content = new StringBuilder();
-            content.AppendLine($"<p>Hello {empName}</p>");
-            content.AppendLine("<p>This's info of a new customer on www.poscovst.com.vn website</p>");
-            content.AppendLine("<table border='0' cellpadding='1' cellspacing='1' style='width: 500px'");
-            content.AppendLine("<tbody>");
-            content.AppendLine("<tr>");
-            content.AppendLine("<td>Email</td>");
-            content.AppendLine($"<td>: {customer.Email}</td>");
-            content.AppendLine("</tr>");
-            content.AppendLine("<tr>");
-            content.AppendLine("<td>Company name</td>");
-            content.AppendLine($"<td>: {customer.CompanyName}</td>");
-            content.AppendLine("</tr>");
-            content.AppendLine("<tr>");
-            content.AppendLine("<td>Company address</td>");
-            content.AppendLine($"<td>: {customer.CompanyAddress}</td>");
-            content.AppendLine("</tr>");
-            content.AppendLine("<tr>");
-            content.AppendLine("<td>Telephone</td>");
-            content.AppendLine($"<td>: {customer.Telephone}</td>");
-            content.AppendLine("</tr>");
-            content.AppendLine("</tbody>");
-            content.AppendLine("</table>");
-            content.AppendLine($"<p>You can click <a href='{route}{customer.Id}' target='_blank'>HERE</a> to {action} for this customer.</p>");
-            return content.ToString();
+            string templatePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Template.Email.Path");
+            string content = "";
+            StringBuilder body = new StringBuilder();
+            body.AppendLine("<p>This's info of a new customer on www.poscovst.com.vn website</p>");
+            body.AppendLine($"<p><b>Email :</b> {customer.Email}</p>");
+            body.AppendLine($"<p><b>Company name :</b> {customer.CompanyName}</p>");
+            body.AppendLine($"<p><b>Company address :</b> {customer.CompanyAddress}</p>");
+            body.AppendLine($"<p><b>Telephone :</b> {customer.Telephone}</p>");
+            body.AppendLine($"<p>You can click the button below to {action.ToLower()} for this customer.</p>");
+            using (StreamReader sr = new StreamReader(templatePath))
+            {
+                content = sr.ReadToEnd();
+                sr.Close();
+            }
+            content = content.Replace("[receiver]", empName);
+            content = content.Replace("[emailBody]", body.ToString());
+            content = content.Replace("[action]", action);
+            content = content.Replace("[link]", $"{route}{customer.Id}");
+            await EmailService.SendEmail(email, $"[{action}][{customer.CompanyName}] New customer request from www.poscovst.com.vn", content);
         }
 
-        private string EmailToCustomer(string customerEmail)
+        private async Task SendMailToCustomer(Customer customer)
         {
-            StringBuilder content = new StringBuilder();
-            content.AppendLine("<p>Dear Mr/Mrs</p>");
-            content.AppendLine("<p>Thank you for contact to us.</p>");
-            content.AppendLine("<p>We would like to inform you that your email has been successfully actived.</p>");
-            content.AppendLine("<p>Should you have any question, please do not hesitate to contact us.</p>");
-            content.AppendLine("<p><b>Your sincerely</b></p>");
-            content.AppendLine("<p><b>Posco VST Vietnam</b></p>");
-            content.AppendLine("<p><b>Phone:</b> 0251-3560-360</p>");
-            content.AppendLine("<p><b>Email:</b> le.nguyet@posco.net</p>");
-            content.AppendLine("<p>* Please, do not reply this email.");
-            return content.ToString();
+            string templatePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Template.Email.Path");
+            string receiver = "Dear Mr/Mrs";
+            string content = "";
+            StringBuilder body = new StringBuilder();
+            body.AppendLine("<p>Thank you for contact to us.</p>");
+            body.AppendLine("<p>We would like to inform you that your email has been successfully actived.</p>");
+            body.AppendLine("<p>Should you have any question, please do not hesitate to contact us.</p>");
+            body.AppendLine("<p><b>Your sincerely</b></p>");
+            body.AppendLine("<p><b>Posco VST Vietnam</b></p>");
+            body.AppendLine("<p><b>Phone:</b> 0251-3560-360</p>");
+            body.AppendLine("<p><b>Email:</b> le.nguyet@posco.net</p>");
+            body.AppendLine("<p>* Please, do not reply this email.</p>");
+            using (StreamReader sr = new StreamReader(templatePath))
+            {
+                content = sr.ReadToEnd();
+                sr.Close();
+            }
+            content = content.Replace("[receiver]", receiver);
+            content = content.Replace("[emailBody]", body.ToString());
+            content = content.Replace("[action]", "Visit us");
+            content = content.Replace("[link]", "http://poscovst.com.vn/");
+            await EmailService.SendEmail(customer.Email, "[Posco VST] Your account has been approved", content);
         }
     }
 }

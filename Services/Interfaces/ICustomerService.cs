@@ -1,11 +1,12 @@
 ﻿using DTO;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
     public interface ICustomerService
     {
-        CustomerDTO CreateCustomer(CustomerDTO customerDTO);
+        Task<CustomerDTO> CreateCustomer(CustomerDTO customerDTO);
 
         bool CheckLogin(string email, string password);
 
@@ -17,9 +18,9 @@ namespace Services.Interfaces
 
         CustomerDTO Delete(int id);
 
-        bool VerifyCustomer(int id);
+        Task<bool> VerifyCustomer(int id);
 
-        bool ApprovalCustomer(int id);
+        Task<bool> ApprovalCustomer(int id);
 
         bool GetCustomerByEmail(string email);
 

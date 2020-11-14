@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 
 namespace Utilities
 {
@@ -14,7 +15,7 @@ namespace Utilities
         private const string SENDER_PASSWORD = "Pvst@123";
         private const string SMTP_HOST = "smtp.gmail.com";
 
-        public static void SendEmail(string email, string subject, string content)
+        public static Task SendEmail(string email, string subject, string content)
         {
             try
             {
@@ -29,7 +30,9 @@ namespace Utilities
                 smtp.Credentials = new NetworkCredential(SENDER_EMAIL, SENDER_PASSWORD);
                 smtp.Port = 587;
                 smtp.EnableSsl = true;
-                smtp.Send(mail);
+                Task task = new Task(() => smtp.Send(mail));
+                task.Start();
+                return task;
             }
             catch (Exception ex)
             {

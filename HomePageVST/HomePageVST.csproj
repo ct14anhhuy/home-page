@@ -1467,6 +1467,7 @@
     <Content Include="media\videos\posco-vst-15.12.2015.mp4" />
     <Content Include="media\videos\POSCO-VST-180418.mp4" />
     <Content Include="media\videos\POSCO-VST-final-6.12.2017.mp4" />
+    <Content Include="Template\Email\email.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
