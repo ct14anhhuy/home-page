@@ -12,10 +12,9 @@ namespace HomePageVST.Extensions
         private static Dictionary<string, short> _ipAdresses = new Dictionary<string, short>();
         private static Stack<string> _banned = new Stack<string>();
         private static Timer _timer = CreateTimer();
-        private static Timer _bannedTimer = CreateBanningTimer();
-        private const int BANNED_REQUESTS = 15;
+        private const int BANNED_REQUESTS = 10;
         private const int REDUCTION_INTERVAL = 1000;
-        private const int RELEASE_INTERVAL = 5 * 60 * 1000;
+        private const int RELEASE_INTERVAL = 60 * 1000;
 
         private void context_BeginRequest(object sender, EventArgs e)
         {
@@ -26,8 +25,8 @@ namespace HomePageVST.Extensions
                 HttpContext.Current.Response.End();
             }
             var requestBase = new HttpRequestWrapper(HttpContext.Current.Request);
-            var isAjax = requestBase.IsAjaxRequest();
-            if (isAjax)
+            var isAjaxRequest = requestBase.IsAjaxRequest();
+            if (isAjaxRequest)
             {
                 CheckIpAddress(ip);
             }
@@ -54,13 +53,6 @@ namespace HomePageVST.Extensions
         {
             Timer timer = GetTimer(REDUCTION_INTERVAL);
             timer.Elapsed += new ElapsedEventHandler(TimerElapsed);
-            return timer;
-        }
-
-        private static Timer CreateBanningTimer()
-        {
-            Timer timer = GetTimer(RELEASE_INTERVAL);
-            timer.Elapsed += delegate { _banned.Pop(); };
             return timer;
         }
 

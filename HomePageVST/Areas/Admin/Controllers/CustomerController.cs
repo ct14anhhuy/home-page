@@ -94,7 +94,7 @@ namespace HomePageVST.Areas.Admin.Controllers
             if (Request.UserHostAddress != POSCO_MAIL_ADDRESS)
             {
                 var result = await _customerService.VerifyCustomer(id);
-                ViewBag.EmailResponseMsg = result ? "Verify successful, an email will be sent for approval" : "Verify failed, this account has been verified";
+                ViewBag.EmailResponseMsg = result ? "Verify successful, an email will be sent to approver" : "Verify failed, this account has been verified";
             }
             return View("EmailResponse");
         }

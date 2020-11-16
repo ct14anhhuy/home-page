@@ -19,7 +19,7 @@
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                if (data.createdSuccess) {
+                if (data.isCreateSuccess) {
                     notifyMetro("Register successful, please wait while we approval your request", "success");
                     $("#registerModal").modal("hide");
                 } else {
@@ -53,7 +53,7 @@
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                if (data.loginSuccess) {
+                if (data.isLoginSuccess) {
                     location.reload();
                 } else {
                     notifyMetro("Login failed, check your input or contact us to check your account", "white");
@@ -77,10 +77,11 @@
         } else {
             if (password == newPassword) {
                 notifyMetro("Password and new password can not be same", "white");
+                return false;
             } else if (newPassword != confirmNewPassword) {
                 notifyMetro("New password and confirm do not match", "white");
+                return false;
             }
-            return false;
         }
 
         $.ajax({
@@ -90,7 +91,7 @@
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                if (data.isChangedSuccess) {
+                if (data.isChangeSuccess) {
                     notifyMetro("password changed successfully", "success");
                     location.reload();
                 } else {
@@ -103,4 +104,28 @@
         });
         return false;
     });
+});
+
+$('#loginModal').keypress(function (e) {
+    var key = e.which;
+    if (key == 13) {
+        $('#btn-cus-login').click();
+        return false;
+    }
+});
+
+$('#registerModal').keypress(function (e) {
+    var key = e.which;
+    if (key == 13) {
+        $('#btn-cus-register').click();
+        return false;
+    }
+});
+
+$('#changePasswordModal').keypress(function (e) {
+    var key = e.which;
+    if (key == 13) {
+        $('#btn-cus-change-password').click();
+        return false;
+    }
 });

@@ -26,14 +26,14 @@ namespace HomePageVST.Controllers
                 bool checkExists = _customerService.GetCustomerByEmail(customer.Email);
                 if (checkExists)
                 {
-                    return Json(new { createdSuccess = false, isExists = true }, JsonRequestBehavior.AllowGet);
+                    return Json(new { isCreateSuccess = false, isExists = true }, JsonRequestBehavior.AllowGet);
                 }
                 await _customerService.CreateCustomer(customer);
-                return Json(new { createdSuccess = true, isExists = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { isCreateSuccess = true, isExists = false }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(new { createdSuccess = false, isExists = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { isCreateSuccess = false, isExists = false }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -52,11 +52,11 @@ namespace HomePageVST.Controllers
             if (result)
             {
                 Session["CustomerEmail"] = email;
-                return Json(new { loginSuccess = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { isLoginSuccess = true }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(new { loginSuccess = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { isLoginSuccess = false }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -65,18 +65,18 @@ namespace HomePageVST.Controllers
         {
             if (Session["CustomerEmail"] == null)
             {
-                return Json(new { isChangedSuccess = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { isChangeSuccess = false }, JsonRequestBehavior.AllowGet);
             }
             else
             {
                 string email = Session["CustomerEmail"].ToString();
-                bool isChangedSuccess = _customerService.ChangePassword(email, password, newPassword);
-                if (isChangedSuccess)
+                bool isChangeSuccess = _customerService.ChangePassword(email, password, newPassword);
+                if (isChangeSuccess)
                 {
                     Session["CustomerEmail"] = null;
                     Session.Clear();
                 }
-                return Json(new { isChangedSuccess }, JsonRequestBehavior.AllowGet);
+                return Json(new { isChangeSuccess }, JsonRequestBehavior.AllowGet);
             }
         }
 

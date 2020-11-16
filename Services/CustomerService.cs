@@ -33,7 +33,7 @@ namespace Services
             customerDTO.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(customerDTO.Password, salt));
             var customer = _customerRepository.Add(_mapper.Map<Customer>(customerDTO));
             _unitOfWork.Commit();
-            await SendMailToEmployee(customer, verifyEmail, "Hello Ms.Nguyet", "http://poscovst.com.vn/Admin/Customer/VerifyCustomer/", "Verify");
+            await SendMailToEmployee(customer, verifyEmail, "Hello Ms.Nguyet", "http://www.poscovst.com.vn/Admin/Customer/VerifyCustomer/", "Verify");
             return _mapper.Map<CustomerDTO>(customer);
         }
 
@@ -95,7 +95,7 @@ namespace Services
                 customer.IsVerify = true;
                 _customerRepository.Update(customer, c => c.IsVerify);
                 _unitOfWork.Commit(validateOnSaveEnabled: false);
-                await SendMailToEmployee(customer, approvalEmail, "Hello Mr.Thai", "http://poscovst.com.vn/Admin/Customer/ApprovalCustomer/", "Approval");
+                await SendMailToEmployee(customer, approvalEmail, "Hello Mr.Thai", "http://www.poscovst.com.vn/Admin/Customer/ApprovalCustomer/", "Approval");
                 result = true;
             }
             return result;
@@ -139,11 +139,25 @@ namespace Services
             string templatePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Template.Email.Path");
             string content = "";
             StringBuilder body = new StringBuilder();
-            body.AppendLine("<p>This's info of a new customer on www.poscovst.com.vn website</p>");
-            body.AppendLine($"<p><b>Email :</b> {customer.Email}</p>");
-            body.AppendLine($"<p><b>Company name :</b> {customer.CompanyName}</p>");
-            body.AppendLine($"<p><b>Company address :</b> {customer.CompanyAddress}</p>");
-            body.AppendLine($"<p><b>Telephone :</b> {customer.Telephone}</p>");
+            body.AppendLine("<p>This's info of a new customer from www.poscovst.com.vn website.</p>");
+            body.AppendLine("<table border='0' cellpadding='1' cellspacing='1' style='width: unset;>'");
+            body.AppendLine("<tr>");
+            body.AppendLine("<td><strong>Email</strong></td>");
+            body.AppendLine($"<td>: {customer.Email}</td>");
+            body.AppendLine("</tr>");
+            body.AppendLine("<tr>");
+            body.AppendLine("<td><strong>Company name</strong></td>");
+            body.AppendLine($"<td>: {customer.CompanyName}</td>");
+            body.AppendLine("</tr>");
+            body.AppendLine("<tr>");
+            body.AppendLine("<td><strong>Company address</strong></td>");
+            body.AppendLine($"<td>: {customer.CompanyAddress}</td>");
+            body.AppendLine("</tr>");
+            body.AppendLine("<tr>");
+            body.AppendLine("<td><strong>Telephone</strong></td>");
+            body.AppendLine($"<td>: {customer.Telephone}</td>");
+            body.AppendLine("</tr>");
+            body.AppendLine("</table>");
             body.AppendLine($"<p>You can click the button below to {action.ToLower()} for this customer.</p>");
             using (StreamReader sr = new StreamReader(templatePath))
             {
@@ -166,11 +180,6 @@ namespace Services
             body.AppendLine("<p>Thank you for contact to us.</p>");
             body.AppendLine("<p>We would like to inform you that your email has been successfully actived.</p>");
             body.AppendLine("<p>Should you have any question, please do not hesitate to contact us.</p>");
-            body.AppendLine("<p><b>Your sincerely</b></p>");
-            body.AppendLine("<p><b>Posco VST Vietnam</b></p>");
-            body.AppendLine("<p><b>Phone:</b> 0251-3560-360</p>");
-            body.AppendLine("<p><b>Email:</b> le.nguyet@posco.net</p>");
-            body.AppendLine("<p>* Please, do not reply this email.</p>");
             using (StreamReader sr = new StreamReader(templatePath))
             {
                 content = sr.ReadToEnd();
@@ -179,7 +188,7 @@ namespace Services
             content = content.Replace("[receiver]", receiver);
             content = content.Replace("[emailBody]", body.ToString());
             content = content.Replace("[action]", "Visit us");
-            content = content.Replace("[link]", "http://poscovst.com.vn/");
+            content = content.Replace("[link]", "http://www.poscovst.com.vn");
             await EmailService.SendEmail(customer.Email, "[Posco VST] Your account has been approved", content);
         }
     }
