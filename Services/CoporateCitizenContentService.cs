@@ -21,7 +21,7 @@ namespace Services
 
         public CoporateCitizenContentDTO GetContentByCategoryId(int categoryId)
         {
-            var content = _coporateCitizenContent.GetSingleByPredicate(c => c.CoporateCitizenCategoryId == categoryId, c => c.CoporateCitizenCategory);
+            var content = _coporateCitizenContent.GetSingle(c => c.CoporateCitizenCategoryId == categoryId, c => c.CoporateCitizenCategory);
             return _mapper.Map<CoporateCitizenContentDTO>(content);
         }
     }

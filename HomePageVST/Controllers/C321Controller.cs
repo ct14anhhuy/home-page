@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class C321Controller : ControllerCore
     {
-        // GET: C321
         public ActionResult Index()
         {
             return View();

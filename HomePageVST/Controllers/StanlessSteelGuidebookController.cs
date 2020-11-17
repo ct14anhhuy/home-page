@@ -14,7 +14,6 @@ namespace HomePageVST.Controllers
             _documentService = documentService;
         }
 
-        // GET: StanlessSteelGuidebook
         public ActionResult Index()
         {
             var listDocumentDTO = _documentService.GetListActivedDocumentByCategoryId(CommonConstants.SSG_CATEGORY_ID);

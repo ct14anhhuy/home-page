@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class VisionController : ControllerCore
     {
-        // GET: Vision
         public ActionResult Index()
         {
             return View();

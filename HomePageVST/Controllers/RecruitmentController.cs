@@ -13,7 +13,6 @@ namespace HomePageVST.Controllers
             _recruitmentService = recruitmentService;
         }
 
-        // GET: Recruitment
         public ActionResult Index()
         {
             var recruitments = _recruitmentService.GetActivedRecruitment();

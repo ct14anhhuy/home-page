@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class C436LController : ControllerCore
     {
-        // GET: C436L
         public ActionResult Index()
         {
             return View();

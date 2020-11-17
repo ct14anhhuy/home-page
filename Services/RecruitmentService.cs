@@ -35,7 +35,7 @@ namespace Services
 
         public IEnumerable<RecruitmentDTO> GetActivedRecruitment()
         {
-            var recruitments = _recruitmentRepository.GetMultiByPredicate(x => x.IsActive && x.DatePosted <= DateTime.Today && (x.DateExpired == null || x.DateExpired >= DateTime.Today));
+            var recruitments = _recruitmentRepository.GetMany(x => x.IsActive && x.DatePosted <= DateTime.Today && (x.DateExpired == null || x.DateExpired >= DateTime.Today));
             return _mapper.Map<IEnumerable<RecruitmentDTO>>(recruitments);
         }
 

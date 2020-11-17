@@ -24,25 +24,25 @@ namespace Services
 
         public IEnumerable<DocumentDTO> GetListDocumentByCategoryId(int categoryId)
         {
-            var docs = _documentRepository.GetMultiByPredicate(x => x.CategoryId == categoryId);
+            var docs = _documentRepository.GetMany(x => x.CategoryId == categoryId);
             return _mapper.Map<IEnumerable<DocumentDTO>>(docs);
         }
 
         public IEnumerable<DocumentDTO> GetListActivedDocumentByCategoryId(int categoryId)
         {
-            var docs = _documentRepository.GetMultiByPredicate(x => x.CategoryId == categoryId && x.IsActive);
+            var docs = _documentRepository.GetMany(x => x.CategoryId == categoryId && x.IsActive);
             return _mapper.Map<IEnumerable<DocumentDTO>>(docs);
         }
 
         public DocumentDTO GetDocumentById(int id)
         {
-            var doc = _documentRepository.GetSingleByPredicate(x => x.Id == id);
+            var doc = _documentRepository.GetSingle(x => x.Id == id);
             return _mapper.Map<DocumentDTO>(doc);
         }
 
         public DocumentDTO GetActivedDocumentById(int id)
         {
-            var doc = _documentRepository.GetSingleByPredicate(x => x.Id == id && x.IsActive);
+            var doc = _documentRepository.GetSingle(x => x.Id == id && x.IsActive);
             return _mapper.Map<DocumentDTO>(doc);
         }
 

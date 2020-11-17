@@ -14,7 +14,6 @@ namespace HomePageVST.Controllers
             _documentService = documentService;
         }
 
-        // GET: Forming
         public ActionResult Index()
         {
             var listDocumentDTO = _documentService.GetListActivedDocumentByCategoryId(CommonConstants.FORMING_CATEGORY_ID);

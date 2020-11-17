@@ -14,7 +14,6 @@ namespace HomePageVST.Controllers
             _documentService = documentService;
         }
 
-        // GET: WaterTankIndustry
         public ActionResult Index()
         {
             var listDocumentDTO = _documentService.GetListActivedDocumentByCategoryId(CommonConstants.WTI_CATEGORY_ID);

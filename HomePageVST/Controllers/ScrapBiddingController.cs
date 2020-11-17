@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class ScrapBiddingController : ControllerCore
     {
-        // GET: ScrapBidding
         public ActionResult Index()
         {
             return View();

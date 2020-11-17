@@ -40,8 +40,9 @@ namespace DTO
         public bool IsVerify { get; set; }
 
         [IgnoreMap]
-        [Required(ErrorMessage = "Enter your password")]
         [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Enter your password")]
+        [MinLength(6, ErrorMessage = "Password can't be less than 6 characters")]
         [Display(Name = "Password")]
         public string Password { get; set; }
     }

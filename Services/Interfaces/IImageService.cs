@@ -11,6 +11,8 @@ namespace Services.Interfaces
 
         IEnumerable<ImageDTO> GetActiveImagesByHeaderDetailId(int headerDetailId);
 
+        IEnumerable<ImageDTO> GetRandomImagesByHeaderDetailId(int headerDetailId);
+
         ImageDTO GetImageByHeaderDetailId(int headerDetailId);
 
         ImageDTO Add(ImageDTO imageDTO);

@@ -24,7 +24,7 @@ namespace Services
 
         public IEnumerable<ImageDTO> GetActiveImagesByHeaderDetailId(int headerDetailId)
         {
-            var images = _imageRepository.GetMultiByPredicate(i => i.HeaderDetailId == headerDetailId && i.IsActive);
+            var images = _imageRepository.GetMany(i => i.HeaderDetailId == headerDetailId && i.IsActive);
             return _mapper.Map<IEnumerable<ImageDTO>>(images);
         }
 
@@ -73,7 +73,14 @@ namespace Services
 
         public IEnumerable<ImageDTO> GetImagesByHeaderDetailId(int headerDetailId)
         {
-            var images = _imageRepository.GetMultiByPredicate(i => i.HeaderDetailId == headerDetailId);
+            var images = _imageRepository.GetMany(i => i.HeaderDetailId == headerDetailId);
+            return _mapper.Map<IEnumerable<ImageDTO>>(images);
+        }
+
+        public IEnumerable<ImageDTO> GetRandomImagesByHeaderDetailId(int headerDetailId)
+        {
+            int imgNumber = 10;
+            var images = _imageRepository.GetRandom(i => i.HeaderDetailId == headerDetailId, imgNumber);
             return _mapper.Map<IEnumerable<ImageDTO>>(images);
         }
     }

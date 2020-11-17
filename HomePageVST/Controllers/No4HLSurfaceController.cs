@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class No4HLSurfaceController : ControllerCore
     {
-        // GET: No4HLSurface
         public ActionResult Index()
         {
             return View();

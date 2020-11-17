@@ -13,8 +13,7 @@ namespace HomePageVST.Controllers
         {
             _documentService = documentService;
         }
-
-        // GET: About445NF
+        
         public ActionResult Index()
         {
             var listDocumentDTO = _documentService.GetListActivedDocumentByCategoryId(CommonConstants._445NF_CATEGORY_ID);

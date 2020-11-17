@@ -14,7 +14,6 @@ namespace HomePageVST.Controllers
             _documentService = documentService;
         }
 
-        // GET: Corrosion
         public ActionResult Index()
         {
             var listDocumentDTO = _documentService.GetListActivedDocumentByCategoryId(CommonConstants.CORROSION_CATEGORY_ID);

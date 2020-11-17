@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class SurfaceProcessingController : ControllerCore
     {
-        // GET: SurfaceProcessing
         public ActionResult Index()
         {
             return View();

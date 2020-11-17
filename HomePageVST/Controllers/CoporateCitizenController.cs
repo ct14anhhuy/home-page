@@ -28,7 +28,7 @@ namespace HomePageVST.Controllers
             var coporateCitizenVM = new CoporateCitizenViewModels() { Images = images, CoporateCitizenCategories = categories };
             return View(coporateCitizenVM);
         }
-
+        
         public ActionResult Newsroom(int categoryId)
         {
             var content = _coporateCitizenContentService.GetContentByCategoryId(categoryId);

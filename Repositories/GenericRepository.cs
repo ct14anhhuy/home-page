@@ -41,44 +41,6 @@ namespace Repositories
             return _dbSet.Remove(entity);
         }
 
-        public IEnumerable<TEntity> GetAll()
-        {
-            return _dbSet.AsNoTracking();
-        }
-
-        public IEnumerable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes)
-        {
-            var query = _dbSet.AsQueryable();
-            return includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty)).AsNoTracking();
-        }
-
-        public IEnumerable<TEntity> GetMultiByPredicate(Expression<Func<TEntity, bool>> condition)
-        {
-            return _dbSet.Where(condition).AsNoTracking();
-        }
-
-        public IEnumerable<TEntity> GetMultiByPredicate(Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes)
-        {
-            var query = _dbSet.Where(condition);
-            return includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty)).AsNoTracking();
-        }
-
-        public TEntity GetSingleById(object id)
-        {
-            return _dbSet.Find(id);
-        }
-
-        public TEntity GetSingleByPredicate(Expression<Func<TEntity, bool>> condition)
-        {
-            return _dbSet.Where(condition).AsNoTracking().FirstOrDefault();
-        }
-
-        public TEntity GetSingleByPredicate(Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes)
-        {
-            var query = _dbSet.Where(condition);
-            return includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty)).AsNoTracking().FirstOrDefault();
-        }
-
         public void Update(TEntity entity)
         {
             _dbSet.Attach(entity);
@@ -93,6 +55,55 @@ namespace Repositories
             {
                 dbEntry.Property(includeProperty).IsModified = true;
             }
+        }
+
+        public IEnumerable<TEntity> GetAll()
+        {
+            return _dbSet.AsNoTracking();
+        }
+
+        public IEnumerable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = _dbSet.AsQueryable();
+            return includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty)).AsNoTracking();
+        }
+
+        public IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> condition)
+        {
+            return _dbSet.Where(condition).AsNoTracking();
+        }
+
+        public IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = _dbSet.Where(condition);
+            return includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty)).AsNoTracking();
+        }
+
+        public IEnumerable<TEntity> GetRandom(Expression<Func<TEntity, bool>> condition, int rows)
+        {
+            return _dbSet.Where(condition).OrderBy(r => Guid.NewGuid()).Take(rows).AsNoTracking();
+        }
+
+        public IEnumerable<TEntity> GetRandom(Expression<Func<TEntity, bool>> condition, int rows, params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = _dbSet.Where(condition).OrderBy(r => Guid.NewGuid()).Take(rows);
+            return includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty)).AsNoTracking();
+        }
+
+        public TEntity GetSingleById(object id)
+        {
+            return _dbSet.Find(id);
+        }
+
+        public TEntity GetSingle(Expression<Func<TEntity, bool>> condition)
+        {
+            return _dbSet.Where(condition).AsNoTracking().FirstOrDefault();
+        }
+
+        public TEntity GetSingle(Expression<Func<TEntity, bool>> condition, params Expression<Func<TEntity, object>>[] includes)
+        {
+            var query = _dbSet.Where(condition);
+            return includes.Aggregate(query, (current, includeProperty) => current.Include(includeProperty)).AsNoTracking().FirstOrDefault();
         }
     }
 }

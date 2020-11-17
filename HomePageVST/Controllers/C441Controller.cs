@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class C441Controller : ControllerCore
     {
-        // GET: C441
         public ActionResult Index()
         {
             return View();

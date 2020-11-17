@@ -40,7 +40,7 @@ namespace Services
         public bool CheckLogin(string email, string password)
         {
             bool verify = false;
-            var customer = _customerRepository.GetSingleByPredicate(x => x.Email == email && x.IsActive);
+            var customer = _customerRepository.GetSingle(x => x.Email == email && x.IsActive);
             if (customer != null)
             {
                 verify = CryptoService.VerifyPassword(password, Convert.FromBase64String(customer.PasswordHash), Convert.FromBase64String(customer.PasswordSalt));
@@ -73,7 +73,7 @@ namespace Services
         public async Task<bool> ApprovalCustomer(int id)
         {
             bool result = false;
-            var customer = _customerRepository.GetSingleByPredicate(c => c.Id == id && !c.IsActive);
+            var customer = _customerRepository.GetSingle(c => c.Id == id && !c.IsActive);
             if (customer != null)
             {
                 customer.IsActive = true;
@@ -89,7 +89,7 @@ namespace Services
         {
             bool result = false;
             string approvalEmail = ConfigHelper.ReadSetting("ApprovalEmail");
-            var customer = _customerRepository.GetSingleByPredicate(c => c.Id == id && !c.IsVerify);
+            var customer = _customerRepository.GetSingle(c => c.Id == id && !c.IsVerify);
             if (customer != null)
             {
                 customer.IsVerify = true;
@@ -110,14 +110,14 @@ namespace Services
 
         public bool GetCustomerByEmail(string email)
         {
-            return _customerRepository.GetSingleByPredicate(c => c.Email == email) != null;
+            return _customerRepository.GetSingle(c => c.Email == email) != null;
         }
 
         public bool ChangePassword(string email, string password, string newPassword)
         {
             bool checkError = false;
             bool verify = false;
-            var customer = _customerRepository.GetSingleByPredicate(x => x.Email == email && x.IsActive);
+            var customer = _customerRepository.GetSingle(x => x.Email == email && x.IsActive);
             if (customer != null)
             {
                 verify = CryptoService.VerifyPassword(password, Convert.FromBase64String(customer.PasswordHash), Convert.FromBase64String(customer.PasswordSalt));

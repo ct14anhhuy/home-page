@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class PoscoFamilyController : ControllerCore
     {
-        // GET: PoscoFamily
         public ActionResult Index()
         {
             return View();

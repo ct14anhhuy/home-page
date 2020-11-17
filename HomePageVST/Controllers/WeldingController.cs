@@ -14,7 +14,6 @@ namespace HomePageVST.Controllers
             _documentService = documentService;
         }
 
-        // GET: Welding
         public ActionResult Index()
         {
             var listDocumentDTO = _documentService.GetListActivedDocumentByCategoryId(CommonConstants.WELDING_CATEGORY_ID);

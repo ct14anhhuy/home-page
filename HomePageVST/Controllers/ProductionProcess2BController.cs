@@ -5,7 +5,6 @@ namespace HomePageVST.Controllers
 {
     public class ProductionProcess2BController : ControllerCore
     {
-        // GET: ProductionProcess2B
         public ActionResult Index()
         {
             return View();

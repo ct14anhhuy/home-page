@@ -21,9 +21,8 @@
     </div>
     <div id="page-wrap" class="layout">
         @{Html.RenderAction("Header", "Home");}
-        <div id="content-wrap">
-            @RenderBody()
-        </div>
+
+        @RenderBody()
     </div>
 
     @{Html.RenderPartial("CustomerLogin");}

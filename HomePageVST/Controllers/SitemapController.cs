@@ -17,7 +17,6 @@ namespace HomePageVST.Controllers
             _headerDetailService = headerDetailService;
         }
 
-        [OutputCache(Duration = 1800, VaryByParam = "none")]
         public SitemapActionResult Index()
         {
             var sitemapItems = new List<SitemapViewModels>();

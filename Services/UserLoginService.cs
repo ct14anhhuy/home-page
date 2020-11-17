@@ -30,14 +30,14 @@ namespace Services
 
         public UserLoginDTO GetUserInfoByUserName(string userName)
         {
-            var user = _userLoginRepository.GetSingleByPredicate(x => x.UserName == userName, x => x.Role);
+            var user = _userLoginRepository.GetSingle(x => x.UserName == userName, x => x.Role);
             return _mapper.Map<UserLoginDTO>(user);
         }
 
         public bool CheckLogin(string userName, string password)
         {
             bool verify = false;
-            var user = _userLoginRepository.GetSingleByPredicate(x => x.UserName == userName && x.IsActive);
+            var user = _userLoginRepository.GetSingle(x => x.UserName == userName && x.IsActive);
             if (user != null)
             {
                 verify = CryptoService.VerifyPassword(password, Convert.FromBase64String(user.PasswordHash), Convert.FromBase64String(user.PasswordSalt));
@@ -49,7 +49,7 @@ namespace Services
         {
             bool checkError = false;
             bool verify = false;
-            var user = _userLoginRepository.GetSingleByPredicate(x => x.Id == userLogin.Id && x.IsActive);
+            var user = _userLoginRepository.GetSingle(x => x.Id == userLogin.Id && x.IsActive);
             if (user != null)
             {
                 verify = CryptoService.VerifyPassword(userLogin.Password, Convert.FromBase64String(user.PasswordHash), Convert.FromBase64String(user.PasswordSalt));

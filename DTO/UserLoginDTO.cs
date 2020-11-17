@@ -22,18 +22,21 @@ namespace DTO
         #region IgnoreMap
 
         [IgnoreMap]
-        [Required(ErrorMessage = "Enter your password")]
         [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Password can't be less than 6 characters")]
+        [Required(ErrorMessage = "Enter your password")]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [IgnoreMap]
         [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Password can't be less than 6 characters")]
         [Display(Name = "New Password")]
         public string NewPassword { get; set; }
 
         [IgnoreMap]
         [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Password can't be less than 6 characters")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match")]
         [Display(Name = "Confirm New Password")]
         public string ConfirmNewPassword { get; set; }

@@ -13,6 +13,7 @@ namespace HomePageVST.Controllers
 
         public HomeController(IHeaderDetailService headerDetailService, IImageService imageService)
         {
+            //http://172.25.219.14/gasp/system/system.aspx
             _headerDetailService = headerDetailService;
             _imageService = imageService;
         }
@@ -36,7 +37,7 @@ namespace HomePageVST.Controllers
         [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client)]
         public ActionResult CoporateCitizenImageSlide()
         {
-            var images = _imageService.GetActiveImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN_ID);
+            var images = _imageService.GetRandomImagesByHeaderDetailId(CommonConstants.COPORATE_CITIZEN_ID);
             return PartialView(images);
         }
 
