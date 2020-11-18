@@ -13,7 +13,6 @@ namespace HomePageVST.Controllers
 
         public HomeController(IHeaderDetailService headerDetailService, IImageService imageService)
         {
-            //http://172.25.219.14/gasp/system/system.aspx
             _headerDetailService = headerDetailService;
             _imageService = imageService;
         }

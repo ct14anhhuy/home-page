@@ -1,6 +1,9 @@
 ﻿using DTO;
 using HomePageVST.Controllers.Core;
+using Newtonsoft.Json;
 using Services.Interfaces;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Utilities;
@@ -28,12 +31,13 @@ namespace HomePageVST.Controllers
                 {
                     return Json(new { isCreateSuccess = false, isExists = true }, JsonRequestBehavior.AllowGet);
                 }
-                await _customerService.CreateCustomer(customer);
-                return Json(new { isCreateSuccess = true, isExists = false }, JsonRequestBehavior.AllowGet);
+                var isCreateSuccess = await _customerService.CreateCustomer(customer);
+                return Json(new { isCreateSuccess, isExists = false }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(new { isCreateSuccess = false, isExists = false }, JsonRequestBehavior.AllowGet);
+                var modelErrors = JsonConvert.SerializeObject(ModelState.Values.Where(x => x.Errors.Count > 0));
+                return Json(new { isCreateSuccess = false, modelErrors }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -46,31 +50,35 @@ namespace HomePageVST.Controllers
         }
 
         [HttpPost]
-        public JsonResult Login(string email, string password)
+        public JsonResult Login(CustomerDTO customer)
         {
-            var result = _customerService.CheckLogin(email, password);
-            if (result)
+            if (ModelState.IsValidField("Email") && ModelState.IsValidField("Password"))
             {
-                Session["CustomerEmail"] = email;
-                return Json(new { isLoginSuccess = true }, JsonRequestBehavior.AllowGet);
+                var result = _customerService.CheckLogin(customer.Email, customer.Password);
+                if (result)
+                {
+                    Session["CustomerEmail"] = customer.Email;
+                }
+                return Json(new { isLoginSuccess = result }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(new { isLoginSuccess = false }, JsonRequestBehavior.AllowGet);
+                var modelErrors = JsonConvert.SerializeObject(ModelState.Values.Where(x => x.Errors.Count > 0));
+                return Json(new { isLoginSuccess = false, modelErrors }, JsonRequestBehavior.AllowGet);
             }
         }
 
         [HttpPost]
-        public JsonResult ChangePassword(string password, string newPassword)
+        public JsonResult ChangePassword(CustomerDTO customer)
         {
-            if (Session["CustomerEmail"] == null)
+            if (string.IsNullOrEmpty(customer.NewPassword))
             {
-                return Json(new { isChangeSuccess = false }, JsonRequestBehavior.AllowGet);
+                ModelState.AddModelError("NewPassword", "Enter your new password");
             }
-            else
+            if (ModelState.IsValidField("Password") && ModelState.IsValidField("NewPassword") && ModelState.IsValidField("ConfirmNewPassword"))
             {
                 string email = Session["CustomerEmail"].ToString();
-                bool isChangeSuccess = _customerService.ChangePassword(email, password, newPassword);
+                bool isChangeSuccess = _customerService.ChangePassword(email, customer.Password, customer.NewPassword);
                 if (isChangeSuccess)
                 {
                     Session["CustomerEmail"] = null;
@@ -78,6 +86,12 @@ namespace HomePageVST.Controllers
                 }
                 return Json(new { isChangeSuccess }, JsonRequestBehavior.AllowGet);
             }
+            else
+            {
+                var modelErrors = JsonConvert.SerializeObject(ModelState.Values.Where(x => x.Errors.Count > 0));
+                return Json(new { isChangeSuccess = false, modelErrors }, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
         public ActionResult Logout()

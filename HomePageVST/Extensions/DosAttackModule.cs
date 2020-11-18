@@ -12,6 +12,7 @@ namespace HomePageVST.Extensions
         private static Dictionary<string, short> _ipAdresses = new Dictionary<string, short>();
         private static Stack<string> _banned = new Stack<string>();
         private static Timer _timer = CreateTimer();
+        private static Timer _bannedTimer = CreateBanningTimer();
         private const int BANNED_REQUESTS = 10;
         private const int REDUCTION_INTERVAL = 1000;
         private const int RELEASE_INTERVAL = 60 * 1000;
@@ -53,6 +54,19 @@ namespace HomePageVST.Extensions
         {
             Timer timer = GetTimer(REDUCTION_INTERVAL);
             timer.Elapsed += new ElapsedEventHandler(TimerElapsed);
+            return timer;
+        }
+
+        private static Timer CreateBanningTimer()
+        {
+            Timer timer = GetTimer(RELEASE_INTERVAL);
+            timer.Elapsed += delegate
+            {
+                if (_banned.Any())
+                {
+                    _banned.Pop();
+                }
+            };
             return timer;
         }
 

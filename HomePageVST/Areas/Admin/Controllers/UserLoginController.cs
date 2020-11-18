@@ -49,7 +49,7 @@ namespace HomePageVST.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "User name or pass incorrect!");
+                    ModelState.AddModelError(string.Empty, "User name or password incorrect!");
                     return View();
                 }
             }
@@ -73,6 +73,10 @@ namespace HomePageVST.Areas.Admin.Controllers
         public ActionResult ChangePassword(UserLoginDTO userLogin)
         {
             ModelState["UserName"].Errors.Clear();
+            if (string.IsNullOrEmpty(userLogin.NewPassword))
+            {
+                ModelState.AddModelError("NewPassword", "Enter your new password");
+            }
             if (ModelState.IsValid)
             {
                 bool result = _userLoginService.ChangePassword(userLogin);

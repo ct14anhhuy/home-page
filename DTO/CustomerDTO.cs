@@ -39,11 +39,28 @@ namespace DTO
         [Display(Name = "Verified")]
         public bool IsVerify { get; set; }
 
+        #region IgnoreMap
+
         [IgnoreMap]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Enter your password")]
         [MinLength(6, ErrorMessage = "Password can't be less than 6 characters")]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [IgnoreMap]
+        [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Password can't be less than 6 characters")]
+        [Display(Name = "New Password")]
+        public string NewPassword { get; set; }
+
+        [IgnoreMap]
+        [DataType(DataType.Password)]
+        [MinLength(6, ErrorMessage = "Password can't be less than 6 characters")]
+        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match")]
+        [Display(Name = "Confirm New Password")]
+        public string ConfirmNewPassword { get; set; }
+
+        #endregion IgnoreMap
     }
 }
