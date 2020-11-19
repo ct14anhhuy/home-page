@@ -11,7 +11,7 @@
 
     @Styles.Render("~/css/base")
     @Styles.Render("~/css/customs")
-    <link rel="preload" as="font" type="font/woff" crossorigin=crossorigin href="~/Content/themes/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.woff" />
+    <link rel="preload" as="font" type="font/woff" crossorigin=crossorigin href="~/Content/bootstrap-3.2.0/fonts/glyphicons-halflings-regular.woff" />
     <link rel="preload" as="font" type="font/woff2" crossorigin=crossorigin href="~/assets/fonts/fontawesome-webfont.woff2" />
     @RenderSection("headerCss", required: false)
 </head>
@@ -38,5 +38,6 @@
     @Scripts.Render("~/js/plugins")
     @Scripts.Render("~/js/customs")
     @RenderSection("footerJs", required: false)
+
 </body>
 </html>

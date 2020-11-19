@@ -51,14 +51,14 @@
     new WOW({ mobile: false }).init();
 })(jQuery);
 
-function notifyMetro(text, style) {
+function notifyMetro(text, className) {
     $.notify({
         title: "Info",
         text: text,
         image: "<img src='media/images/icon/P.png'/>"
     }, {
         style: 'metro',
-        className: style,
+        className: className,
         autoHide: true,
         clickToHide: true
     });

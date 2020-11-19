@@ -12,7 +12,7 @@ namespace HomePageVST
 
             bundles.Add(new ScriptBundle("~/js/plugins").Include(
               "~/assets/Scripts/jquery.js",
-              "~/Content/themes/bootstrap-3.2.0/js/bootstrap.min.js",
+              "~/Content/bootstrap-3.2.0/js/bootstrap.min.js",
               "~/assets/Scripts/owl.carousel.min.js",
               "~/assets/Scripts/jquery.stellar.min.js",
               "~/assets/Scripts/jquery.sticky.js",
@@ -20,8 +20,8 @@ namespace HomePageVST
               "~/assets/Scripts/wow.min.js",
               "~/assets/Scripts/smoothscroll.js",
               "~/assets/Scripts/lightbox.min.js",
-              "~/Content/themes/notifyjs-0.4.2/dist/notify.js",
-              "~/Content/themes/notifyjs-0.4.2/dist/styles/metro/notify-metro.js"));
+              "~/Content/notifyjs-0.4.2/dist/notify.js",
+              "~/Content/notifyjs-0.4.2/dist/styles/metro/notify-metro.js"));
 
             bundles.Add(new ScriptBundle("~/js/customs").Include(
                "~/assets/Scripts/scripts.js",
@@ -33,7 +33,7 @@ namespace HomePageVST
                "~/assets/Scripts/ajax/document.js"));
 
             bundles.Add(new ScriptBundle("~/js/jquery.lazy").Include(
-                "~/Content/themes/jquery.lazy/jquery.lazy.min.js"));
+                "~/Content/jquery.lazy/jquery.lazy.min.js"));
 
             bundles.Add(new ScriptBundle("~/js/home").Include(
                 "~/assets/Scripts/home.js"));
@@ -43,7 +43,7 @@ namespace HomePageVST
             #region StyleBundle
 
             bundles.Add(new StyleBundle("~/css/base")
-             .Include("~/Content/themes/bootstrap-3.2.0/css/bootstrap.min.css", new CssRewriteUrlTransform())
+             .Include("~/Content/bootstrap-3.2.0/css/bootstrap.min.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/font-awesome.min.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/animate.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/owl.carousel.css", new CssRewriteUrlTransform())
@@ -53,7 +53,7 @@ namespace HomePageVST
              .Include("~/assets/css/tooplate-style.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/lightbox.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/themify-icons.css", new CssRewriteUrlTransform())
-             .Include("~/Content/themes/notifyjs-0.4.2/dist/styles/metro/notify-metro.css", new CssRewriteUrlTransform()));
+             .Include("~/Content/notifyjs-0.4.2/dist/styles/metro/notify-metro.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/css/customs")
                .Include("~/assets/css/customs.css", new CssRewriteUrlTransform())
@@ -61,7 +61,7 @@ namespace HomePageVST
                .Include("~/assets/css/dialog.css", new CssRewriteUrlTransform())
                .Include("~/assets/css/bootstrap-nonresponsive.css", new CssRewriteUrlTransform())
                .Include("~/assets/css/fix-width.css", new CssRewriteUrlTransform())
-               .Include("~/assets/css/modal.css", new CssRewriteUrlTransform())
+               .Include("~/assets/css/modal-customer.css", new CssRewriteUrlTransform())
                );
 
             bundles.Add(new StyleBundle("~/css/home")
