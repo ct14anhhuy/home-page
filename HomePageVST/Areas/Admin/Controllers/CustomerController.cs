@@ -1,4 +1,5 @@
 ﻿using DTO;
+using HomePageVST.Controllers.Core;
 using HomePageVST.Extensions.AntiModelInjection;
 using Services.Interfaces;
 using System;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 namespace HomePageVST.Areas.Admin.Controllers
 {
     [Authorize]
-    public class CustomerController : Controller
+    public class CustomerController : ControllerCore
     {
         private ICustomerService _customerService;
         private const string POSCO_MAIL_ADDRESS = "116.127.24.126";

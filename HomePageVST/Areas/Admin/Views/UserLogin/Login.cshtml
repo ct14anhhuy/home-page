@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-gp">
                             @Html.LabelFor(a => a.Password)
-                            @Html.PasswordFor(a => a.Password, new { @name = "password" })
+                            @Html.PasswordFor(a => a.Password, new { @name = "password", autocomplete = "on"})
                             @Html.ValidationMessageFor(a => a.Password)
                             <i class="ti-lock"></i>
                             <div class="text-danger"></div>
