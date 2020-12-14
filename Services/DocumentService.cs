@@ -50,7 +50,7 @@ namespace Services
         {
             documentDTO.FileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{documentDTO.PdfFile.FileName}";
             documentDTO.FileName = documentDTO.FileName.ConvertToUnsignAndRemoveEmpty();
-            string filePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Pdf.Path") + documentDTO.FileName;
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.Read("Pdf.Path") + documentDTO.FileName;
             FileService.SaveFile(documentDTO.PdfFile, filePath);
             documentDTO.Description = documentDTO.Description.Trim();
             var document = _documentRepository.Add(_mapper.Map<Document>(documentDTO));

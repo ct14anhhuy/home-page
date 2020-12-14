@@ -10,7 +10,7 @@ namespace HomePageVST.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             bool allowCompression = false;
-            bool.TryParse(ConfigHelper.ReadSetting("Compression"), out allowCompression);
+            bool.TryParse(ConfigHelper.Read("Compression"), out allowCompression);
 
             if (allowCompression)
             {

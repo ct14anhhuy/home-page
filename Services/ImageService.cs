@@ -37,16 +37,16 @@ namespace Services
         public ImageDTO Add(ImageDTO imageDTO)
         {
             string fileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{imageDTO.ImageFile.FileName.ConvertToUnsignAndRemoveEmpty()}";
-            string imgFilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Image.News.Path") + fileName;
-            string thumbFilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Thumbnail.News.Path") + fileName;
+            string imgFilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.Read("Image.News.Path") + fileName;
+            string thumbFilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.Read("Thumbnail.News.Path") + fileName;
 
             //Save image
             ImageHelper.PerformImageResize(imageDTO.ImageFile, 1024, 0, imgFilePath);
             //Save thumbnail
             ImageHelper.PerformImageResize(imageDTO.ImageFile, 300, 0, thumbFilePath);
 
-            imageDTO.FilePath = ConfigHelper.ReadSetting("Image.News.Path") + fileName;
-            imageDTO.MinimalFilePath = ConfigHelper.ReadSetting("Thumbnail.News.Path") + fileName;
+            imageDTO.FilePath = ConfigHelper.Read("Image.News.Path") + fileName;
+            imageDTO.MinimalFilePath = ConfigHelper.Read("Thumbnail.News.Path") + fileName;
             var image = _imageRepository.Add(_mapper.Map<Image>(imageDTO));
             _unitOfWork.Commit();
             return _mapper.Map<ImageDTO>(image);

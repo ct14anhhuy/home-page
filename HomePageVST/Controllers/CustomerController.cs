@@ -25,7 +25,7 @@ namespace HomePageVST.Controllers
         {
             if (ModelState.IsValid)
             {
-                string verifyEmail = ConfigHelper.ReadSetting("VerifyEmail");
+                string verifyEmail = ConfigHelper.Read("VerifyEmail");
                 bool checkExists = _customerService.GetCustomerByEmail(customer.Email);
                 if (checkExists)
                 {

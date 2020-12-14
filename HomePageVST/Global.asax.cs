@@ -35,7 +35,7 @@ namespace HomePageVST
 
         protected void Application_BeginRequest(object source, EventArgs e)
         {
-            bool monitor = bool.Parse(ConfigHelper.ReadSetting("EnableMonitorPerRequest"));
+            bool monitor = bool.Parse(ConfigHelper.Read("EnableMonitorPerRequest"));
             if (monitor)
             {
                 LogHelper.Info($"Request to {HttpContext.Current.Request.Url}");
@@ -44,7 +44,7 @@ namespace HomePageVST
 
         private void GetTotalUsersFromFileConfig()
         {
-            var jObject = JsonHelper.Read(ConfigHelper.ReadSetting("VisitorsCounterFilePath"));
+            var jObject = JsonHelper.Read(ConfigHelper.Read("VisitorsCounterFilePath"));
             Application["TotalUser"] = (int)jObject["onlineVisitors"];
             Application["OnlineUser"] = 0;
         }
@@ -54,7 +54,7 @@ namespace HomePageVST
             Application.Lock();
             Application["TotalUser"] = (int)Application["TotalUser"] + 1;
             Application["OnlineUser"] = (int)Application["OnlineUser"] + 1;
-            JsonHelper.Write(ConfigHelper.ReadSetting("VisitorsCounterFilePath"), "onlineVisitors", (int)Application["TotalUser"]);
+            JsonHelper.Write(ConfigHelper.Read("VisitorsCounterFilePath"), "onlineVisitors", (int)Application["TotalUser"]);
             Application.UnLock();
             LogHelper.Info("Connected");
         }

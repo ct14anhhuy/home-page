@@ -69,7 +69,7 @@ namespace HomePageVST
 
             #endregion StyleBundle
 
-            BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.ReadSetting("EnableBundles"));
+            BundleTable.EnableOptimizations = bool.Parse(ConfigHelper.Read("EnableBundles"));
         }
     }
 }

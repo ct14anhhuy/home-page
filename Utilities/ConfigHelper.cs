@@ -4,13 +4,12 @@ namespace Utilities
 {
     public static class ConfigHelper
     {
-        public static string ReadSetting(string key)
+        public static string Read(string key)
         {
-            string result = "";
             try
             {
                 var appSettings = ConfigurationManager.AppSettings;
-                result = appSettings[key] ?? "Not Found";
+                string result = appSettings[key] ?? "Not Found";
                 return result;
             }
             catch (ConfigurationErrorsException ex)
@@ -19,7 +18,7 @@ namespace Utilities
             }
         }
 
-        public static void UpdateSetting(string key, string value)
+        public static void Write(string key, string value)
         {
             try
             {

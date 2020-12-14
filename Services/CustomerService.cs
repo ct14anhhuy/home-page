@@ -28,7 +28,7 @@ namespace Services
         public async Task<CustomerDTO> CreateCustomer(CustomerDTO customerDTO)
         {
             byte[] salt = CryptoService.GenerateSalt();
-            string verifyEmail = ConfigHelper.ReadSetting("VerifyEmail");
+            string verifyEmail = ConfigHelper.Read("VerifyEmail");
             customerDTO.PasswordSalt = Convert.ToBase64String(salt);
             customerDTO.PasswordHash = Convert.ToBase64String(CryptoService.ComputeHash(customerDTO.Password, salt));
             var customer = _customerRepository.Add(_mapper.Map<Customer>(customerDTO));
@@ -88,7 +88,7 @@ namespace Services
         public async Task<bool> VerifyCustomer(int id)
         {
             bool result = false;
-            string approvalEmail = ConfigHelper.ReadSetting("ApprovalEmail");
+            string approvalEmail = ConfigHelper.Read("ApprovalEmail");
             var customer = _customerRepository.GetSingle(c => c.Id == id && !c.IsVerify);
             if (customer != null)
             {
@@ -136,7 +136,7 @@ namespace Services
 
         private async Task SendMailToEmployee(Customer customer, string email, string empName, string route, string action)
         {
-            string templatePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Template.Email.Path");
+            string templatePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.Read("Template.Email.Path");
             string content = "";
             StringBuilder body = new StringBuilder();
             body.AppendLine("<p>This's info of a new customer from www.poscovst.com.vn website.</p>");
@@ -173,7 +173,7 @@ namespace Services
 
         private async Task SendMailToCustomer(Customer customer)
         {
-            string templatePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.ReadSetting("Template.Email.Path");
+            string templatePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.Read("Template.Email.Path");
             string receiver = "Dear Mr/Mrs";
             string content = "";
             StringBuilder body = new StringBuilder();
