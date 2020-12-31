@@ -6,7 +6,7 @@ namespace Utilities
     public class LogHelper
     {
         private static readonly LogHelper _instance = new LogHelper();
-        private ILog monitoringLogger;
+        private readonly ILog monitoringLogger;
         private static ILog debugLogger;
 
         private LogHelper()

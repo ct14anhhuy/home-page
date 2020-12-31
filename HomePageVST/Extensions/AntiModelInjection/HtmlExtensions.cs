@@ -44,8 +44,7 @@ namespace HomePageVST.Extensions.AntiModelInjection
             {
                 formValue = binaryValue.ToArray();
             }
-            byte[] byteArrayValue = formValue as byte[];
-            if (byteArrayValue != null)
+            if (formValue is byte[] byteArrayValue)
             {
                 formValue = Convert.ToBase64String(byteArrayValue);
             }

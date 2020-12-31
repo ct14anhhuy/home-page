@@ -11,7 +11,7 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class NewsInfomationController : ControllerCore
     {
-        private IImageService _imageService;
+        private readonly IImageService _imageService;
         public NewsInfomationController(IImageService imageService)
         {
             _imageService = imageService;

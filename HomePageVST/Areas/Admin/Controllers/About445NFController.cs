@@ -13,7 +13,7 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class About445NFController : ControllerCore
     {
-        private IDocumentService _documentService;
+        private readonly IDocumentService _documentService;
 
         public About445NFController(IDocumentService documentService)
         {

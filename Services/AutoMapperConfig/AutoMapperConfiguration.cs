@@ -1,7 +1,7 @@
-﻿namespace Services.AutoMapperConfig
-{
-    using AutoMapper;
+﻿using AutoMapper;
 
+namespace Services.AutoMapperConfig
+{
     public class AutoMapperConfiguration
     {
         public static MapperConfiguration Config()

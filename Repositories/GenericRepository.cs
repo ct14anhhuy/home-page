@@ -10,8 +10,8 @@ namespace Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private HomePageVSTEntities _dbContext;
-        private DbSet<TEntity> _dbSet;
+        private readonly HomePageVSTEntities _dbContext;
+        private readonly DbSet<TEntity> _dbSet;
 
         public GenericRepository(HomePageVSTEntities dbContext)
         {

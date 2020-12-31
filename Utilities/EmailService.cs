@@ -19,17 +19,21 @@ namespace Utilities
         {
             try
             {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(SENDER_EMAIL);
+                MailMessage mail = new MailMessage
+                {
+                    From = new MailAddress(SENDER_EMAIL)
+                };
                 mail.To.Add(email);
                 mail.Subject = subject;
                 mail.Body = content;
                 mail.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = SMTP_HOST;
-                smtp.Credentials = new NetworkCredential(SENDER_EMAIL, SENDER_PASSWORD);
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
+                SmtpClient smtp = new SmtpClient
+                {
+                    Host = SMTP_HOST,
+                    Credentials = new NetworkCredential(SENDER_EMAIL, SENDER_PASSWORD),
+                    Port = 587,
+                    EnableSsl = true
+                };
                 Task task = new Task(() => smtp.Send(mail));
                 task.Start();
                 return task;

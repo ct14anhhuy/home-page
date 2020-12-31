@@ -1,10 +1,9 @@
 ﻿using Data;
 using DTO;
+using AutoMapper;
 
 namespace Services.AutoMapperConfig
 {
-    using AutoMapper;
-
     public class MappingProfile : Profile
     {
         public MappingProfile()

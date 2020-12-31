@@ -9,9 +9,9 @@ namespace Services
 {
     public class CoporateCitizenCategoryService : ICoporateCitizenCategoryService
     {
-        private IUnitOfWork _unitOfWork;
-        private IGenericRepository<CoporateCitizenCategory> _coporateCitizenCategory;
-        private IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<CoporateCitizenCategory> _coporateCitizenCategory;
+        private readonly IMapper _mapper;
 
         public CoporateCitizenCategoryService(IUnitOfWork unitOfWork, IMapper mapper)
         {

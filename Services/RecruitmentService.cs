@@ -10,9 +10,9 @@ namespace Services
 {
     public class RecruitmentService : IRecruitmentService
     {
-        private IUnitOfWork _unitOfWork;
-        private IGenericRepository<Recruitment> _recruitmentRepository;
-        private IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<Recruitment> _recruitmentRepository;
+        private readonly IMapper _mapper;
 
         public RecruitmentService(IUnitOfWork unitOfWork, IMapper mapper)
         {

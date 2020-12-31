@@ -15,7 +15,7 @@ namespace Repositories
         public IGenericRepository<CoporateCitizenCategory> CoporateCitizenCategoryRepository { get; private set; }
         public IGenericRepository<CoporateCitizenContent> CoporateCitizenContentRepository { get; private set; }
 
-        private HomePageVSTEntities _dbContext;
+        private readonly HomePageVSTEntities _dbContext;
         private bool _disposed;
 
         public UnitOfWork(HomePageVSTEntities dbContext)

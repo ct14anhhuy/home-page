@@ -9,7 +9,7 @@ namespace HomePageVST.Extensions.AntiModelInjection
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class ValidateAntiModelInjectionAttribute : ActionFilterAttribute
     {
-        private string _propertyName;
+        private readonly string _propertyName;
 
         public ValidateAntiModelInjectionAttribute(string propertyName)
         {

@@ -11,9 +11,9 @@ namespace Services
 {
     public class DocumentService : IDocumentService
     {
-        private IUnitOfWork _unitOfWork;
-        private IGenericRepository<Document> _documentRepository;
-        private IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<Document> _documentRepository;
+        private readonly IMapper _mapper;
 
         public DocumentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -48,7 +48,7 @@ namespace Services
 
         public DocumentDTO Add(DocumentDTO documentDTO)
         {
-            documentDTO.FileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{documentDTO.PdfFile.FileName}";
+            documentDTO.FileName = $"{DateTime.Now:yyyyMMddhhmmss}-{documentDTO.PdfFile.FileName}";
             documentDTO.FileName = documentDTO.FileName.ConvertToUnsignAndRemoveEmpty();
             string filePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.Read("Pdf.Path") + documentDTO.FileName;
             FileService.SaveFile(documentDTO.PdfFile, filePath);

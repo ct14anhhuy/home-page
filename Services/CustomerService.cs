@@ -14,9 +14,9 @@ namespace Services
 {
     public class CustomerService : ICustomerService
     {
-        private IUnitOfWork _unitOfWork;
-        private IGenericRepository<Customer> _customerRepository;
-        private IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<Customer> _customerRepository;
+        private readonly IMapper _mapper;
 
         public CustomerService(IUnitOfWork unitOfWork, IMapper mapper)
         {

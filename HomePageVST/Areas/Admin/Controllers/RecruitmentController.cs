@@ -11,7 +11,7 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class RecruitmentController : ControllerCore
     {
-        private IRecruitmentService _recruitmentService;
+        private readonly IRecruitmentService _recruitmentService;
 
         public RecruitmentController(IRecruitmentService recruitmentService)
         {

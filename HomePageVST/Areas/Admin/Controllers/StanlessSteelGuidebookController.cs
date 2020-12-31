@@ -12,7 +12,7 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class StanlessSteelGuidebookController : ControllerCore
     {
-        private IDocumentService _documentService;
+        private readonly IDocumentService _documentService;
 
         public StanlessSteelGuidebookController(IDocumentService documentService)
         {

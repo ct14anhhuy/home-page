@@ -3,7 +3,6 @@ using HomePageVST.Controllers.Core;
 using Newtonsoft.Json;
 using Services.Interfaces;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Utilities;
@@ -12,7 +11,7 @@ namespace HomePageVST.Controllers
 {
     public class CustomerController : ControllerCore
     {
-        private ICustomerService _customerService;
+        private readonly ICustomerService _customerService;
         private const string ZSCALER_ADDRESS = "165.225.112";
 
         public CustomerController(ICustomerService customerService)
@@ -44,7 +43,7 @@ namespace HomePageVST.Controllers
         [HttpGet]
         public JsonResult CheckLoggedIn()
         {
-            bool isCompanyAddress = Request.UserHostAddress.Contains(ZSCALER_ADDRESS) ? true : false;
+            bool isCompanyAddress = Request.UserHostAddress.Contains(ZSCALER_ADDRESS);
             bool isLoggedIn = Session["CustomerEmail"] != null;
             return Json(new { isLoggedIn, isCompanyAddress }, JsonRequestBehavior.AllowGet);
         }

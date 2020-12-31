@@ -9,7 +9,7 @@ namespace HomePageVST.Controllers
 {
     public class SitemapController : Controller
     {
-        private IHeaderDetailService _headerDetailService;
+        private readonly IHeaderDetailService _headerDetailService;
         private const string WEBSITE_URL = "http://www.poscovst.com.vn/";
 
         public SitemapController(IHeaderDetailService headerDetailService)

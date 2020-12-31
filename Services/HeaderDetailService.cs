@@ -9,9 +9,9 @@ namespace Services
 {
     public class HeaderDetailService : IHeaderDetailService
     {
-        private IGenericRepository<HeaderDetail> _headerDetailRepository;
-        private IUnitOfWork _unitOfWork;
-        private IMapper _mapper;
+        private readonly IGenericRepository<HeaderDetail> _headerDetailRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
         public HeaderDetailService(IUnitOfWork unitOfWork, IMapper mapper)
         {

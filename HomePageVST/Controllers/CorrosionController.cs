@@ -7,7 +7,7 @@ namespace HomePageVST.Controllers
 {
     public class CorrosionController : ControllerCore
     {
-        private IDocumentService _documentService;
+        private readonly IDocumentService _documentService;
 
         public CorrosionController(IDocumentService documentService)
         {

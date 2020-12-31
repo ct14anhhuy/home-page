@@ -7,7 +7,7 @@ namespace HomePageVST.Controllers
 {
     public class WaterTankIndustryController : ControllerCore
     {
-        private IDocumentService _documentService;
+        private readonly IDocumentService _documentService;
 
         public WaterTankIndustryController(IDocumentService documentService)
         {

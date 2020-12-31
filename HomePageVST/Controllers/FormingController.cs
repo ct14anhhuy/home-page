@@ -7,7 +7,7 @@ namespace HomePageVST.Controllers
 {
     public class FormingController : ControllerCore
     {
-        private IDocumentService _documentService;
+        private readonly IDocumentService _documentService;
 
         public FormingController(IDocumentService documentService)
         {

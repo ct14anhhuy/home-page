@@ -9,10 +9,10 @@ namespace HomePageVST.Extensions
 {
     public class DosAttackModule : IHttpModule
     {
-        private static Dictionary<string, short> _ipAdresses = new Dictionary<string, short>();
-        private static Stack<string> _banned = new Stack<string>();
-        private static Timer _timer = CreateTimer();
-        private static Timer _bannedTimer = CreateBanningTimer();
+        private static readonly Dictionary<string, short> _ipAdresses = new Dictionary<string, short>();
+        private static readonly Stack<string> _banned = new Stack<string>();
+        private static readonly Timer _timer = CreateTimer();
+        private static readonly Timer _bannedTimer = CreateBanningTimer();
         private const int BANNED_REQUESTS = 10;
         private const int REDUCTION_INTERVAL = 1000;
         private const int RELEASE_INTERVAL = 60 * 1000;
@@ -72,8 +72,10 @@ namespace HomePageVST.Extensions
 
         private static Timer GetTimer(int interval)
         {
-            Timer timer = new Timer();
-            timer.Interval = interval;
+            Timer timer = new Timer
+            {
+                Interval = interval
+            };
             timer.Start();
             return timer;
         }

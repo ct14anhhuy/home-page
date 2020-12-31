@@ -9,10 +9,9 @@ namespace HomePageVST.Filters
 
         public override bool IsValid(object value)
         {
-            var file = value as HttpPostedFileBase;
             bool isValid = true;
             int allowedFileSize = FileSize;
-            if (file != null)
+            if (value is HttpPostedFileBase file)
             {
                 var fileSize = file.ContentLength;
                 isValid = fileSize <= allowedFileSize;

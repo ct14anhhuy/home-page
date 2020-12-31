@@ -12,8 +12,8 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class UserLoginController : ControllerCore
     {
-        private IUserLoginService _userLoginService;
-        private UserRoleProvider _userRoleProvider;
+        private readonly IUserLoginService _userLoginService;
+        private readonly UserRoleProvider _userRoleProvider;
 
         public UserLoginController(IUserLoginService userLoginService, UserRoleProvider userRoleProvider)
         {

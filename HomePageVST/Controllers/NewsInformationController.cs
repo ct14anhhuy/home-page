@@ -7,7 +7,7 @@ namespace HomePageVST.Controllers
 {
     public class NewsInformationController : ControllerCore
     {
-        private IImageService _imageService;
+        private readonly IImageService _imageService;
         public NewsInformationController(IImageService imageService)
         {
             _imageService = imageService;

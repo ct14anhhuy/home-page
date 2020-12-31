@@ -8,8 +8,8 @@ namespace HomePageVST.Controllers
 {
     public class HomeController : ControllerCore
     {
-        private IHeaderDetailService _headerDetailService;
-        private IImageService _imageService;
+        private readonly IHeaderDetailService _headerDetailService;
+        private readonly IImageService _imageService;
 
         public HomeController(IHeaderDetailService headerDetailService, IImageService imageService)
         {

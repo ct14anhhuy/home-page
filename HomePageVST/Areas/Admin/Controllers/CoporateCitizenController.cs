@@ -11,7 +11,7 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class CoporateCitizenController : ControllerCore
     {
-        private IImageService _imageService;
+        private readonly IImageService _imageService;
 
         public CoporateCitizenController(IImageService imageService)
         {

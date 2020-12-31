@@ -10,9 +10,8 @@ namespace HomePageVST.Filters
 
         public override bool IsValid(object value)
         {
-            HttpPostedFileBase file = value as HttpPostedFileBase;
             bool isValid = true;
-            if (file != null)
+            if (value is HttpPostedFileBase file)
             {
                 var fileExtension = Path.GetExtension(file.FileName);
                 isValid = fileExtension == FileExtension;

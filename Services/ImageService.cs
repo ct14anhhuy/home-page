@@ -11,9 +11,12 @@ namespace Services
 {
     public class ImageService : IImageService
     {
-        private IUnitOfWork _unitOfWork;
-        private IGenericRepository<Image> _imageRepository;
-        private IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<Image> _imageRepository;
+        private readonly IMapper _mapper;
+        private const int IMAGE_QUALITY = 1024;
+        private const int THUMBNAIL_QUALITY = 300;
+        private const int IMAGES_PER_PAGE = 10;
 
         public ImageService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -36,14 +39,14 @@ namespace Services
 
         public ImageDTO Add(ImageDTO imageDTO)
         {
-            string fileName = $"{DateTime.Now.ToString("yyyyMMddhhmmss")}-{imageDTO.ImageFile.FileName.ConvertToUnsignAndRemoveEmpty()}";
+            string fileName = $"{DateTime.Now:yyyyMMddhhmmss}-{imageDTO.ImageFile.FileName.ConvertToUnsignAndRemoveEmpty()}";
             string imgFilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.Read("Image.News.Path") + fileName;
             string thumbFilePath = AppDomain.CurrentDomain.BaseDirectory + ConfigHelper.Read("Thumbnail.News.Path") + fileName;
 
             //Save image
-            ImageHelper.PerformImageResize(imageDTO.ImageFile, 1024, 0, imgFilePath);
+            ImageHelper.PerformImageResize(imageDTO.ImageFile, IMAGE_QUALITY, 0, imgFilePath);
             //Save thumbnail
-            ImageHelper.PerformImageResize(imageDTO.ImageFile, 300, 0, thumbFilePath);
+            ImageHelper.PerformImageResize(imageDTO.ImageFile, THUMBNAIL_QUALITY, 0, thumbFilePath);
 
             imageDTO.FilePath = ConfigHelper.Read("Image.News.Path") + fileName;
             imageDTO.MinimalFilePath = ConfigHelper.Read("Thumbnail.News.Path") + fileName;
@@ -79,8 +82,7 @@ namespace Services
 
         public IEnumerable<ImageDTO> GetRandomImagesByHeaderDetailId(int headerDetailId)
         {
-            int imgNumber = 10;
-            var images = _imageRepository.GetRandom(i => i.HeaderDetailId == headerDetailId, imgNumber);
+            var images = _imageRepository.GetRandom(i => i.HeaderDetailId == headerDetailId, IMAGES_PER_PAGE);
             return _mapper.Map<IEnumerable<ImageDTO>>(images);
         }
     }

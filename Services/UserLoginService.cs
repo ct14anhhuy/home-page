@@ -11,9 +11,9 @@ namespace Services
 {
     public class UserLoginService : IUserLoginService
     {
-        private IUnitOfWork _unitOfWork;
-        private IGenericRepository<UserLogin> _userLoginRepository;
-        private IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IGenericRepository<UserLogin> _userLoginRepository;
+        private readonly IMapper _mapper;
 
         public UserLoginService(IUnitOfWork unitOfWork, IMapper mapper)
         {

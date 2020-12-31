@@ -12,7 +12,7 @@ namespace HomePageVST.Areas.Admin.Controllers
     [Authorize]
     public class CustomerController : ControllerCore
     {
-        private ICustomerService _customerService;
+        private readonly ICustomerService _customerService;
         private const string POSCO_MAIL_ADDRESS = "116.127.24.126";
 
         public CustomerController(ICustomerService customerService)

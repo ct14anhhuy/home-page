@@ -8,9 +8,9 @@ namespace HomePageVST.Controllers
 {
     public class CoporateCitizenController : ControllerCore
     {
-        private IImageService _imageService;
-        private ICoporateCitizenCategoryService _coporateCitizenCategoryService;
-        private ICoporateCitizenContentService _coporateCitizenContentService;
+        private readonly IImageService _imageService;
+        private readonly ICoporateCitizenCategoryService _coporateCitizenCategoryService;
+        private readonly ICoporateCitizenContentService _coporateCitizenContentService;
 
         public CoporateCitizenController(IImageService imageService,
             ICoporateCitizenCategoryService coporateCitizenCategoryService,

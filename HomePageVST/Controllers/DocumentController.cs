@@ -7,7 +7,7 @@ namespace HomePageVST.Controllers
 {
     public class DocumentController : ControllerCore
     {
-        private IDocumentService _documentService;
+        private readonly IDocumentService _documentService;
 
         public DocumentController(IDocumentService documentService)
         {

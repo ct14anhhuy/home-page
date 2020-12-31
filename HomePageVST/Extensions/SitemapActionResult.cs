@@ -7,8 +7,8 @@ namespace HomePageVST.Filters
 {
     public class SitemapActionResult : ActionResult
     {
-        private List<SitemapViewModels> _sitemap;
-        private string _website;
+        private readonly List<SitemapViewModels> _sitemap;
+        private readonly string _website;
 
         public SitemapActionResult(List<SitemapViewModels> sitemap, string website)
         {
