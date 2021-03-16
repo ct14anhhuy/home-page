@@ -57,7 +57,7 @@ function notifyMetro(text, className) {
         text: text,
         image: "<img src='media/images/icon/P.png'/>"
     }, {
-        style: 'metro',
+        style: "metro",
         className: className,
         autoHide: true,
         clickToHide: true
