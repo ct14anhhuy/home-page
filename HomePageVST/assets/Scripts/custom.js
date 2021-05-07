@@ -63,3 +63,9 @@ function notifyMetro(text, className) {
         clickToHide: true
     });
 }
+
+$('.sidebar-menu li').on('click', function (e) {
+    e.stopPropagation();
+    $(this).toggleClass('active');
+
+});
