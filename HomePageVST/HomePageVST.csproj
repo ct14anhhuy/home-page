@@ -444,12 +444,14 @@
     <Content Include="Areas\Admin\assets\js\vendor\jquery-2.2.4.min.js" />
     <Content Include="Areas\Admin\assets\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="assets\css\bootstrap-nonresponsive.css" />
+    <Content Include="assets\css\bootstrap-select.min.css" />
     <Content Include="assets\css\modal-customer.css" />
     <Content Include="assets\css\fix-width.css" />
     <Content Include="assets\css\themify-icons.css" />
     <Content Include="assets\fonts\themify.svg" />
     <Content Include="assets\Scripts\ajax\customer.js" />
     <Content Include="assets\Scripts\ajax\document.js" />
+    <Content Include="assets\Scripts\bootstrap-select.min.js" />
     <Content Include="assets\Scripts\fix-width.js" />
     <Content Include="assets\Scripts\home.js" />
     <Content Include="Content\notifyjs-0.4.2\.gitignore" />
@@ -462,6 +464,10 @@
     <Content Include="Content\notifyjs-0.4.2\examples\metro.html" />
     <Content Include="Content\notifyjs-0.4.2\examples\multi-text.html" />
     <Content Include="Content\notifyjs-0.4.2\examples\position.html" />
+    <Content Include="media\images\dauthau.PNG" />
+    <Content Include="media\images\dauthau_KOR.PNG" />
+    <Content Include="media\images\icon\south-korea.svg" />
+    <Content Include="media\images\icon\vietnam.svg" />
     <Content Include="media\images\Posco family in vietnam.jpg" />
     <Content Include="Content\bootstrap-3.2.0\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-3.2.0\css\bootstrap-theme.min.css" />
@@ -991,6 +997,8 @@
     <Content Include="media\images\Process_ZRM_2A.png" />
     <Content Include="media\images\Process_ZRM_BA.png" />
     <Content Include="media\images\Product.png" />
+    <Content Include="media\images\quytrinhgiaohang.PNG" />
+    <Content Include="media\images\quytrinhgiaohang_kor.PNG" />
     <Content Include="media\images\series300\301_1.png" />
     <Content Include="media\images\series300\301_2.png" />
     <Content Include="media\images\series300\304_1.png" />
@@ -1050,6 +1058,8 @@
     <Content Include="media\images\VSTspecilizied\No_4hl_1.png" />
     <Content Include="media\images\VSTspecilizied\No_4hl_2.png" />
     <Content Include="media\images\VST_stone.png" />
+    <Content Include="media\images\xualivanhanh.PNG" />
+    <Content Include="media\images\xualivanhanh_kor.PNG" />
     <Content Include="media\thumbnails\Facilities\Facilities01.png" />
     <Content Include="media\thumbnails\Facilities\Facilities02.jpg" />
     <Content Include="media\thumbnails\Facilities\Facilities03.jpg" />

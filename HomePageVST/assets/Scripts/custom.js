@@ -67,5 +67,14 @@ function notifyMetro(text, className) {
 $('.sidebar-menu li').on('click', function (e) {
     e.stopPropagation();
     $(this).toggleClass('active');
+});
 
+$("#select-lang").on("change", function (e) {
+    if (e.target.value === "vn") {
+        $(".purchasing-lang__vn").css("display", "block");
+        $(".purchasing-lang__kor").css("display", "none");
+    } else if (e.target.value === "kor") {
+        $(".purchasing-lang__vn").css("display", "none");
+        $(".purchasing-lang__kor").css("display", "block");
+    }
 });

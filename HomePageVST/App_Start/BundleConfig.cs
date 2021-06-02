@@ -19,6 +19,7 @@ namespace HomePageVST
               "~/assets/Scripts/jquery.stellar.min.js",
               "~/assets/Scripts/wow.min.js",
               "~/assets/Scripts/smoothscroll.js",
+              "~/assets/Scripts/bootstrap-select.min.js",
               "~/assets/Scripts/lightbox.min.js",
               "~/Content/notifyjs-0.4.2/dist/notify.js",
               "~/Content/notifyjs-0.4.2/dist/styles/metro/notify-metro.js"));
@@ -52,6 +53,7 @@ namespace HomePageVST
              .Include("~/assets/css/colors1.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/tooplate-style.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/lightbox.css", new CssRewriteUrlTransform())
+             .Include("~/assets/css/bootstrap-select.min.css", new CssRewriteUrlTransform())
              .Include("~/assets/css/themify-icons.css", new CssRewriteUrlTransform())
              .Include("~/Content/notifyjs-0.4.2/dist/styles/metro/notify-metro.css", new CssRewriteUrlTransform()));
 

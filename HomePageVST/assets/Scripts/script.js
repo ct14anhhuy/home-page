@@ -95,3 +95,7 @@ $(document).bind("keyup keydown", function (e) {
         e.preventDefault();
     }
 });
+
+$(function () {
+    $('.selectpicker').selectpicker();
+});
